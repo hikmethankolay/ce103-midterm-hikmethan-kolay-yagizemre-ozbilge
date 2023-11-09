@@ -84,7 +84,7 @@ echo Generate Test Coverage Data for Calculator
 call OpenCppCoverage.exe --export_type=binary:farm_management_tests_unit_win.cov --sources src\farm_management_lib\src --sources src\farm_management_lib\include --sources src\tests\farm_management -- build_win\build\Debug\farm_management_test_tests.exe
 
 echo Generate Test Coverage Data for Calculator App and Combine Results
-call OpenCppCoverage.exe --input_coverage=farm_management__tests_unit_win.cov --export_type=cobertura:farm_management_app_unit_win_cobertura.xml --sources src\farm_management_lib\src --sources src\farm_management_lib\include --sources src\farm_management_app\src --sources src\farm_management_app\include --sources src\tests\farm_management -- build_win\build\Debug\farm_management_app.exe
+call OpenCppCoverage.exe --input_coverage=farm_management_tests_unit_win.cov --export_type=cobertura:farm_management_app_unit_win_cobertura.xml --sources src\farm_management_lib\src --sources src\farm_management_lib\include --sources src\farm_management_app\src --sources src\farm_management_app\include --sources src\tests\farm_management -- build_win\build\Debug\farm_management_app.exe
 
 echo Generate Unit Test Coverage Report
 call reportgenerator "-title:Farm Management Library Unit Test Coverage Report (Windows)" "-targetdir:docs/coveragereportlibwin" "-reporttypes:Html" "-reports:**/farm_management_app_unit_win_cobertura.xml" "-sourcedirs:src/farm_management_lib/src;src/farm_management_lib/include;src/farm_management_app/src;src/farm_management_app/include;src/tests/farm_management" "-filefilters:-*minkernel\*;-*gtest*;-*a\_work\*;-*gtest-*;-*gtest.cc;-*gtest.h;-*build*" "-historydir:report_test_hist_win"
