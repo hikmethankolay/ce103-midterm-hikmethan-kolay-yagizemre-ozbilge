@@ -965,10 +965,10 @@ coverage*[.json, .xml, .info]
 /docs/coveragereport
 /docs/coverxygen
 /site
-/calculator/cobertura.xml
+/farm_management_lib/cobertura.xml
 /cobertura.xml
 *.orig
 *.cov
 *.csv
 /build_win
-/calculatorapp_unit_win_cobertura.xml
+/farm_management_app_unit_win_cobertura.xml

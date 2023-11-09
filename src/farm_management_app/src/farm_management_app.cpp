@@ -2,7 +2,10 @@
 #include <string>
 #include "../../farm_management_lib/include/farm_management_lib.h"
 
-using namespace Farm;
 using namespace std;
 
-Crop::test("Hikmet");
+int main() {
+  string name = "hikmet";
+  test(name);
+  return 0;
+}

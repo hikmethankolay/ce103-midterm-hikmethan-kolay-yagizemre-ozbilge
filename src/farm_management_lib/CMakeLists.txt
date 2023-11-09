@@ -27,7 +27,7 @@ target_include_directories(${LIBNAME} PUBLIC
 target_link_libraries(${LIBNAME} PRIVATE )
 
 # creates preprocessor definition used for library exports
-add_compile_definitions("FARM_CALCULATOR_LIB_EXPORTS")
+add_compile_definitions("FARM_MANAGEMENT_LIB_EXPORTS")
 
 install(TARGETS ${LIBNAME}
         LIBRARY DESTINATION lib
@@ -35,7 +35,7 @@ install(TARGETS ${LIBNAME}
         RUNTIME DESTINATION bin )
 		
 # Copy required header to the installation include folder		
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/header/calculator.h
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/include/farm_management_lib.h
         DESTINATION include)
 
 # Export the crypto target so other modules can use it

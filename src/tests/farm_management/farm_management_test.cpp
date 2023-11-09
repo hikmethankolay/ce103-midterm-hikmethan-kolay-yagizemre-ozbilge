@@ -3,8 +3,6 @@
 #include "gtest/gtest.h"
 #include "../../farm_management_lib/include/farm_management_lib.h"  // Adjust this include path based on your project structure
 
-using namespace Farm;
-
 class FarmTest : public ::testing::Test {
  protected:
   void SetUp() override {
