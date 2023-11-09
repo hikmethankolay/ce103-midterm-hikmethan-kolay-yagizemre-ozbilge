@@ -1,10 +1,10 @@
 #include <iostream>
 #include <string>
+#include "../include/farm_management_lib.h"
 
-namespace farm {
-namespace crop {
-void test(std::string name) {
-  std::cout << "Hello, " << name << std::endl;
-}
-}
+using namespace Farm;
+using namespace std;
+
+void test(string name) {
+  cout << "Hello!" << name;
 }

@@ -1,6 +1,6 @@
 # Set the minimum required CMake version
 cmake_minimum_required(VERSION 3.12)
-project(calculatorapp)
+project(farm_management_app)
 
 set(ROOT src)
 
@@ -39,9 +39,8 @@ set(CRYPTOPP_INSTALL ON)
 set(CRYPTOPP_BUILD_SHARED OFF)
 set(CRYPTOPP_USE_MASTER_BRANCH FALSE)
 
-option(ENABLE_UTILITY "Enable Utility Module" ON)
-option(ENABLE_CALCULATOR "Enable Calculator Module" ON)
-option(ENABLE_CALCULATOR_APP "Enable Calculator Application" ON)
+option(ENABLE_FARM_LIB "Enable farm management lib Module" ON)
+option(ENABLE_FARM_APP "Enable farm management Application" ON)
 option(ENABLE_TESTS "Enable All Tests" ON)
 
 # Configure tests
@@ -96,18 +95,15 @@ endif()
 
 
 # Utility submodule
-if(ENABLE_UTILITY)
-	add_subdirectory(${ROOT}/utility)
-endif()
 
 # Logger submodule
-if(ENABLE_CALCULATOR)
-	add_subdirectory(${ROOT}/calculator)
+if(ENABLE_FARM_LIB)
+	add_subdirectory(${ROOT}/farm_management_lib)
 endif()
 
 # BigInteger for Crypto submodule
-if(ENABLE_CALCULATOR_APP)
-	add_subdirectory(${ROOT}/calculatorapp)
+if(ENABLE_FARM_APP)
+	add_subdirectory(${ROOT}/farm_management_app)
 endif()
 
 # Tests

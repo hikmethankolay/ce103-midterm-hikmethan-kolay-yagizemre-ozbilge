@@ -14,19 +14,18 @@ file(GLOB APP_SOURCES
   "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cc")
 
 # Create named folders for the sources within the project
-source_group("header" FILES ${APP_HEADERS})
+source_group("include" FILES ${APP_HEADERS})
 source_group("src" FILES ${APP_SOURCES})
 
 # Set Properties->General->Configuration Type to Dynamic Library (.dll/.so/.dylib)
 add_executable(${APPNAME} ${APP_HEADERS} ${APP_SOURCES}) # for dynamic library use SHARED
 
 target_include_directories(${APPNAME} PUBLIC
-						   ${CMAKE_CURRENT_SOURCE_DIR}/../utility/header
-						   ${CMAKE_CURRENT_SOURCE_DIR}/../calculator/header
-						   ${CMAKE_CURRENT_SOURCE_DIR}/header)
+						   ${CMAKE_CURRENT_SOURCE_DIR}/../farm_management_lib/include
+						   ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 # Add any dependencies or compile options specific to lock6g
-target_link_libraries(${APPNAME} PRIVATE calculator utility)
+target_link_libraries(${APPNAME} PRIVATE farmmanagement_lib)
 
 install(TARGETS ${APPNAME}
         LIBRARY DESTINATION lib
