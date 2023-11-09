@@ -1,6 +1,12 @@
 # Created by https://www.toptal.com/developers/gitignore/api/c,csharp,vs,visualstudio,visualstudiocode,java,maven,c++,cmake,eclipse,netbeans
 # Edit at https://www.toptal.com/developers/gitignore?templates=c,csharp,vs,visualstudio,visualstudiocode,java,maven,c++,cmake,eclipse,netbeans
 
+
+#Publish_win && build_win && docs 
+publish
+docs
+build_win
+
 ### C ###
 # Prerequisites
 *.d
@@ -959,16 +965,3 @@ coverage*[.json, .xml, .info]
 # Additional files built by Visual Studio
 
 # End of https://www.toptal.com/developers/gitignore/api/c,csharp,vs,visualstudio,visualstudiocode,java,maven,c++,cmake,eclipse,netbeans
-
-/docs/doxygen
-/docs/assets/
-/docs/coveragereport
-/docs/coverxygen
-/site
-/farm_management_lib/cobertura.xml
-/cobertura.xml
-*.orig
-*.cov
-*.csv
-/build_win
-/farm_management_app_unit_win_cobertura.xml
