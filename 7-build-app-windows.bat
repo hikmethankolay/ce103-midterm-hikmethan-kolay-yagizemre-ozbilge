@@ -81,7 +81,7 @@ call copy testResults_windows.html "..\docs\testresultswin\index.html"
 cd ..
 
 echo Generate Test Coverage Data for Calculator
-call OpenCppCoverage.exe --export_type=binary:farm_management_tests_unit_win.cov --sources src\farm_management_lib\src --sources src\farm_management_lib\include --sources src\tests\farm_management -- build_win\build\Debug\farm_management_test_tests.exe
+call OpenCppCoverage.exe --export_type=binary:farm_management_tests_unit_win.cov --sources src\farm_management_lib\src --sources src\farm_management_lib\include --sources src\tests\farm_management -- build_win\build\Debug\farm_management_tests.exe
 
 echo Generate Test Coverage Data for Calculator App and Combine Results
 call OpenCppCoverage.exe --input_coverage=farm_management_tests_unit_win.cov --export_type=cobertura:farm_management_app_unit_win_cobertura.xml --sources src\farm_management_lib\src --sources src\farm_management_lib\include --sources src\farm_management_app\src --sources src\farm_management_app\include --sources src\tests\farm_management -- build_win\build\Debug\farm_management_app.exe
