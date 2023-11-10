@@ -5,12 +5,13 @@
 #include <vector>
 using namespace std;
 
+fstream myFile;
+
 void file_write(string file_name, string text) {
-  fstream myFile;
   myFile.open(file_name, ios::out);
 
   if (myFile.is_open()) {
-    myFile << "1-)" << text << "\n";
+    myFile << "0-)" << text << "\n";
     myFile.close();
   } else {
     cout << "File operation failed";
@@ -18,7 +19,6 @@ void file_write(string file_name, string text) {
 }
 
 void file_append(string file_name,string text) {
-  fstream myFile;
   myFile.open(file_name, ios::in);//Read
   string lastLine;
   string currentLine;
@@ -45,7 +45,6 @@ void file_append(string file_name,string text) {
   }
 }
 void file_read(string filename) {
-  fstream myFile;
   myFile.open(filename, ios::in);//Read
 
   if (myFile.is_open()) {
@@ -57,12 +56,11 @@ void file_read(string filename) {
 
     myFile.close();
   } else {
-    cout << "File operation failed";
+    cout << "File operation failed,There is no record";
   }
 }
 
 void file_edit(string file_name, int line_number_to_edit, string new_line) {
-  fstream myFile;
   myFile.open(file_name, ios::in);//Read
 
   if (myFile.is_open()) {
@@ -73,8 +71,8 @@ void file_edit(string file_name, int line_number_to_edit, string new_line) {
       lines.push_back(line);
     }
 
-    if (line_number_to_edit >= 0 && line_number_to_edit < lines.size()) {
-      lines[line_number_to_edit] = to_string(line_number_to_edit+1) + "-)" + new_line;
+    if (line_number_to_edit > 0 && line_number_to_edit+1 <= lines.size()) {
+      lines[line_number_to_edit] = to_string(line_number_to_edit) + "-)" + new_line;
     } else {
       cout << "You can only edit existing lines" << endl;
     }
@@ -93,7 +91,6 @@ void file_edit(string file_name, int line_number_to_edit, string new_line) {
 }
 
 void file_line_delete(string file_name, int line_number_to_delete) {
-  fstream myFile;
   myFile.open(file_name, ios::in);//Read
 
   if (myFile.is_open()) {
@@ -104,7 +101,7 @@ void file_line_delete(string file_name, int line_number_to_delete) {
       lines.push_back(line);
     }
 
-    if (line_number_to_delete >= 0 && line_number_to_delete < lines.size()) {
+    if (line_number_to_delete >= 0 && line_number_to_delete+1 < lines.size()) {
       lines.erase(lines.begin() + line_number_to_delete - 1);
     } else {
       cout << "You can only erase existing lines" << endl;
@@ -118,7 +115,7 @@ void file_line_delete(string file_name, int line_number_to_delete) {
       int lineNumber = stoi(updated_line.substr(0, pos));
 
       if (lineNumber > line_number_to_delete) {
-        string updated_line_with_new_number = to_string(lineNumber - 1) + "-)" + updated_line.substr(pos);
+        string updated_line_with_new_number = to_string(lineNumber - 1) + updated_line.substr(pos);
         myFile << updated_line_with_new_number << '\n';
       } else {
         myFile << updated_line << '\n';
