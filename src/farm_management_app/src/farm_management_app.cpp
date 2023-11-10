@@ -4,7 +4,7 @@
 #include "../../farm_management_lib/include/farm_management_lib.h"
 
 using namespace std;
-fstream myFile;
+fstream File;
 
 int main() {
   int choice;
@@ -22,32 +22,36 @@ int main() {
 
     switch (choice) {
       case 1:
-        cout << "Crop and livestock management\nWhat operation do you want to do?";
-        cout << "1-)Show Records";
-        cout << "2-)Register Record";
-        cout << "3-)Update Record";
-        cout << "4-)Delete Record",
+        cout << "Crop and livestock management\nWhat operation do you want to do?\n";
+        cout << "1-)Show Records\n";
+        cout << "2-)Register Record\n";
+        cout << "3-)Update Record\n";
+        cout << "4-)Delete Record\n",
              cin >> choice;
 
         switch (choice) {
           case 1: {
             file_read("crop_livestock_record.txt");
+            break;
           }
 
           case 2: {
             string record;
             string record_kind;
-            cout << "What king of record do you want to enter? Livestock/Crop?";
+            cout << "What kind of record do you want to enter? Livestock/Crop?";
             cin >> record_kind;
 
             if (record_kind == "Crop") {
-              myFile.open("crop_record.txt", ios::out | ios::in);
+              File.open("crop_records.txt", ios::out | ios::in);
+              record = "Test";
 
-              if (myFile.is_open()) {
-                file_append("crop_record.txt", record);
+              if (File.is_open()) {
+                file_append("crop_records.txt", record);
+                break;
               } else {
-                file_write("crop_record.txt", "CROP TYPE / PLANTING DATE / HARVEST DATE / CULTIVATION AREA");
-                file_append("crop_record.txt", record);
+                file_write("crop_records.txt", "CROP TYPE / PLANTING DATE / HARVEST DATE / CULTIVATION AREA");
+                file_append("crop_records.txt", record);
+                break;
               }
             } else if (record_kind == "Livestock") {
             }
@@ -88,3 +92,4 @@ int main() {
   } while (choice != 5);
 
   return 0;
+}

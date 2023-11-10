@@ -56,7 +56,7 @@ void file_read(string filename) {
 
     myFile.close();
   } else {
-    cout << "File operation failed,There is no record";
+    cout << "File operation failed,There is no record\n";
   }
 }
 
