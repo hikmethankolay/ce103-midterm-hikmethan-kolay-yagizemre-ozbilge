@@ -21,50 +21,10 @@ int main() {
     cin >> choice;
 
     switch (choice) {
-      case 1:
-        cout << "Crop and livestock management\nWhat operation do you want to do?\n";
-        cout << "1-)Show Records\n";
-        cout << "2-)Register Record\n";
-        cout << "3-)Update Record\n";
-        cout << "4-)Delete Record\n",
-             cin >> choice;
-
-        switch (choice) {
-          case 1: {
-            file_read("crop_livestock_record.txt");
-            break;
-          }
-
-          case 2: {
-            string record;
-            string record_kind;
-            cout << "What kind of record do you want to enter? Livestock/Crop?";
-            cin >> record_kind;
-
-            if (record_kind == "Crop") {
-              File.open("crop_records.txt", ios::out | ios::in);
-              record = "Test";
-
-              if (File.is_open()) {
-                file_append("crop_records.txt", record);
-                break;
-              } else {
-                file_write("crop_records.txt", "CROP TYPE / PLANTING DATE / HARVEST DATE / CULTIVATION AREA");
-                file_append("crop_records.txt", record);
-                break;
-              }
-            } else if (record_kind == "Livestock") {
-            }
-          }
-
-          case 3: {
-          }
-
-          case 4: {
-          }
-        }
-
+      case 1: {
+        cout << "Choice 1st option.\n";
         break;
+      }
 
       case 2: {
         cout << "Choice 2st option.\n";
