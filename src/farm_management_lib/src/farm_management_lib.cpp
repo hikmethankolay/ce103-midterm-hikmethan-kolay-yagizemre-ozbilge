@@ -7,7 +7,7 @@ using namespace std;
 
 void file_write(string file_name, string text) {
   fstream myFile;
-  myFile.open(file_name, ios::out);//Write
+  myFile.open(file_name, ios::out);
 
   if (myFile.is_open()) {
     myFile << "1-)" << text << "\n";
