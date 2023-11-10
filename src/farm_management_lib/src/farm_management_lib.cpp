@@ -14,7 +14,7 @@ void file_write(string file_name, string text) {
     myFile << "0-)" << text << "\n";
     myFile.close();
   } else {
-    cout << "File operation failed";
+    cout << "File operation failed\n";
   }
 }
 
@@ -30,7 +30,7 @@ void file_append(string file_name,string text) {
 
     myFile.close();
   } else {
-    cout << "File operation failed";
+    cout << "File operation failed\n";
   }
 
   size_t pos = lastLine.find("-)");
@@ -41,7 +41,7 @@ void file_append(string file_name,string text) {
     myFile << lineNumber << "-)"  << text << "\n";
     myFile.close();
   } else {
-    cout << "File operation failed";
+    cout << "File operation failed\n";
   }
 }
 void file_read(string filename) {

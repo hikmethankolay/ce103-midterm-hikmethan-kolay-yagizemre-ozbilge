@@ -34,25 +34,25 @@ int main() {
         cout << "3-)Update Record\n";
         cout << "4-)Delete Record\n",
              cout << "5-)Return previous menu\n",
-             cout << "Make a choice(1 - 5): ";
+             cout << "\nMake a choice(1 - 5): ";
         cin >> choice_a;
 
         switch (choice_a) {
           case 1: {
             string record_kind_to_see;
-            cout << "Which record do you want to see? Livestock/Crop?: ";
+            cout << "\nWhich record do you want to see? Livestock/Crop?: ";
             cin >> record_kind_to_see;
 
             if (record_kind_to_see == "Crop") {
-              cout << "--------------------------------\n";
+              cout << "\n-----------------------------------------\n";
               file_read("crop_records.txt");
-              cout << "--------------------------------\n";
+              cout << "-----------------------------------------\n\n";
             } else if (record_kind_to_see == "Livestock") {
-              cout << "--------------------------------\n";
+              cout << "\n-----------------------------------------\n";
               file_read("livestock_records.txt");
-              cout << "--------------------------------\n";
+              cout << "-----------------------------------------\n\n";
             } else {
-              cout << "Please sellect a correct option\n";
+              cout << "\nPlease sellect a correct option\n\n";
               continue;
             }
 
@@ -62,7 +62,7 @@ int main() {
           case 2: {
             string record;
             string record_kind_to_register;
-            cout << "What kind of data do you want to enter? Livestock/Crop?: ";
+            cout << "\nWhat kind of data do you want to enter? Livestock/Crop?: ";
             cin >> record_kind_to_register;
 
             if (record_kind_to_register == "Crop") {
@@ -71,12 +71,12 @@ int main() {
 
               if (File.is_open()) {
                 file_append("crop_records.txt", record);
-                cout << "Data succesfully recored ";
+                cout << "\nData succesfully recored\n\n";
                 break;
               } else {
                 file_write("crop_records.txt", "CROP TYPE / DATE OF PLANTING / DATE OF HARVESTING / CULTIVATED FIELD / EXPECTED QUANTITY");
                 file_append("crop_records.txt", record);
-                cout << "Data succesfully recored ";
+                cout << "\nData succesfully recored\n\n";
                 break;
               }
             } else if (record_kind_to_register == "Livestock") {
@@ -85,16 +85,16 @@ int main() {
 
               if (File.is_open()) {
                 file_append("livestock_records.txt", record);
-                cout << "Data succesfully recored ";
+                cout << "\nData succesfully recored\n\n";
                 break;
               } else {
                 file_write("livestock_records.txt", "LIVESTOCK TYPE / EAR TAG NUMBER / DATE OF BIRTH / DATE OF DEATH / CAUSE OF DEATH / GIVEN FEED ");
                 file_append("livestock_records.txt", record);
-                cout << "Data succesfully recored ";
+                cout << "\nData succesfully recored\n\n";
                 break;
               }
             } else {
-              cout << "Please sellect a correct option\n";
+              cout << "Please sellect a correct option\n\n";
               continue;
             }
           }
