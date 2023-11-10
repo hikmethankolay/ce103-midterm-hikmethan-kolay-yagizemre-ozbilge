@@ -91,3 +91,42 @@ void file_edit(string file_name, int line_number_to_edit, string new_line) {
     cout << "File operation failed" << endl;
   }
 }
+
+void file_line_delete(string file_name, int line_number_to_delete) {
+  fstream myFile;
+  myFile.open(file_name, ios::in);//Read
+
+  if (myFile.is_open()) {
+    vector<string> lines;
+    string line;
+
+    while (getline(myFile, line)) {
+      lines.push_back(line);
+    }
+
+    if (line_number_to_delete >= 0 && line_number_to_delete < lines.size()) {
+      lines.erase(lines.begin() + line_number_to_delete - 1);
+    } else {
+      cout << "You can only erase existing lines" << endl;
+    }
+
+    myFile.close(); // Close the file before reopening
+    myFile.open(file_name, ios::out); // Open in write mode
+
+    for (const string &updated_line : lines) {
+      size_t pos = updated_line.find("-)");
+      int lineNumber = stoi(updated_line.substr(0, pos));
+
+      if (lineNumber > line_number_to_delete) {
+        string updated_line_with_new_number = to_string(lineNumber - 1) + "-)" + updated_line.substr(pos);
+        myFile << updated_line_with_new_number << '\n';
+      } else {
+        myFile << updated_line << '\n';
+      }
+    }
+
+    myFile.close();
+  } else {
+    cout << "File operation failed" << endl;
+  }
+}
