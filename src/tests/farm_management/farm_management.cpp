@@ -1,6 +1,6 @@
 //#define ENABLE_TESTS  // Uncomment this line to enable the tests
 
-#include "../../tests/googletest/googletest/include/gtest/gtest.h"
+#include "gtest/gtest.h"
 #include "../../farm_management_lib/include/farm_management_lib.h"  // Adjust this include path based on your project structure
 
 class FarmTest : public ::testing::Test {
