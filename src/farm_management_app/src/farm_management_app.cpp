@@ -1,52 +1,90 @@
 #include <iostream>
 #include <string>
-
+#include <fstream>
 #include "../../farm_management_lib/include/farm_management_lib.h"
+
 using namespace std;
+fstream myFile;
 
 int main() {
-  return 0;
-	int choice;
+  int choice;
 
-	do {
-	    // Show Main menu
-		cout << "Main menu\n";
-		cout << "1)Crop and livestock management\n";
-		cout << "2)Harvesting and producing planning\n";
-		cout << "3)Equipment and vehicle maintenance\n";
-		cout << "4)Reporting\n";
-		cout << "5)Exit\n";
+  do {
+    // Show Main menu
+    cout << "Main menu\n";
+    cout << "1)Crop and livestock management\n";
+    cout << "2)Harvesting and producing planning\n";
+    cout << "3)Equipment and vehicle maintenance\n";
+    cout << "4)Reporting\n";
+    cout << "5)Exit\n";
+    cout << "Make a choice(1 - 5): ";
+    cin >> choice;
 
-		//Take your user's choice
-		cout << "Make a choice(1 - 5): ";
-		cin >> choice;
+    switch (choice) {
+      case 1:
+        cout << "Crop and livestock management\nWhat operation do you want to do?";
+        cout << "1-)Show Records";
+        cout << "2-)Register Record";
+        cout << "3-)Update Record";
+        cout << "4-)Delete Record",
+             cin >> choice;
 
-		//According to process in user's choice
-		switch (choice) {
-		    case 1:
-				cout << "Choice 1st option.\n";
-				// You add 1st choice codes.
-				break;
-			case 2:
-				cout << "Choice 2st option.\n";
-				// You add 2st choice codes.
-				break;
-			case 3:
-				cout << "Choice 3st option.\n";
-				// You add 3st choice codes.
-				break;
-			case 4:
-				cout << "Choice 4st option.\n";
-				// You add 4st choice codes.
-				break;
-			case 5:
-				cout << "You are going to exit.\n";
-				break;
-			default:
-				cout << "Useless option!Please try again.";
+        switch (choice) {
+          case 1: {
+            file_read("crop_livestock_record.txt");
+          }
+
+          case 2: {
+            string record;
+            string record_kind;
+            cout << "What king of record do you want to enter? Livestock/Crop?";
+            cin >> record_kind;
+
+            if (record_kind == "Crop") {
+              myFile.open("crop_record.txt", ios::out | ios::in);
+
+              if (myFile.is_open()) {
+                file_append("crop_record.txt", record);
+              } else {
+                file_write("crop_record.txt", "CROP TYPE / PLANTING DATE / HARVEST DATE / CULTIVATION AREA");
+                file_append("crop_record.txt", record);
+              }
+            } else if (record_kind == "Livestock") {
+            }
+          }
+
+          case 3: {
+          }
+
+          case 4: {
+          }
         }
-	} while (choice != 5);
 
+        break;
 
-   return 0;
-}
+      case 2: {
+        cout << "Choice 2st option.\n";
+        break;
+      }
+
+      case 3: {
+        cout << "Choice 3rd option.\n";
+        break;
+      }
+
+      case 4: {
+        cout << "Choice 4st option.\n";
+        break;
+      }
+
+      case 5: {
+        cout << "You are going to exit.\n";
+        break;
+      }
+
+      default:
+        cout << "Please try again.";
+    }
+  } while (choice != 5);
+
+  return 0;
