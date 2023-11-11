@@ -44,8 +44,8 @@ void file_append(string file_name,string text) {
     cout << "File operation failed\n";
   }
 }
-void file_read(string file_ename) {
-  myFile.open(file_ename, ios::in);//Opens file with input tag
+void file_read(string file_name) {
+  myFile.open(file_name, ios::in);//Opens file with input tag
 
   if (myFile.is_open()) {
     string line;
