@@ -8,24 +8,24 @@ using namespace std;
 fstream myFile;
 
 void file_write(string file_name, string text) {
-  myFile.open(file_name, ios::out);
+  myFile.open(file_name, ios::out); //Opens file with output tag
 
   if (myFile.is_open()) {
-    myFile << "0-)" << text << "\n";
+    myFile << "0-)" << text << "\n"; //Deletes everting insde file and inserts Text with "0-)" line number
     myFile.close();
   } else {
-    cout << "File operation failed\n";
+    cout << "File operation failed\n"; //trowhs error if fails
   }
 }
 
 void file_append(string file_name,string text) {
-  myFile.open(file_name, ios::in);//Read
+  myFile.open(file_name, ios::in);//Opens file with input tag
   string lastLine;
   string currentLine;
 
   if (myFile.is_open()) {
     while (getline(myFile, currentLine)) {
-      lastLine = currentLine;  // Update lastLine for each line read
+      lastLine = currentLine;  // Update lastLine for each line and finds actual last line
     }
 
     myFile.close();
@@ -33,12 +33,12 @@ void file_append(string file_name,string text) {
     cout << "File operation failed\n";
   }
 
-  size_t pos = lastLine.find("-)");
-  int lineNumber = stoi(lastLine.substr(0, pos))+1;
-  myFile.open(file_name, ios::app);//Append
+  size_t pos = lastLine.find("-)"); // Finds location of "-)" inn last line
+  int lineNumber = stoi(lastLine.substr(0, pos))+1; //Finds number of the last line
+  myFile.open(file_name, ios::app);//Opens file with append tag
 
   if (myFile.is_open()) {
-    myFile << lineNumber << "-)"  << text << "\n";
+    myFile << lineNumber << "-)"  << text << "\n"; //Appends text with its line number
     myFile.close();
   } else {
     cout << "File operation failed\n";
@@ -61,26 +61,26 @@ void file_read(string file_ename) {
 }
 
 void file_edit(string file_name, int line_number_to_edit, string new_line) {
-  myFile.open(file_name, ios::in);//Read
+  myFile.open(file_name, ios::in);//Opens file with read tag
 
   if (myFile.is_open()) {
-    vector<string> lines;
+    vector<string> lines; // A vector to store lines
     string line;
 
-    while (getline(myFile, line)) {
-      lines.push_back(line);
+    while (getline(myFile, line)) { // gets lines one by oone and assaign them to line variable
+      lines.push_back(line); // ads line variable to lines vector
     }
 
     if (line_number_to_edit > 0 && line_number_to_edit+1 <= lines.size()) {
-      lines[line_number_to_edit] = to_string(line_number_to_edit) + "-)" + new_line;
+      lines[line_number_to_edit] = to_string(line_number_to_edit) + "-)" + new_line; // Changes a member of Lines vector to new line with its line number
     } else {
       cout << "You can only edit existing lines" << endl;
     }
 
-    myFile.close(); // Close the file before reopening
-    myFile.open(file_name, ios::out); // Open in write mode
+    myFile.close();
+    myFile.open(file_name, ios::out); // Opens file in write mode
 
-    for (const string &updated_line : lines) {
+    for (const string &updated_line : lines) { // writes every member of lines vector to file
       myFile << updated_line << '\n';
     }
 
@@ -91,30 +91,30 @@ void file_edit(string file_name, int line_number_to_edit, string new_line) {
 }
 
 void file_line_delete(string file_name, int line_number_to_delete) {
-  myFile.open(file_name, ios::in);//Read
+  myFile.open(file_name, ios::in);// Opens file in read mode
 
   if (myFile.is_open()) {
-    vector<string> lines;
+    vector<string> lines;// A vector to store lines
     string line;
 
-    while (getline(myFile, line)) {
-      lines.push_back(line);
+    while (getline(myFile, line)) { // gets lines one by oone and assaign them to line variable
+      lines.push_back(line); // ads line variable to lines vector
     }
 
     if (line_number_to_delete >= 0 && line_number_to_delete < lines.size()) {
-      lines.erase(lines.begin() + line_number_to_delete);
+      lines.erase(lines.begin() + line_number_to_delete); // Deletes a line from lines vector
     } else {
       cout << "You can only erase existing lines" << endl;
     }
 
-    myFile.close(); // Close the file before reopening
-    myFile.open(file_name, ios::out); // Open in write mode
+    myFile.close();
+    myFile.open(file_name, ios::out); // Opens file in write mode
 
     for (const string &updated_line : lines) {
-      size_t pos = updated_line.find("-)");
-      int lineNumber = stoi(updated_line.substr(0, pos));
+      size_t pos = updated_line.find("-)"); // Finds postion of "-)"
+      int lineNumber = stoi(updated_line.substr(0, pos)); // Finds each lines line number
 
-      if (lineNumber > line_number_to_delete) {
+      if (lineNumber > line_number_to_delete) { // decrase a lines line number if its bigger than deleted lines line number
         string updated_line_with_new_number = to_string(lineNumber - 1) + updated_line.substr(pos);
         myFile << updated_line_with_new_number << '\n';
       } else {
