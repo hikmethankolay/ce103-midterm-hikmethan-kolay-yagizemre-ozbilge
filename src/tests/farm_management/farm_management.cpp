@@ -14,12 +14,41 @@ class FarmTest : public ::testing::Test {
   }
 };
 
-string testString =
-  "0-)CROP TYPE | DATE OF PLANTING | DATE OF HARVESTING | CULTIVATED FIELD | EXPECTED QUANTITY\n1-)  Wheat   |    07/07/8888    |     07/07/9999     |     450m2        |       450Kg\n";
+string testString;
+
 
 TEST_F(FarmTest, TestFileRead) {
-  string result = file_read("../../../crop_records_test.txt");
-  EXPECT_EQ(testString, result);
+  testString = "0-)TEXT STRING0\n";
+  string writeString = "TEXT STRING0";
+  file_write("../../../../crop_records_test.txt", writeString);
+  EXPECT_EQ(testString, file_read("../../../../crop_records_test.txt"));
+}
+
+TEST_F(FarmTest, TestFileAppend) {
+  testString = "0-)TEXT STRING0\n1-)TEXT STRING1\n";
+  string appendString = "TEXT STRING1";
+  file_append("../../../../crop_records_test.txt", appendString);
+  EXPECT_EQ(testString, file_read("../../../../crop_records_test.txt"));
+}
+
+TEST_F(FarmTest, TestFileEdit) {
+  testString = "0-)TEXT STRING0\n1-)TEXT STRING2\n";
+  string editString = "TEXT STRING2";
+  file_edit("../../../../crop_records_test.txt", 1, editString);
+  EXPECT_EQ(testString, file_read("../../../../crop_records_test.txt"));
+}
+
+TEST_F(FarmTest, TestFileDelete) {
+  testString = "0-)TEXT STRING0\n";
+  file_line_delete("../../../../crop_records_test.txt", 1);
+  EXPECT_EQ(testString, file_read("../../../../crop_records_test.txt"));
+}
+
+TEST_F(FarmTest, TestFileWrite) {
+  testString = "0-)TEXT STRING0\n";
+  string writeString = "TEXT STRING0";
+  file_write("../../../../crop_records_test.txt", writeString);
+  EXPECT_EQ(testString, file_read("../../../../crop_records_test.txt"));
 }
 
 int main(int argc, char **argv) {
