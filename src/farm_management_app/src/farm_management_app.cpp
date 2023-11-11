@@ -349,98 +349,92 @@ eartag2:
         break;
       }
 
-            cout << "\n--------Equipment and vehicle maintenance--------\n";
-            cout << "What operation do you want to do ? \n";
-            cout << "1-) Usage Records\n";
-            cout << "2-)Repair Record\n";
-            cout << "3-)Replacement Record\n";
-            cout << "4-)Return previous menu\\n",
-                cout << "\nMake a choice(1 - 4: ";
-            cin >> choice_c;
+      case 3: {
+        cout << "\n--------Equipment and vehicle maintenance--------\n";
+        cout << "What operation do you want to do ? \n";
+        cout << "1-) Usage Records\n";
+        cout << "2-)Repair Record\n";
+        cout << "3-)Replacement Record\n";
+        cout << "4-)Return previous menu\\n",
+             cout << "\nMake a choice(1 - 4: ";
+        cin >> choice_c;
 
-            switch (choice_c) {
-            case 1: {
-                string vehicle_kind_to_see;
-                cout << "\nWhich record do you want to see? Plane/Ship?: ";
-                cin >> vehicle_kind_to_see;
+        switch (choice_c) {
+          case 1: {
+            string vehicle_kind_to_see;
+            cout << "\nWhich record do you want to see? Plane/Ship?: ";
+            cin >> vehicle_kind_to_see;
 
-                if (vehicle_kind_to_see == "Plane") {
-                    cout << "\n--------------------------------------------------------------------------------------------\n";
-                    file_read("equipment_plane_records.txt"); // Prints Equipment and vehicle records
-                    cout << "--------------------------------------------------------------------------------------------\n\n";
-                }
-                else if (vehicle_kind_to_see == "Ship") {
-                    cout << "\n-----------------------------------------------------------------------------------------------------------------------------------------------------------\n";
-                    file_read("Equipment_ship_records.txt"); //Prints Equipment and vehicle records
-                    cout << "-----------------------------------------------------------------------------------------------------------------------------------------------------------\n\n";
-                }
-                else {
-                cout << "\nPlease sellect a correct option\n\n";
-                goto choice1;
-                }
-
-                break;
+            if (vehicle_kind_to_see == "Plane") {
+              cout << "\n--------------------------------------------------------------------------------------------\n";
+              file_read("equipment_plane_records.txt"); // Prints Equipment and vehicle records
+              cout << "--------------------------------------------------------------------------------------------\n\n";
+            } else if (vehicle_kind_to_see == "Ship") {
+              cout << "\n-----------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+              file_read("Equipment_ship_records.txt"); //Prints Equipment and vehicle records
+              cout << "-----------------------------------------------------------------------------------------------------------------------------------------------------------\n\n";
+            } else {
+              cout << "\nPlease sellect a correct option\n\n";
+              goto choice1;
             }
 
-            case 2: {
-                    string vehicle;
-                    string vehicle_kind_to_usage;
-                    cout << "\nWhich one of the use prefer this data? /Plane/Ship";
-                    cin >> vehicle_kind_to_usage;
+            break;
+          }
 
-                    if (vehicle_kind_to_usage == "Plane") {
-                        string plane;
-                        string plane_type;
-                        string plane_entry_date;
-                        string plane_exit_date;
-                        string plane_destination_area;
-                        string plane_capacity;
-                        cout << "What kind of vehicle do you want to come?:";
-                        cin >> plane_type;
-                        cout << "What is the entry date of vehicle?(DD/MM/YYYY):";
-                        cin >> plane_entry_date;
-                        cout << "What is the exit date of vehicle?(DD/MM/YYYY):";
-                        cin >> plane_exit_date;
-                        cout << "Where is your destination area:";
-                        cin >> plane_destination_area;
-                        cout << "What is your vehicle capacity?(Kg);";
-                        cin >> plane_capacity;
-                        plane= " " + plane_type + " | "" + plane_entry_date " | " " + plane_exit_date " | " " + plane_destination_area + " | " " + plane_capacity "|
-                        "Kg"; //maximum capacity of vehicle
-                        File.open("Equipment_plane_records.txt", ios::out, ios::in); //open file and we will see input and output
+          case 3: {
+            string vehicle;
+            string vehicle_kind_to_usage;
+            cout << "\nWhich one of the use prefer this data? /Plane/Ship";
+            cin >> vehicle_kind_to_usage;
 
-                    if (File_is.open()) //checks if file exist
-                       file_append("Equipment_plane_records.txt" ,record); //appends to data file
-                       cout << "\nData is accomplished\n\n";
-                       break; {
-                    }
-                    else if (vehicle_kind_to_see == "Ship")
-                        
-                    
-                    
+            if (vehicle_kind_to_usage == "Plane") {
+              string plane;
+              string plane_type;
+              string plane_entry_date;
+              string plane_exit_date;
+              string plane_destination_area;
+              string plane_capacity;
+              cout << "What kind of vehicle do you want to come?:";
+              cin >> plane_type;
+              cout << "What is the entry date of vehicle?(DD/MM/YYYY):";
+              cin >> plane_entry_date;
+              cout << "What is the exit date of vehicle?(DD/MM/YYYY):";
+              cin >> plane_exit_date;
+              cout << "Where is your destination area:";
+              cin >> plane_destination_area;
+              cout << "What is your vehicle capacity?(Kg);";
+              cin >> plane_capacity;
+              plane = " " + plane_type + " | "" + plane_entry_date " | " " + plane_exit_date " | " " + plane_destination_area + " | " " + plane_capacity "| " + "Kg"; //maximum capacity of vehicle
+              File.open("Equipment_plane_records.txt", ios::out, ios::in); //open file and we will see input and output
 
+              if (File.is_open()) //checks if file exist
+                file_append("Equipment_plane_records.txt", record); //appends to data file
 
-                          
-
-
-
-                    
+              cout << "\nData succesfully appended\n\n";
+              break;
+              {
+              } else if (vehicle_kind_to_see == "Ship") {
+              }
             }
+          }
+        }
 
-      case 4: {
-        cout << "Choice 4st option.\n";
-        break;
-      }
+        case 4: {
+          cout << "Choice 4st option.\n";
+          break;
+        }
 
-      case 5: {
-        app_running = false;
-        break;
-      }
+        case 5: {
+          app_running = false;
+          break;
+        }
 
-      default:
-        cout << "Please try again.\n\n";
+        default:
+          cout << "Please try again.\n\n";
+        }
     }
-  } while (app_running);
 
-  return 0;
-}
+    while (app_running);
+
+    return 0;
+  }
