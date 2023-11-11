@@ -79,7 +79,7 @@ choice1:
               cin >> crop_plant_date;
               cout << "What is the planed date of harvest?(DD/MM/YYYY):";
               cin >> crop_harvest_date;
-              cout << "How big is the planted are?(m2):";
+              cout << "How big is the planted area?(m2):";
               cin >> crop_field;
               cout << "What is the expected harvest quantity?(Kg);";
               cin >> crop_exp_quantity;

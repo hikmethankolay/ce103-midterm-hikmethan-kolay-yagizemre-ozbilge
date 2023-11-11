@@ -944,8 +944,8 @@ WARN_LOGFILE           = doxygen_lib_win.log
 # Note: If this tag is empty the current directory is searched.
 
 INPUT                  = README.md \
-                         src/farm_managemnet_lib \
-                         src/farm_managemnet_app
+                         src/farm_management_lib \
+                         src/farm_management_app
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
