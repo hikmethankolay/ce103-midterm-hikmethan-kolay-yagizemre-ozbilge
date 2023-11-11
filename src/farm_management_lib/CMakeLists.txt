@@ -6,8 +6,8 @@ message(STATUS "[${ROOT}/${LIBNAME}] Module Processing...")
 
 # Collect files without having to explicitly list each header and source file
 file(GLOB LIB_HEADERS
-  "${CMAKE_CURRENT_SOURCE_DIR}/header/*.h"
-  "${CMAKE_CURRENT_SOURCE_DIR}/header/*.hpp")
+  "${CMAKE_CURRENT_SOURCE_DIR}/include/*.h"
+  "${CMAKE_CURRENT_SOURCE_DIR}/include/*.hpp")
 
 file(GLOB LIB_SOURCES
   "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"

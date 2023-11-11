@@ -14,7 +14,7 @@ void file_write(string file_name, string text) {
     myFile << "0-)" << text << "\n";
     myFile.close();
   } else {
-    cout << "File operation failed";
+    cout << "File operation failed\n";
   }
 }
 
@@ -30,7 +30,7 @@ void file_append(string file_name,string text) {
 
     myFile.close();
   } else {
-    cout << "File operation failed";
+    cout << "File operation failed\n";
   }
 
   size_t pos = lastLine.find("-)");
@@ -41,7 +41,7 @@ void file_append(string file_name,string text) {
     myFile << lineNumber << "-)"  << text << "\n";
     myFile.close();
   } else {
-    cout << "File operation failed";
+    cout << "File operation failed\n";
   }
 }
 void file_read(string file_ename) {
@@ -101,8 +101,8 @@ void file_line_delete(string file_name, int line_number_to_delete) {
       lines.push_back(line);
     }
 
-    if (line_number_to_delete >= 0 && line_number_to_delete+1 < lines.size()) {
-      lines.erase(lines.begin() + line_number_to_delete - 1);
+    if (line_number_to_delete >= 0 && line_number_to_delete < lines.size()) {
+      lines.erase(lines.begin() + line_number_to_delete);
     } else {
       cout << "You can only erase existing lines" << endl;
     }
