@@ -101,8 +101,8 @@ void file_line_delete(string file_name, int line_number_to_delete) {
       lines.push_back(line);
     }
 
-    if (line_number_to_delete >= 0 && line_number_to_delete+1 < lines.size()) {
-      lines.erase(lines.begin() + line_number_to_delete - 1);
+    if (line_number_to_delete >= 0 && line_number_to_delete < lines.size()) {
+      lines.erase(lines.begin() + line_number_to_delete);
     } else {
       cout << "You can only erase existing lines" << endl;
     }
