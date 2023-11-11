@@ -7,7 +7,7 @@ void file_write(string file_name, string text);
 
 void file_append(string file_name,string text);
 
-void file_read(string filename);
+string file_read(string file_name);
 
 void file_edit(string file_name, int line_number_to_edit, string new_line);
 

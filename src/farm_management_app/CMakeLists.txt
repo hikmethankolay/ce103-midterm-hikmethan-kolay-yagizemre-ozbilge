@@ -1,6 +1,6 @@
 # aka5g/CMakeLists.txt
 set(ROOT src)
-set(APPNAME farm_managemnet_app)
+set(APPNAME farm_management_app)
 
 message(STATUS "[${ROOT}/${APPNAME}] Module Processing...")
 

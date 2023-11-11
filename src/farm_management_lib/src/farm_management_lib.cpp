@@ -44,20 +44,24 @@ void file_append(string file_name,string text) {
     cout << "File operation failed\n";
   }
 }
-void file_read(string file_ename) {
-  myFile.open(file_ename, ios::in);//Opens file with input tag
+string file_read(string file_name) {
+  string stringForTest; //This is a variable for tests to run properly since function needs to retrun someting
+  myFile.open(file_name, ios::in);//Opens file with input tag
 
   if (myFile.is_open()) {
     string line;
 
     while (getline(myFile, line)) { // Takes all line one by one and prints them to console
       cout << line << endl;
+      stringForTest = stringForTest + line + "\n";
     }
 
     myFile.close();
   } else {
     cout << "File operation failed,There is no record\n";
   }
+
+  return stringForTest; //This is a variable for tests to run since function needs to retrun someting for them to run properly
 }
 
 void file_edit(string file_name, int line_number_to_edit, string new_line) {

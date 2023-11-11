@@ -31,8 +31,8 @@ cd ..
 
 echo Running Test Executable
 
-call .\publish_win\bin\farm_management_test_tests.exe
-call .\publish_win\bin\farm_managemnet_app.exe
+call .\publish_win\bin\farm_management_tests.exe
+call .\publish_win\bin\farm_management_app.exe
 
 echo Files and folders copied successfully.
 
@@ -45,8 +45,8 @@ call robocopy src\farm_managemnet_app\include "build_win\build\Release" /E
 tar -czvf release_win\windows-release-binaries.tar.gz -C build_win\build\Release .
 
 echo Package Publish Debug Windows Binaries
-call robocopy src\farm_managemnet_lib\include "build_win\build\Debug" /E
-call robocopy src\farm_managemnet_app\include "build_win\build\Debug" /E
+call robocopy src\farm_management_lib\include "build_win\build\Debug" /E
+call robocopy src\farm_management_app\include "build_win\build\Debug" /E
 tar -czvf release_win\windows-debug-binaries.tar.gz -C build_win\build\Debug .
 
 echo ....................
