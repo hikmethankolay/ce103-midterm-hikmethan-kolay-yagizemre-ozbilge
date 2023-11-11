@@ -4,9 +4,10 @@
 #include "../../farm_management_lib/include/farm_management_lib.h"
 
 using namespace std;
-fstream File;
+fstream File; // Assigns fstream class to a object named "File"
 
 int main() {
+  // choice variables for each switch used in this app
   int choice;
   int choice_a;
   int choice_b;
@@ -15,7 +16,7 @@ int main() {
   bool app_running = true;
 
   do {
-    //Main menu
+    // Prints main menu
     cout << "-----------Main menu-----------\n";
     cout << "1)Crop and livestock management\n";
     cout << "2)Harvesting and producing planning\n";
@@ -46,11 +47,11 @@ choice1:
 
             if (record_kind_to_see == "Crop") {
               cout << "\n--------------------------------------------------------------------------------------------\n";
-              file_read("crop_records.txt");
+              file_read("crop_records.txt"); // Prints crop records
               cout << "--------------------------------------------------------------------------------------------\n\n";
             } else if (record_kind_to_see == "Livestock") {
               cout << "\n-----------------------------------------------------------------------------------------------------------------------------------------------------------\n";
-              file_read("livestock_records.txt");
+              file_read("livestock_records.txt"); //Prints livestockrecords
               cout << "-----------------------------------------------------------------------------------------------------------------------------------------------------------\n\n";
             } else {
               cout << "\nPlease sellect a correct option\n\n";
@@ -82,14 +83,15 @@ choice1:
               cin >> crop_field;
               cout << "What is the expected harvest quantity?(Kg);";
               cin >> crop_exp_quantity;
-              record = "  " + crop_type + "   |    " + crop_plant_date + "    |     " + crop_harvest_date + "     |     " + crop_field + "m2" + "        |       " + crop_exp_quantity + "Kg";
-              File.open("crop_records.txt", ios::out | ios::in);
+              record = "  " + crop_type + "   |    " + crop_plant_date + "    |     " + crop_harvest_date + "     |     " + crop_field + "m2" + "        |       " + crop_exp_quantity +
+                       "Kg"; // sums all of the strings to one string
+              File.open("crop_records.txt", ios::out | ios::in); // open file with both input and output tag
 
-              if (File.is_open()) {
-                file_append("crop_records.txt", record);
+              if (File.is_open()) { //checks if file exist
+                file_append("crop_records.txt", record); // appends data to file
                 cout << "\nData succesfully recored\n\n";
                 break;
-              } else {
+              } else { //if there is no file creates one print records table
                 file_write("crop_records.txt", "CROP TYPE | DATE OF PLANTING | DATE OF HARVESTING | CULTIVATED FIELD | EXPECTED QUANTITY");
                 file_append("crop_records.txt", record);
                 cout << "\nData succesfully recored\n\n";
@@ -108,9 +110,9 @@ eartag:
               cout << "What is the ear tag number?(AIN)(***-***-***-***-***):";
               cin >> livestock_ear_tag;
 
-              if (size(livestock_ear_tag) != 19) {
+              if (size(livestock_ear_tag) != 19) { //checks if AIN number correct
                 cout << "Please enter a correct form of ear tag number!\n";
-                goto eartag;
+                goto eartag; // Goes back to "cin >> livestock_ear_tag;" if input is not valid
               }
 
               cout << "What is the date of birth?(DD/MM/YYYY):";
@@ -122,7 +124,7 @@ eartag:
               cout << "Is it alive?(Yes/No):";
               cin >> livestock_death;
 
-              if (livestock_death == "No") {
+              if (livestock_death == "No") { //checks is livestock dead, depending on on outcome it lefts blank death date and death cause
                 string livestock_death_date;
                 string livestock_death_cause;
                 cout << "What is the date of death?(DD/MM/YYYY):";
@@ -130,30 +132,30 @@ eartag:
                 cout << "What is the cause of death?:";
                 cin >> livestock_death_cause;
                 record = "     " + livestock_type + "         |    " + livestock_ear_tag + "    |     " + livestock_birth_date + "    |     " + livestock_food + "      |   " + livestock_weight + "Kg" + "    |      "
-                         + livestock_death + "     |     " + livestock_death_date + "    |       " + livestock_death_cause;
+                         + livestock_death + "     |     " + livestock_death_date + "    |       " + livestock_death_cause; // sums all of the strings to one string
               } else if (livestock_death == "Yes") {
                 record = "     " + livestock_type + "         |    " + livestock_ear_tag + "    |     " + livestock_birth_date + "    |     " + livestock_food + "      |   " + livestock_weight + "Kg" + "    |      "
-                         + livestock_death + "     |     " + "----------" + "    |       " + "----------";
+                         + livestock_death + "     |     " + "----------" + "    |       " + "----------"; // sums all of the strings to one string
               } else {
                 cout << "Please sellect a correct option\n\n";
-                goto choice1;
+                goto choice1; // Goes back to "Crop and livestock management" menu if input is not valid
               }
 
-              File.open("livestock_records.txt", ios::out | ios::in);
+              File.open("livestock_records.txt", ios::out | ios::in); // open file with both input and output tag
 
-              if (File.is_open()) {
-                file_append("livestock_records.txt", record);
+              if (File.is_open()) { //checks if file exist
+                file_append("livestock_records.txt", record); // appends data to file
                 cout << "\nData succesfully recored\n\n";
                 break;
-              } else {
-                file_write("livestock_records.txt", "LIVESTOCK TYPE   |      EAR TAG NUMBER       |   DATE OF BIRTH   |   GIVEN FOOD   |   WEIGHT   |   IS DEAD   |   DATE OF DEATH   |   CAUSE OF DEATH");
+              } else { //if there is no file creates one print records table
+                file_write("livestock_records.txt", "LIVESTOCK TYPE   |      EAR TAG NUMBER       |   DATE OF BIRTH   |   GIVEN FOOD   |   WEIGHT   |   IS ALIVE   |   DATE OF DEATH   |   CAUSE OF DEATH");
                 file_append("livestock_records.txt", record);
                 cout << "\nData succesfully recored\n\n";
                 break;
               }
             } else {
               cout << "Please sellect a correct option\n\n";
-              goto choice1;
+              goto choice1; // Goes back to "Crop and livestock management" menu if input is not valid
             }
           }
 
@@ -162,11 +164,11 @@ eartag:
             string record_kind_to_edit;
             string new_record;
             cout << "Which kind of record do you want to edit?(Crop/Livestock):";
-            cin >> record_kind_to_edit;
+            cin >> record_kind_to_edit; // Asks which record to edit
             cout << "Which line do you want to edit?:";
-            cin >> line_number_to_edit;
+            cin >> line_number_to_edit; // Ask which line number to edit
 
-            if (record_kind_to_edit == "Crop") {
+            if (record_kind_to_edit == "Crop") { // Takes new data and replaces it with old data in the specified line
               File.open("crop_records.txt", ios::out | ios::in);
 
               if (File.is_open()) {
@@ -193,7 +195,7 @@ eartag:
                 cout << "There is no record to edit";
                 break;
               }
-            } else if (record_kind_to_edit == "Livestock") {
+            } else if (record_kind_to_edit == "Livestock") { // Takes new data and replaces it with old data in the specified line
               File.open("livestock_records.txt", ios::out | ios::in);
 
               if (File.is_open()) {
@@ -258,36 +260,36 @@ eartag2:
             string record_kind_to_delete;
             string line_or_record;
             cout << "Which kind of record do you want to delete?(Crop/Livestock):";
-            cin >> record_kind_to_delete;
+            cin >> record_kind_to_delete; //Asks which record type to delete from
 
             if (record_kind_to_delete == "Crop") {
               cout << "Do you want to delete all records or just a single one?(All/Single):";
-              cin >> line_or_record;
+              cin >> line_or_record; // Asks if user goin to delte all data or just one specified line
 
               if (line_or_record == "All") {
                 File.open("crop_records.txt", ios::out | ios::in);
 
-                if (File.is_open()) {
+                if (File.is_open()) { //checks if file exist
                   File.close();
-                  file_write("crop_records.txt", "CROP TYPE | DATE OF PLANTING | DATE OF HARVESTING | CULTIVATED FIELD | EXPECTED QUANTITY");
+                  file_write("crop_records.txt", "CROP TYPE | DATE OF PLANTING | DATE OF HARVESTING | CULTIVATED FIELD | EXPECTED QUANTITY"); //Rewrite all file from scratch
                   cout << "\nData succesfully deleted\n\n";
                   break;
                 } else {
-                  cout << "There is no record to delete";
+                  cout << "There is no record to delete"; //if there is no file throws error
                   break;
                 }
               } else if (line_or_record == "Single") {
                 File.open("crop_records.txt", ios::out | ios::in);
 
-                if (File.is_open()) {
+                if (File.is_open()) { //checks if file exist
                   File.close();
                   cout << "Which line dou you want to delete?:";
-                  cin >> line_number_to_delete;
-                  file_line_delete("crop_records.txt", line_number_to_delete);
+                  cin >> line_number_to_delete; // Asks which line to delete
+                  file_line_delete("crop_records.txt", line_number_to_delete); // Deletes specified line
                   cout << "\nData succesfully deleted\n\n";
                   break;
                 } else {
-                  cout << "There is no record to delete";
+                  cout << "There is no record to delete"; //if there is no file throws error
                   break;
                 }
               } else {
@@ -296,32 +298,33 @@ eartag2:
               }
             } else if (record_kind_to_delete == "Livestock") {
               cout << "Do you want to delete all records or just a single one?(All/Single):";
-              cin >> line_or_record;
+              cin >> line_or_record; // Asks if user goin to delte all data or just one specified line
 
               if (line_or_record == "All") {
                 File.open("livestock_records.txt", ios::out | ios::in);
 
-                if (File.is_open()) {
+                if (File.is_open()) { //checks if file exist
                   File.close();
-                  file_write("livestock_records.txt", "LIVESTOCK TYPE   |      EAR TAG NUMBER       |   DATE OF BIRTH   |   GIVEN FOOD   |   WEIGHT   |   IS DEAD   |   DATE OF DEATH   |   CAUSE OF DEATH");
+                  file_write("livestock_records.txt",
+                             "LIVESTOCK TYPE   |      EAR TAG NUMBER       |   DATE OF BIRTH   |   GIVEN FOOD   |   WEIGHT   |   IS ALIVE   |   DATE OF DEATH   |   CAUSE OF DEATH"); //Rewrite all file from scratch
                   cout << "\nData succesfully deleted\n\n";
                   break;
                 } else {
-                  cout << "There is no record to delete";
+                  cout << "There is no record to delete"; //if there is no file throws error
                   break;
                 }
               } else if (line_or_record == "Single") {
                 File.open("livestock_records.txt", ios::out | ios::in);
 
-                if (File.is_open()) {
+                if (File.is_open()) { //checks if file exist
                   File.close();
                   cout << "Which line dou you want to delete?:";
-                  cin >> line_number_to_delete;
-                  file_line_delete("livestock_records.txt", line_number_to_delete);
+                  cin >> line_number_to_delete; // Asks which line to delete
+                  file_line_delete("livestock_records.txt", line_number_to_delete); // Deletes specified line
                   cout << "\nData succesfully deleted\n\n";
                   break;
                 } else {
-                  cout << "There is no record to delete";
+                  cout << "There is no record to delete"; //if there is no file throws error
                   break;
                 }
               } else {

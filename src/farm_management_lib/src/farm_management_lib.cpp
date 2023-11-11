@@ -45,12 +45,12 @@ void file_append(string file_name,string text) {
   }
 }
 void file_read(string file_ename) {
-  myFile.open(file_ename, ios::in);//Read
+  myFile.open(file_ename, ios::in);//Opens file with input tag
 
   if (myFile.is_open()) {
     string line;
 
-    while (getline(myFile, line)) {
+    while (getline(myFile, line)) { // Takes all line one by one and prints them to console
       cout << line << endl;
     }
 
