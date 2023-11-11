@@ -1,6 +1,6 @@
 # tests/aka5g/CMakeLists.txt
 set(ROOT src/tests)
-set(TESTNAME farm_management_test)
+set(TESTNAME farm_management)
 set(EXENAME ${TESTNAME}_tests)
 
 message(STATUS "[${ROOT}/${TESTNAME}] Module Tests...")
