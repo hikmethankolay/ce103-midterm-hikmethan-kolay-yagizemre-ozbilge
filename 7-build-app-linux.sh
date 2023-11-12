@@ -81,9 +81,9 @@ cd ..
 
 echo Running Test Executable
 
-./publish_linux/bin/utility_tests
-./publish_linux/bin/calculator_tests
-./publish_linux/bin/calculatorapp
+
+./publish_linux/bin/farm_management_tests
+./publish_linux/bin/farm_management_app
 
 echo "Generate Test Coverage Data"
 lcov --rc lcov_branch_coverage=1 --capture --initial --directory . --output-file coverage_linux.info
