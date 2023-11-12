@@ -422,19 +422,19 @@ choice3:
               string vehicle_type;
               string vehicle_received_date;
               string vehicle_sold_date;
-              string vehicle_last_production_date;
-              string vehicle_future_production_date;
+              string vehicle_last_maintenance_date;
+              string vehicle_future_maintenance_date;
               cout << "What kind of vehicle do you want to use?";
               cin >> vehicle_type;
-              cout << "What is the stages of vehicle maintenance?:";
+              cout << "When is the equipment received?(DD/MM/YYYY):";;
               cin >> vehicle_received_date;
-              cout << "How many do you use equipment?:";
+              cout << "When is the equipment sold(DD/MM/YYYY):";;
               cin >> vehicle_sold_date;
-              cout << "What material is the equipment made of?:";
-              cin >> vehicle_last_production_date;
-              cout << "What material is the equipment made of?:";
-              cin >> vehicle_future_production_date;
-              record = "  " + vehicle_type + "   |    " + vehicle_received_date + "    |     " + vehicle_sold_date + "     |     " + vehicle_last_production_date + " | " + vehicle_last_production_date;
+              cout << "What is the equipment last maintenance date?(DD/MM/YYYY):;
+              cin >> vehicle_last_maintenance_date;
+              cout << "What is the equipment future maintenance date?(DD/MM/YYYY):;
+              cin >> vehicle_future_maintenance_date;
+              record = "  " + vehicle_type + "   |    " + vehicle_received_date + "    |     " + vehicle_sold_date + "     |     " + vehicle_last_maintenance_date + " | " + vehicle_last_maintenance_date;
               File.open("vehicle_records.txt", ios::in | ios::out);
 
               if (File.is_open()) {  //checks if file exist.
