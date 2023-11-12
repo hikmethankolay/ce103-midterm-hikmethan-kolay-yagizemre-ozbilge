@@ -27,7 +27,7 @@ int main() {
     cin >> choice;
 
     switch (choice) {
-      case 1:
+      case 1: {
 choice1:
         cout << "\n--------Crop and livestock management--------\n";
         cout << "What operation do you want to do ? \n";
@@ -340,26 +340,28 @@ eartag2:
           case 5: {
             break;
           }
+          break;
         }
 
-      case 2: {
-        cout << "Choice 2st option.\n";
-        break;
-      }
+        case 2: {
+          cout << "Choice 2st option.\n";
+          break;
+        }
 
-      case 3: {
-        cout << "Choice 2st option.\n";
-        break;
-      }
+        case 3: {
+          cout << "Choice 2st option.\n";
+          break;
+        }
 
-      case 4: {
-        cout << "Choice 2st option.\n";
-        break;
-      }
+        case 4: {
+          cout << "Choice 2st option.\n";
+          break;
+        }
 
-      case 5: {
-        app_running = false;
-        break;
+        case 5: {
+          app_running = false;
+          break;
+        }
       }
     }
   } while (app_running);
