@@ -430,30 +430,42 @@ choice3:
               cin >> vehicle_received_date;
               cout << "When is the equipment sold(DD/MM/YYYY):";;
               cin >> vehicle_sold_date;
-              cout << "What is the equipment last maintenance date?(DD/MM/YYYY):;
+              cout << "What is the vehicle last maintenance date?(DD/MM/YYYY):;
               cin >> vehicle_last_maintenance_date;
-              cout << "What is the equipment future maintenance date?(DD/MM/YYYY):;
+              cout << "the vehicle future maintenance date is certain ? (DD / MM / YYYY) :" ;
               cin >> vehicle_future_maintenance_date;
-              record = "  " + vehicle_type + "   |    " + vehicle_received_date + "    |     " + vehicle_sold_date + "     |     " + vehicle_last_maintenance_date + " | " + vehicle_last_maintenance_date;
-              File.open("vehicle_records.txt", ios::in | ios::out);
+
+              if (vehicle_future_maintenance_date <= 6) {  //The date month is less ore equal to 6
+                  string future_maintenace_date_month;
+                  cout << "The date month is six or less than?(Y/N)";
+                  cin >> future_maintenace_date_month;
+                  record = "  " + vehicle_type + "   |    " + vehicle_received_date + "    |     " + vehicle_sold_date + "     |     " + vehicle_last_maintenance_date + " | " + vehicle_last_maintenance_date + " | | " + future_maintenace_date_month;
+
+              }
+                  else {
+                  cout << "Please sellect a correct option\n\n";
+                  goto choice1; // Goes back to "Equipment and vehicle maintenance" menu if input is not valid
+              }
+                  File.open("vehicle_records.txt", ios::in | ios::out);
+
+             
+              }
 
               if (File.is_open()) {  //checks if file exist.
-                file_append("Equipment_records.txt", record); //appends to data file
+                file_append("equipment_records.txt", record); //appends to data file
                 cout << "\nData is accomplished\n\n";
                 break;
               } else { //if there is no file creates one print records table
                 file_write("vehicle_records.txt", "VEHICLE TYPE | VEHICLE RECEÝVED SOLD DATE  | VEHICLE LAST SOLD DATE | VEHICLE LAST PRODUCTION DATE | VEHICLE FUTURE PRODUCTION DATE");
+                file_append("vehicle_records.txt", record);
+                cout << "\nDatas successfully record\n\n";
+                break;
               }
-
-              file_append("vehicle_records.txt", record);
-              cout << "\nDatas successfully record\n\n";
-              break;
-            }
 
              }
           }
         }
-
+              case 3:
         break;
       }
 
