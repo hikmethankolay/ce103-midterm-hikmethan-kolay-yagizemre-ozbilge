@@ -51,7 +51,7 @@ choice1:
               cout << "--------------------------------------------------------------------------------------------\n\n";
             } else if (record_kind_to_see == "Livestock") {
               cout << "\n-----------------------------------------------------------------------------------------------------------------------------------------------------------\n";
-              file_read("livestock_records.txt"); //Prints livestockrecords
+              file_read("livestock_records.txt"); //Prints livestock records
               cout << "-----------------------------------------------------------------------------------------------------------------------------------------------------------\n\n";
             } else {
               cout << "\nPlease sellect a correct option\n\n";
@@ -358,7 +358,8 @@ eartag2:
       }
 
       case 5: {
-          app_running = false;
+        app_running = false;
+        break;
       }
     }
   } while (app_running);
