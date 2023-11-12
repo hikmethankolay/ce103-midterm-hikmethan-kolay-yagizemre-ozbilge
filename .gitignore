@@ -6,7 +6,11 @@
 publish
 docs
 build_win
-crop_records_test.txt
+test1.txt
+test2.txt
+test3.txt
+test4.txt
+test5.txt
 
 ### C ###
 # Prerequisites
