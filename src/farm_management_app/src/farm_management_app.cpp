@@ -390,18 +390,21 @@ choice3:
             if (record_kind_to_register == "Equipment") {
               string Equipment;
               string Equipment_type;
-              string Equipment_instructions;
-              string Equipment_quantity;
-              string Equipment_material;
+              string Equipment_received_date;
+              string Equipment_sold_date;
+              string Equipment_last_production_date;
+              string Equipment_future_production_date;
               cout << "What kind of equipment do you want to use?:";
               cin >> Equipment_type;
-              cout << "What is the instructions of equipment?:";
-              cin >> Equipment_instructions;
-              cout << "How many do you use equipment?:";
-              cin >> Equipment_quantity;
-              cout << "What material is the equipment made of?:";
-              cin >> Equipment_material;
-              record = "  " + Equipment_type + "   |    " + Equipment_instructions + "    |     " + Equipment_quantity + "     |     " + Equipment_material;
+              cout << "When is the equipment received?(DD/MM/YYYY):";
+              cin >> Equipment_received_date;
+              cout << "When is the equipment sold?(DD/MM/YYYY):";
+              cin >> Equipment_sold_date;
+              cout << "What is the equipment last production date?(DD/MM/YYYY):";
+              cin >> Equipment_last_production_date;
+              cout << "What is the equipment future production date?(DD/MM/YYYY):";
+              cin >> Equipment_future_production_date;
+              record = "  " + Equipment_type + "   |    " + Equipment_received_date + "    |     " + Equipment_sold_date + "     |     " + Equipment_last_production_date + "  | " + Equipment_future_production_date 
               File.open("equipment_records.txt", ios::out | ios::in); //open file and we will see input and output
 
               if (File.is_open()) {  //checks if file exist.
@@ -409,7 +412,7 @@ choice3:
                 cout << "\nData is accomplished\n\n";
                 break;
               } else { //if there is no file creates one print records table
-                file_write("equipment_records.txt", "EQUIPMENT TYPE | EQUIPMENT INSTRUCTIONS | EQUIPMENT AVAILIBILITY | EQUIPMENT QUANTITY |");
+                file_write("equipment_records.txt", "EQUIPMENT TYPE | EQUIPMENT RECEIVED DATE | EQUIPMENT SOLD DATE | EQUIPMENT LAST PRODUCTION DATE | EQUIPMENT FUTURE PRODUCTION DATE |");
               }
 
               file_append("equipment_records.txt", record);
@@ -417,18 +420,21 @@ choice3:
               break;
             } else if (record_kind_to_register == "Vehicle") {
               string vehicle_type;
-              string vehicle_maintenance_stages;
-              string vehicle_construction;
-              string vehicle_maintenance;
+              string vehicle_received_date;
+              string vehicle_sold_date;
+              string vehicle_last_production_date;
+              string vehicle_future_production_date;
               cout << "What kind of vehicle do you want to use?";
               cin >> vehicle_type;
               cout << "What is the stages of vehicle maintenance?:";
-              cin >> vehicle_maintenance_stages;
+              cin >> vehicle_received_date;
               cout << "How many do you use equipment?:";
-              cin >> vehicle_construction;
+              cin >> vehicle_sold_date;
               cout << "What material is the equipment made of?:";
-              cin >> vehicle_maintenance;
-              record = "  " + vehicle_type + "   |    " + vehicle_maintenance_stages + "    |     " + vehicle_construction + "     |     " + vehicle_maintenance;
+              cin >> vehicle_last_production_date;
+              cout << "What material is the equipment made of?:";
+              cin >> vehicle_future_production_date;
+              record = "  " + vehicle_type + "   |    " + vehicle_received_date + "    |     " + vehicle_sold_date + "     |     " + vehicle_last_production_date + " | " + vehicle_last_production_date;
               File.open("vehicle_records.txt", ios::in | ios::out);
 
               if (File.is_open()) {  //checks if file exist.
@@ -436,13 +442,15 @@ choice3:
                 cout << "\nData is accomplished\n\n";
                 break;
               } else { //if there is no file creates one print records table
-                file_write("vehicle_records.txt", "VEHICLE TYPE | VEHILCE INSTRUCTIONS | VEHILCE AVAILIBILITY | VEHILCE QUANTITY |");
+                file_write("vehicle_records.txt", "VEHICLE TYPE | VEHICLE RECEÝVED SOLD DATE  | VEHICLE LAST SOLD DATE | VEHICLE LAST PRODUCTION DATE | VEHICLE FUTURE PRODUCTION DATE");
               }
 
               file_append("vehicle_records.txt", record);
               cout << "\nDatas successfully record\n\n";
               break;
             }
+
+             }
           }
         }
 
