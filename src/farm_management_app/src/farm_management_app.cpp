@@ -343,7 +343,7 @@ eartag2:
           }
           break;
         }
-
+      }
 
       case 2: {
 choice2:
@@ -376,8 +376,6 @@ choice2:
               cout << "\nPlease sellect a correct option\n\n";
               goto choice1;
             }
-
-            break;
           }
 
           case 2: {
@@ -415,25 +413,30 @@ choice2:
                 cout << "\nData succesfully recored\n\n";
                 break;
               }
-            } else if(record_kind_to_register == "Irrigation") {
+            } else if (record_kind_to_register == "Irrigation") {
             } else {
               cout << "Please sellect a correct option\n\n";
               goto choice2; // Goes back to "Harvest and production planning" menu if input is not valid
             }
-        case 3: {
-          cout << "Choice 2st option.\n";
-          break;
+          }
         }
 
-        case 4: {
-          cout << "Choice 2st option.\n";
-          break;
-        }
+        break;
+      }
 
-        case 5: {
+      case 3: {
+        cout << "Choice 2st option.\n";
+        break;
+      }
+
+      case 4: {
+        cout << "Choice 2st option.\n";
+        break;
+      }
+
+      case 5: {
         app_running = false;
-          break;
-        }
+        break;
       }
     }
   } while (app_running);
