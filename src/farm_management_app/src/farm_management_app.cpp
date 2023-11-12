@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string>
 #include <fstream>
 #include "../../farm_management_lib/include/farm_management_lib.h"
 
@@ -615,12 +614,251 @@ choice2:
       }
 
       case 3: {
-        cout << "Choice 2st option.\n";
-        break;
+choice3:
+        cout << "\n--------Equipment and vehicle maintenance--------\n";
+        cout << "What operation do you want to do ? \n";
+        cout << "1-)Show Records\n";
+        cout << "2-)Register Record\n";
+        cout << "3-)Update Record\n";
+        cout << "4-)Delete Record\n",
+             cout << "5-)Return previous menu\n",
+             cout << "\nMake a choice(1 - 5): ";
+        cin >> choice_c;
+
+        switch (choice_c) {
+          case 1: {
+            string record_kind_to_see;
+            cout << "\nWhich record do you want to see? Equipment/Vehicle?: ";
+            cin >> record_kind_to_see;
+
+            if (record_kind_to_see == "Equipment") {
+              cout << "\n--------------------------------------------------------------------------------------------\n";
+              file_read("equipment_records.txt"); // Prints Equipment records
+              cout << "--------------------------------------------------------------------------------------------\n\n";
+            } else if (record_kind_to_see == "Vehicle") {
+              cout << "\n-----------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+              file_read("vehicle_records.txt"); //Prints Vehicle records
+              cout << "-----------------------------------------------------------------------------------------------------------------------------------------------------------\n\n";
+            } else {
+              cout << "\nPlease sellect a correct option\n\n";
+              goto choice3;
+            }
+
+            break;
+          }
+
+          case 2: {
+            string record;
+            string record_kind_to_register;
+            cout << "\nWhat kind of data you want to register? Equipment/Vehicle?:";
+            cin >> record_kind_to_register;
+
+            if (record_kind_to_register == "Equipment") {
+              string Equipment_type;
+              string Equipment_model;
+              string Equipment_bought_date;
+              string Equipment_last_maintenanace_date;
+              string Equipment_next_maintenanace_date;
+              cout << "What kind of equipment do you want to register?:";
+              cin >> Equipment_type;
+              cout << "What is the model of equipment?:";
+              cin >> Equipment_model;
+              cout << "When is the equipment bought?(DD/MM/YYYY):";
+              cin >> Equipment_bought_date;
+              cout << "What is the equipment last maintenance date?(DD/MM/YYYY):";
+              cin >> Equipment_last_maintenanace_date;
+              cout << "What is the equipment future maintenance date?(DD/MM/YYYY):";
+              cin >> Equipment_next_maintenanace_date;
+              record = "  " + Equipment_type + "   |    " + Equipment_model + "   |    " + Equipment_bought_date + "    |     "  + Equipment_last_maintenanace_date + "  | " + Equipment_next_maintenanace_date;
+              File.open("equipment_records.txt", ios::out | ios::in); //open file and we will see input and output
+
+              if (File.is_open()) {  //checks if file exist.
+                file_append("equipment_records.txt", record); //appends to data file
+                cout << "\nData is accomplished\n\n";
+                break;
+              } else { //if there is no file creates one print records table
+                file_write("equipment_records.txt", "EQUIPMENT TYPE | EQUIPMENT MODEL | EQUIPMENT BOUGHT DATE | EQUIPMENT LAST MAINTENANCE DATE | EQUIPMENT NEXT MAINTENANCE DATE");
+                file_append("equipment_records.txt", record);
+                cout << "\nDatas successfully record\n\n";
+                break;
+              }
+            } else if (record_kind_to_register == "Vehicle") {
+              string Vehicle_type;
+              string Vehicle_model;
+              string Vehicle_bought_date;
+              string Vehicle_last_maintenanace_date;
+              string Vehicle_next_maintenanace_date;
+              cout << "What kind of equipment do you want to register?:";
+              cin >> Vehicle_type;
+              cout << "What is the model of equipment?:";
+              cin >> Vehicle_model;
+              cout << "When is the equipment bought?(DD/MM/YYYY):";
+              cin >> Vehicle_bought_date;
+              cout << "What is the equipment last production date?(DD/MM/YYYY):";
+              cin >> Vehicle_last_maintenanace_date;
+              cout << "What is the equipment future production date?(DD/MM/YYYY):";
+              cin >> Vehicle_next_maintenanace_date;
+              record = "  " + Vehicle_type + "   |    " + Vehicle_model + "    |     " + Vehicle_bought_date + "     |     " + Vehicle_last_maintenanace_date + " | " + Vehicle_next_maintenanace_date;
+              File.open("vehicle_records.txt", ios::in | ios::out);
+            }
+
+            if (File.is_open()) {  //checks if file exist.
+              file_append("equipment_records.txt", record); //appends to data file
+              cout << "\nData is accomplished\n\n";
+              break;
+            } else { //if there is no file creates one print records table
+              file_write("vehicle_records.txt", "VEHICLE TYPE | VEHICLE MODEL | VEHICLE BOUGHT DATE | VEHICLE LAST MAINTENANCE DATE | VEHICLE NEXT MAINTENANCE DATE");
+              file_append("vehicle_records.txt", record);
+              cout << "\nDatas successfully record\n\n";
+              break;
+            }
+          }
+
+          case 3: {
+            string record;
+            string record_kind_to_edit;
+            int record_line_number_to_edit;
+            cout << "\nWhat kind of data you want to register? Equipment/Vehicle?:";
+            cin >> record_kind_to_edit;
+            cout << "\nWhich line do you want to edit?:";
+            cin >> record_line_number_to_edit;
+
+            if (record_kind_to_edit == "Equipment") {
+              string Equipment_type;
+              string Equipment_model;
+              string Equipment_bought_date;
+              string Equipment_last_maintenanace_date;
+              string Equipment_next_maintenanace_date;
+              cout << "What kind of equipment do you want to register?:";
+              cin >> Equipment_type;
+              cout << "What is the model of equipment?:";
+              cin >> Equipment_model;
+              cout << "When is the equipment bought?(DD/MM/YYYY):";
+              cin >> Equipment_bought_date;
+              cout << "What is the equipment last production date?(DD/MM/YYYY):";
+              cin >> Equipment_last_maintenanace_date;
+              cout << "What is the equipment future production date?(DD/MM/YYYY):";
+              cin >> Equipment_next_maintenanace_date;
+              record = "  " + Equipment_type + "   |    " + Equipment_model + "   |    " + Equipment_bought_date + "    |     " + Equipment_last_maintenanace_date + "  | " + Equipment_next_maintenanace_date;
+              File.open("equipment_records.txt", ios::out | ios::in); //open file and we will see input and output
+
+              if (File.is_open()) {  //checks if file exist.
+                file_edit("equipment_records.txt", record_line_number_to_edit, record); //appends to data file
+                cout << "\nData is accomplished\n\n";
+                break;
+              } else { //if there is no file creates one print records table
+                cout << "\There is no data to edit.\n\n";
+                break;
+              }
+            } else if (record_kind_to_edit == "Vehicle") {
+              string Vehicle_type;
+              string Vehicle_model;
+              string Vehicle_bought_date;
+              string Vehicle_last_maintenanace_date;
+              string Vehicle_next_maintenanace_date;
+              cout << "What kind of equipment do you want to register?:";
+              cin >> Vehicle_type;
+              cout << "What is the model of equipment?:";
+              cin >> Vehicle_model;
+              cout << "When is the equipment bought?(DD/MM/YYYY):";
+              cin >> Vehicle_bought_date;
+              cout << "What is the equipment last production date?(DD/MM/YYYY):";
+              cin >> Vehicle_last_maintenanace_date;
+              cout << "What is the equipment future production date?(DD/MM/YYYY):";
+              cin >> Vehicle_next_maintenanace_date;
+              record = "  " + Vehicle_type + "   |    " + Vehicle_model + "    |     " + Vehicle_bought_date + "     |     " + Vehicle_last_maintenanace_date + " | " + Vehicle_next_maintenanace_date;
+              File.open("vehicle_records.txt", ios::in | ios::out);
+            }
+
+            if (File.is_open()) {  //checks if file exist.
+              file_edit("equipment_records.txt", record_line_number_to_edit, record); //appends to data file
+              cout << "\nData is accomplished\n\n";
+              break;
+            } else { //if there is no file creates one print records table
+              cout << "\There is no data to edit.\n\n";
+              break;
+            }
+          }
+
+          case 4: {
+            int line_number_to_delete;
+            string record_kind_to_delete;
+            string line_or_record;
+            cout << "Which kind of record do you want to delete?(Equipment/Vehicle):";
+            cin >> record_kind_to_delete; // Asks which record to delete
+
+            if (record_kind_to_delete == "Equipment") {
+              cout << "Do you want to delete all records or just a single one?(All/Single):";
+              cin >> line_or_record; // Asks if user going to delete all data or just one specified line
+
+              if (line_or_record == "All") {
+                File.open("equipment_records.txt", ios::out | ios::in);
+
+                if (File.is_open()) { //checks if file exist
+                  file_write("equipment_records.txt",
+                             "EQUIPMENT TYPE | EQUIPMENT MODEL | EQUIPMENT BOUGHT DATE | EQUIPMENT LAST MAINTENANCE DATE | EQUIPMENT NEXT MAINTENANCE DATE|"); //Rewrite all file from scratch
+                  cout << "\nData succesfully deleted\n\n";
+                  break;
+                } else {
+                  cout << "There is no record to delete"; //if there is no file throws error
+                  break;
+                }
+              } else if (line_or_record == "Single") {
+                File.open("equipment_records.txt", ios::out | ios::in);
+
+                if (File.is_open()) {  //checks if file exist
+                  cout << "Which line do you want to delete?";
+                  cin >> line_number_to_delete;  //Ask which line to delete
+                  file_line_delete("vehicle_records.txt", line_number_to_delete); //Deletes specified line
+                  cout << "\nData succesfully deleted\n\n";
+                  break;
+                } else {
+                  cout << "There is no record to delete;";  //if there is no file throws error.
+                  break;
+                }
+              } else {
+                cout << "Please select a  correct option\n\n";
+                goto choice3;
+              }
+            } else if (record_kind_to_delete == "Vehicle") {
+              cout << "Do you want to delete all records or just a single one?(All/Single):";
+              cin >> line_or_record; // Asks if user goin to delte all data or just one specified line
+
+              if (line_or_record == "All") {
+                File.open("vehicle_records.txt", ios::out | ios::in);
+
+                if (File.is_open()) { //checks if file exist
+                  file_write("vehicle_records.txt",
+                             "VEHICLE TYPE | VEHICLE MODEL | VEHICLE BOUGHT DATE | VEHICLE LAST MAINTENANCE DATE | VEHICLE NEXT MAINTENANCE DATE"); //Rewrite all file from scratch
+                  cout << "\nData succesfully deleted\n\n";
+                  break;
+                } else {
+                  cout << "There is no record to delete"; //if there is no file throws error
+                  break;
+                }
+              } else if (line_or_record == "Single") {
+                File.open("vehicle_records.txt", ios::out | ios::in);
+
+                if (File.is_open()) { //checks if file exist
+                  cout << "Which line do you want to delete?";
+                  cin >> line_number_to_delete;  //Ask which line to delete
+                  file_line_delete("vehicle_records.txt", line_number_to_delete); //Deletes specified line
+                  break;
+                } else {
+                  cout << "There is no record to delete";
+                  break;
+                }
+              } else {
+                cout << "Please sellect a correct option\n\n";
+                goto choice3;
+              }
+            }
+          }
+        }
       }
 
       case 4: {
-        cout << "Choice 2st option.\n";
+        cout << "Choice 4st option.\n";
         break;
       }
 
