@@ -1,8 +1,8 @@
-# Calculator Project Library Generation and Testing Template
+# Farm Management Project Library Generation and Testing
 
 ## Overview
 
-This project provides a suite of modules aimed to show how Cmake used with Ctest. Also combines doxygen documentation and test coverage reports
+This project is a cross platform farm management system with CMake, CTest, GoogleTest and Doxygen. It provides various coverage reports.
 
 ## Requirements
 
