@@ -355,21 +355,21 @@ eartag2:
             cout << "2-)Repair Record\n";
             cout << "3-)Replacement Record\n";
             cout << "4-)Return previous menu\\n",
-                cout << "\nMake a choice(1 - 4: ";
+            cout << "\nMake a choice(1 - 4): ";
             cin >> choice_c;
 
             switch (choice_c) {
             case 1: {
-                string vehicle_kind_to_see;
+                string record_kind_to_see;
                 cout << "\nWhich record do you want to see? Plane/Ship?: ";
-                cin >> vehicle_kind_to_see;
+                cin >> record_kind_to_see;
 
-                if (vehicle_kind_to_see == "Plane") {
+                if (record_kind_to_see == "Plane") {
                     cout << "\n--------------------------------------------------------------------------------------------\n";
-                    file_read("equipment_plane_records.txt"); // Prints Equipment and vehicle records
+                    file_read("Equipment_plane_records.txt"); // Prints Equipment and vehicle records
                     cout << "--------------------------------------------------------------------------------------------\n\n";
                 }
-                else if (vehicle_kind_to_see == "Ship") {
+                else if (record_kind_to_see == "Ship") {
                     cout << "\n-----------------------------------------------------------------------------------------------------------------------------------------------------------\n";
                     file_read("Equipment_ship_records.txt"); //Prints Equipment and vehicle records
                     cout << "-----------------------------------------------------------------------------------------------------------------------------------------------------------\n\n";
@@ -383,12 +383,12 @@ eartag2:
             }
 
             case 2: {
-                    string vehicle;
-                    string vehicle_kind_to_usage;
+                    string record;
+                    string record_kind_to_usage;
                     cout << "\nWhich one of the use prefer this data? /Plane/Ship";
-                    cin >> vehicle_kind_to_usage;
+                    cin >> record_kind_to_usage;
 
-                    if (vehicle_kind_to_usage == "Plane") {
+                    if (record_kind_to_usage == "Plane") {
                         string plane;
                         string plane_type;
                         string plane_entry_date;
@@ -405,27 +405,35 @@ eartag2:
                         cin >> plane_destination_area;
                         cout << "What is your vehicle capacity?(Kg);";
                         cin >> plane_capacity;
-                        plane= " " + plane_type + " | "" + plane_entry_date " | " " + plane_exit_date " | " " + plane_destination_area + " | " " + plane_capacity "|
+                        record = "  " + plane_type + "   |    " + plane_entry_date + "    |     " + plane_exit_date + "     |     " + plane_destination_area +  "        |       " + plane_capacity + 
                         "Kg"; //maximum capacity of vehicle
                         File.open("Equipment_plane_records.txt", ios::out, ios::in); //open file and we will see input and output
 
-                    if (File_is.open()) //checks if file exist
-                       file_append("Equipment_plane_records.txt" ,record); //appends to data file
-                       cout << "\nData is accomplished\n\n";
-                       break; {
-                    }
-                    else if (vehicle_kind_to_see == "Ship")
+                        if (File.is_open()) {  //checks if file exist.
+                            file_append("Equipment_plane_records.txt", record); //appends to data file
+                            cout << "\nData is accomplished\n\n";
+                            break;
+                        }
+                        else { //if there is no file creates one print records table
+                            file_write("Equipment_plane_records.txt")
+                            file_append("Equipment_plane_records.txt")
                         
+                        {
+
+                        }
+                         {
+
+
+
+                        
+
+
+
+
+
+
                     
-                    
-
-
-                          
-
-
-
-                    
-            }
+                        } 
 
       case 4: {
         cout << "Choice 4st option.\n";
