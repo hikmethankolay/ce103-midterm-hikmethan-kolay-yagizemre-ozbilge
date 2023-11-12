@@ -966,3 +966,8 @@ coverage*[.json, .xml, .info]
 # Additional files built by Visual Studio
 
 # End of https://www.toptal.com/developers/gitignore/api/c,csharp,vs,visualstudio,visualstudiocode,java,maven,c++,cmake,eclipse,netbeans
+/test1.txt
+/test5.txt
+/test3.txt
+/test4.txt
+/test2.txt

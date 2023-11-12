@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string>
 #include <fstream>
 #include "../../farm_management_lib/include/farm_management_lib.h"
 
@@ -382,12 +381,104 @@ choice3:
           }
 
           case 2: {
-              string record;
-              string record_kind_to_register;
-              cout << "\nWhich one of the use prefer this data? Equipment/Vehicle?:";
-              cin >> record_kind_to_register;
+            string record;
+            string record_kind_to_register;
+            cout << "\nWhich one of the use prefer this data? Equipment/Vehicle?:";
+            cin >> record_kind_to_register;
 
-              if (record_kind_to_register == "Equipment") {
+            if (record_kind_to_register == "Equipment") {
+              string Equipment;
+              string Equipment_type;
+              string Equipment_received_date;
+              string Equipment_sold_date;
+              string Equipment_last_production_date;
+              string Equipment_future_production_date;
+              cout << "What kind of equipment do you want to use?:";
+              cin >> Equipment_type;
+              cout << "When is the equipment received?(DD/MM/YYYY):";
+              cin >> Equipment_received_date;
+              cout << "When is the equipment sold?(DD/MM/YYYY):";
+              cin >> Equipment_sold_date;
+              cout << "What is the equipment last production date?(DD/MM/YYYY):";
+              cin >> Equipment_last_production_date;
+              cout << "What is the equipment future production date?(DD/MM/YYYY):";
+              cin >> Equipment_future_production_date;
+              record = "  " + Equipment_type + "   |    " + Equipment_received_date + "    |     " + Equipment_sold_date + "     |     " + Equipment_last_production_date + "  | " + Equipment_future_production_date;
+              File.open("equipment_records.txt", ios::out | ios::in); //open file and we will see input and output
+
+              if (File.is_open()) {  //checks if file exist.
+                file_append("equipment_records.txt", record); //appends to data file
+                cout << "\nData is accomplished\n\n";
+                break;
+              } else { //if there is no file creates one print records table
+                file_write("equipment_records.txt", "EQUIPMENT TYPE | EQUIPMENT RECEIVED DATE | EQUIPMENT SOLD DATE | EQUIPMENT LAST PRODUCTION DATE | EQUIPMENT FUTURE PRODUCTION DATE |");
+              }
+
+              file_append("equipment_records.txt", record);
+              cout << "\nDatas successfully record\n\n";
+              break;
+            } else if (record_kind_to_register == "Vehicle") {
+              string vehicle_type;
+              string vehicle_received_date;
+              string vehicle_sold_date;
+              string vehicle_last_maintenance_date;
+              int vehicle_future_maintenance_date;
+              cout << "What kind of vehicle do you want to use?";
+              cin >> vehicle_type;
+              cout << "When is the equipment received?(DD/MM/YYYY):";;
+              cin >> vehicle_received_date;
+              cout << "When is the equipment sold(DD/MM/YYYY):";;
+              cin >> vehicle_sold_date;
+              cout << "What is the vehicle last maintenance date?(DD/MM/YYYY):";
+              cin >> vehicle_last_maintenance_date;
+              cout << "the vehicle future maintenance date is certain ? (DD / MM / YYYY) :";
+              cin >> vehicle_future_maintenance_date;
+
+              if (vehicle_future_maintenance_date <= 6) {  //The date month is less ore equal to 6
+                string future_maintenace_date_month;
+                cout << "The date month is six or less than?(Y/N)";
+                cin >> future_maintenace_date_month;
+                record = "  " + vehicle_type + "   |    " + vehicle_received_date + "    |     " + vehicle_sold_date + "     |     " + vehicle_last_maintenance_date + " | " + vehicle_last_maintenance_date + " | " +
+                         future_maintenace_date_month;
+              } else {
+                cout << "Please sellect a correct option\n\n";
+                goto choice1; // Goes back to "Equipment and vehicle maintenance" menu if input is not valid
+              }
+
+              File.open("vehicle_records.txt", ios::in | ios::out);
+            }
+
+            if (File.is_open()) {  //checks if file exist.
+              file_append("equipment_records.txt", record); //appends to data file
+              cout << "\nData is accomplished\n\n";
+              break;
+            } else { //if there is no file creates one print records table
+              file_write("vehicle_records.txt", "VEHICLE TYPE | VEHICLE RECEÝVED SOLD DATE  | VEHICLE LAST SOLD DATE | VEHICLE LAST PRODUCTION DATE | VEHICLE FUTURE PRODUCTION DATE");
+              file_append("vehicle_records.txt", record);
+              cout << "\nDatas successfully record\n\n";
+              break;
+            }
+          }
+
+          case 3: {
+            int line_number_to_edit;
+            string record_kind_to_edit;
+            string new_record;
+            cout << "Which kind of record do you want to edit?(Equipment/Vehicle):";
+            cin >> record_kind_to_edit; // Asks which record to edit
+            cout << "Which line do you want to edit?:";
+            cin >> line_number_to_edit; // Ask which line number to edit
+
+            if (record_kind_to_edit == "Equipment") { // Takes new data and replaces it with old data in the specified line
+              File.open("equipment_records.txt", ios::out | ios::in);
+
+              if (File.is_open()) {
+                string record;
+                string record_kind_to_register;
+                cout << "\nWhich one of the use prefer this data? Equipment/Vehicle?:";
+                cin >> record_kind_to_register;
+
+                if (record_kind_to_register == "Equipment") {
                   string Equipment;
                   string Equipment_type;
                   string Equipment_received_date;
@@ -404,164 +495,50 @@ choice3:
                   cin >> Equipment_last_production_date;
                   cout << "What is the equipment future production date?(DD/MM/YYYY):";
                   cin >> Equipment_future_production_date;
-                  record = "  " + Equipment_type + "   |    " + Equipment_received_date + "    |     " + Equipment_sold_date + "     |     " + Equipment_last_production_date + "  | " + Equipment_future_production_date
-                      File.open("equipment_records.txt", ios::out | ios::in); //open file and we will see input and output
-
-                  if (File.is_open()) {  //checks if file exist.
-                      file_append("equipment_records.txt", record); //appends to data file
-                      cout << "\nData is accomplished\n\n";
-                      break;
-                  }
-                  else { //if there is no file creates one print records table
-                      file_write("equipment_records.txt", "EQUIPMENT TYPE | EQUIPMENT RECEIVED DATE | EQUIPMENT SOLD DATE | EQUIPMENT LAST PRODUCTION DATE | EQUIPMENT FUTURE PRODUCTION DATE |");
-                  }
-
-                  file_append("equipment_records.txt", record);
-                  cout << "\nDatas successfully record\n\n";
+                  new_record = "  " + Equipment_type + "   |    " + Equipment_received_date + "    |     " + Equipment_sold_date + "     |     " + Equipment_last_production_date + "  | " +
+                               Equipment_future_production_date;
+                  file_edit("equipment_records.txt", line_number_to_edit, new_record);
+                  cout << "\nData successfully edited\n\n";
                   break;
-              }
-              else if (record_kind_to_register == "Vehicle") {
+                } else {
+                  cout << "There is no record to edit.";
+                  break;
+                }
+              } else if (record_kind_to_edit == "Vehicle") { //Takes new data and replaces it with old data in the specified line.
+                File.open("vehicle_records.txt", ios::out | ios::in);
+
+                if (File.is_open()) {
                   string vehicle_type;
                   string vehicle_received_date;
                   string vehicle_sold_date;
                   string vehicle_last_maintenance_date;
-                  int vehicle_future_maintenance_date;
+                  string vehicle_future_maintenance_date;
                   cout << "What kind of vehicle do you want to use?";
                   cin >> vehicle_type;
                   cout << "When is the equipment received?(DD/MM/YYYY):";;
                   cin >> vehicle_received_date;
                   cout << "When is the equipment sold(DD/MM/YYYY):";;
                   cin >> vehicle_sold_date;
-                  cout << "What is the vehicle last maintenance date?(DD/MM/YYYY):";
-                      cin >> vehicle_last_maintenance_date;
+                  cout << "What is the vehicle last maintenance date?:(DD/MM/YYYY)";
+                  cin >> vehicle_last_maintenance_date;
                   cout << "the vehicle future maintenance date is certain ? (DD / MM / YYYY) :";
                   cin >> vehicle_future_maintenance_date;
-
-                  if (vehicle_future_maintenance_date <= 6) {  //The date month is less ore equal to 6
-                      int future_maintenace_date_month;
-                      cout << "The date month is six or less than?(Y/N)";
-                      cin >> future_maintenace_date_month;
-                      record = "  " + vehicle_type + "   |    " + vehicle_received_date + "    |     " + vehicle_sold_date + "     |     " + vehicle_last_maintenance_date + " | " + vehicle_last_maintenance_date + " | | " +  future_maintenace_date_month;
-
-                  }
-                  else {
-                      cout << "Please sellect a correct option\n\n";
-                      goto choice1; // Goes back to "Equipment and vehicle maintenance" menu if input is not valid
-                  }
-                  File.open("vehicle_records.txt", ios::in | ios::out);
-
-
-              }
-
-              if (File.is_open()) {  //checks if file exist.
-                  file_append("equipment_records.txt", record); //appends to data file
-                  cout << "\nData is accomplished\n\n";
                   break;
+                }
               }
-              else { //if there is no file creates one print records table
-                  file_write("vehicle_records.txt", "VEHICLE TYPE | VEHICLE RECEÝVED SOLD DATE  | VEHICLE LAST SOLD DATE | VEHICLE LAST PRODUCTION DATE | VEHICLE FUTURE PRODUCTION DATE");
-                  file_append("vehicle_records.txt", record);
-                  cout << "\nDatas successfully record\n\n";
-                  break;
-              }
-          case 3: {
-              int line_number_to_edit;
-              string record_kind_to_edit;
-              string new_record;
-              cout << "Which kind of record do you want to edit?(Equipment/Vehicle):";
-              cin >> record_kind_to_edit; // Asks which record to edit
-              cout << "Which line do you want to edit?:";
-              cin >> line_number_to_edit; // Ask which line number to edit
-
-              if (record_kind_to_edit == "EQUÝPMENT") { // Takes new data and replaces it with old data in the specified line
-                  File.open("equipment_records.txt", ios::out | ios::in);
-                  if (File.is_open()) {
-                      string record;
-                      string record_kind_to_register;
-                      cout << "\nWhich one of the use prefer this data? Equipment/Vehicle?:";
-                      cin >> record_kind_to_register;
-
-                  if (record_kind_to_register == "Equipment") {
-                  string Equipment;
-                  string Equipment_type;
-                  string Equipment_received_date;
-                  string Equipment_sold_date;
-                  string Equipment_last_production_date;
-                   string Equipment_future_production_date;
-                          cout << "What kind of equipment do you want to use?:";
-                          cin >> Equipment_type;
-                          cout << "When is the equipment received?(DD/MM/YYYY):";
-                          cin >> Equipment_received_date;
-                          cout << "When is the equipment sold?(DD/MM/YYYY):";
-                          cin >> Equipment_sold_date;
-                          cout << "What is the equipment last production date?(DD/MM/YYYY):";
-                          cin >> Equipment_last_production_date;
-                          cout << "What is the equipment future production date?(DD/MM/YYYY):";
-                          cin >> Equipment_future_production_date;
-                          new_record = "  " + Equipment_type + "   |    " + Equipment_received_date + "    |     " + Equipment_sold_date + "     |     " + Equipment_last_production_date + "  | " + Equipment_future_production_date
-                          file_edit("equipment_records.txt", line_number_to_edit, new_record);
-                          cout << "\nData successfully edited\n\n";
-                          break; {
-                          { else {
-                           cout << "There is no record to edit.";
-                          break;
-                          }
-                      else if (record_kind_to_edit = "Vehicle") { //Takes new data and replaces it with old data in the specified line.
-                      File.open("vehicle_records.txt", ios::out | ios::in);
-
-                      if (File.is_open()) {
-                          string vehicle_type;
-                          string vehicle_received_date;
-                          string vehicle_sold_date;
-                          tring vehicle_last_maintenance_date;
-                          string vehicle_future_maintenance_date;
-                          cout << "What kind of vehicle do you want to use?";
-                          cin >> vehicle_type;
-                          cout << "When is the equipment received?(DD/MM/YYYY):";;
-                          cin >> vehicle_received_date;
-                          cout << "When is the equipment sold(DD/MM/YYYY):";;
-                          cin >> vehicle_sold_date;
-                          cout << "What is the vehicle last maintenance date?(DD/MM/YYYY)":;
-                          cin >> vehicle_last_maintenance_date;
-                          cout << "the vehicle future maintenance date is certain ? (DD / MM / YYYY) :";
-                          cin >> vehicle_future_maintenance_date;
-
-
-
-
-
-
-
-
-
-
-                          break;
-                      }
-
-          case 4: {
-              cout << "Choice 4st option.\n";
-              break;
+            }
           }
+        }
 
-          case 5: {
-              app_running = false;
-              break;
-          }
-                  }
-                              } while (app_running);
+        case 4: {
+          cout << "Choice 4st option.\n";
+          break;
+        }
 
-                              return 0;
-                          }
-      }
-
-      case 4: {
-        cout << "Choice 4st option.\n";
-        break;
-      }
-
-      case 5: {
-        app_running = false;
-        break;
+        case 5: {
+          app_running = false;
+          break;
+        }
       }
     }
   } while (app_running);
