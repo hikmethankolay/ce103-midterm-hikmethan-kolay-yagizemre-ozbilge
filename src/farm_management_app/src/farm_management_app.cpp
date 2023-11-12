@@ -16,6 +16,7 @@ int main() {
   bool app_running = true;
 
   do {
+mainmenu:
     // Prints main menu
     cout << "-----------Main menu-----------\n";
     cout << "1)Crop and livestock management\n";
@@ -34,9 +35,9 @@ choice1:
         cout << "1-)Show Records\n";
         cout << "2-)Register Record\n";
         cout << "3-)Update Record\n";
-        cout << "4-)Delete Record\n",
-             cout << "5-)Return previous menu\n",
-             cout << "\nMake a choice(1 - 5): ";
+        cout << "4-)Delete Record\n";
+        cout << "5-)Return previous menu\n";
+        cout << "\nMake a choice(1 - 5): ";
         cin >> choice_a;
 
         switch (choice_a) {
@@ -49,6 +50,7 @@ choice1:
               cout << "\n--------------------------------------------------------------------------------------------\n";
               file_read("crop_records.txt"); // Prints crop records
               cout << "--------------------------------------------------------------------------------------------\n\n";
+              break;
             } else if (record_kind_to_see == "Livestock") {
               cout << "\n-----------------------------------------------------------------------------------------------------------------------------------------------------------\n";
               file_read("livestock_records.txt"); //Prints livestock records
@@ -338,30 +340,293 @@ eartag2:
           }
 
           case 5: {
-            break;
+            goto mainmenu;
           }
           break;
         }
 
-        case 2: {
-          cout << "Choice 2st option.\n";
+        break;
+      }
+
+      case 2: {
+choice2:
+        cout << "\n--------Harvest and production planning--------\n";
+        cout << "What operation do you want to do ? \n";
+        cout << "1-)Show Records\n";
+        cout << "2-)Register Record\n";
+        cout << "3-)Update Record\n";
+        cout << "4-)Delete Record\n";
+        cout << "5-)Return previous menu\n";
+        cout << "\nMake a choice(1 - 6): ";
+        cin >> choice_b;
+
+        switch (choice_b) {
+          case 1: {
+            string record_kind_to_see;
+            cout << "\nWhich record do you want to see? Pest/Irrigation?: ";
+            cin >> record_kind_to_see;
+
+            if (record_kind_to_see == "Pest") {
+              cout << "\n--------------------------------------------------------------------------------------------\n";
+              file_read("pest_records.txt"); // Prints pest control records
+              cout << "--------------------------------------------------------------------------------------------\n\n";
+            } else if (record_kind_to_see == "Irrigation") {
+              cout << "\n-------------------------------------------------------------------------------------------\n";
+              file_read("irrigation_records.txt"); //Prints irrigation records
+              cout << "--------------------------------------------------------------------------------------------\n\n";
+            } else {
+              cout << "\nPlease sellect a correct option\n\n";
+              goto choice2;
+            }
+
+            break;
+          }
+
+          case 2: {
+            string record;
+            string record_kind_to_register;
+            cout << "\nWhat kind of data do you want to enter? Pest/Irrigation?: ";
+            cin >> record_kind_to_register;
+
+            if (record_kind_to_register == "Pest") {
+              string pest_kind;
+              string pest_crop;
+              string pest_date;
+              string pest_next_date;
+              string pest_area;
+              cout << "What kind of pest control did you apply?:";
+              cin >> pest_kind;
+              cout << "To what crop did you apply this pest control?";
+              cin >> pest_crop;
+              cout << "What is the date of pest control?(DD/MM/YYYY):";
+              cin >> pest_date;
+              cout << "What is the planed date of next pest control?(DD/MM/YYYY):";
+              cin >> pest_next_date;
+              cout << "How big is the area pest control applied?:";
+              cin >> pest_area;
+              record = "  " + pest_kind + "   |    " + pest_crop + "    |     " + pest_date + "     |     " + pest_next_date + "        |       " + pest_area + "m2"; // sums all of the strings to one string
+              File.open("pest_records.txt", ios::out | ios::in); // open file with both input and output tag
+
+              if (File.is_open()) { //checks if file exist
+                file_append("pest_records.txt", record); // appends data to file
+                cout << "\nData succesfully recored\n\n";
+                break;
+              } else { //if there is no file creates one print records table
+                file_write("pest_records.txt", "PEST TYPE | PEST CONTROLLED CROP | DATE OF PEST CONTROL | DATE OF NEXT PEST CONTROL | AREA");
+                file_append("pest_records.txt", record);
+                cout << "\nData succesfully recored\n\n";
+                break;
+              }
+            } else if (record_kind_to_register == "Irrigation") {
+              string irrig_crop;
+              string irrig_date;
+              string irrig_next_date;
+              string irrig_area;
+              cout << "Which crop did you irrigate ?:";
+              cin >> irrig_crop;
+              cout << "What is the date of irrigation ?(DD/MM/YYYY):";
+              cin >> irrig_date;
+              cout << "What is the planed date of next irrigation?(DD/MM/YYYY):";
+              cin >> irrig_next_date;
+              cout << "How big is the irrigated area?:";
+              cin >> irrig_area;
+              record = "  " + irrig_crop + "    |     " + irrig_date + "     |     " + irrig_next_date + "        |       " + irrig_area + "m2"; // sums all of the strings to one string
+              File.open("irrig_records.txt", ios::out | ios::in); // open file with both input and output tag
+
+              if (File.is_open()) { //checks if file exist
+                file_append("irrig_records.txt", record); // appends data to file
+                cout << "\nData succesfully recored\n\n";
+                goto choice2;
+                break;
+              } else { //if there is no file creates one print records table
+                file_write("irrig_records.txt", "IRRIGATED CONTROLLED CROP | DATE OF IRRIGATION | DATE OF NEXT IRRIGATION | AREA");
+                file_append("irrig_records.txt", record);
+                cout << "\nData succesfully recored\n\n";
+                goto choice2;
+                break;
+              }
+            } else {
+              cout << "Please sellect a correct option\n\n";
+              goto choice2; // Goes back to "Harvest and production planning" menu if input is not valid
+            }
+
+            break;
+          }
+
+          case 3: {
+            string record;
+            string record_kind_to_edit;
+            int line_number_to_edit;
+            cout << "\nWhat kind of data do you want to edit? Pest/Irrigation?: ";
+            cin >> record_kind_to_edit;
+            cout << "Which line do you wish to edit?";
+            cin >> line_number_to_edit;
+
+            if (record_kind_to_edit == "Pest") {
+              string pest_kind;
+              string pest_crop;
+              string pest_date;
+              string pest_next_date;
+              string pest_area;
+              cout << "What kind of pest control did you apply?:";
+              cin >> pest_kind;
+              cout << "To what crop did you apply this pest control?";
+              cin >> pest_crop;
+              cout << "What is the date of pest control?(DD/MM/YYYY):";
+              cin >> pest_date;
+              cout << "What is the planed date of next pest control?(DD/MM/YYYY):";
+              cin >> pest_next_date;
+              cout << "How big is the area pest control applied?:";
+              cin >> pest_area;
+              record = "  " + pest_kind + "   |    " + pest_crop + "    |     " + pest_date + "     |     " + pest_next_date + "        |       " + pest_area + "m2"; // sums all of the strings to one string
+              File.open("pest_records.txt", ios::out | ios::in); // open file with both input and output tag
+
+              if (File.is_open()) { //checks if file exist
+                file_edit("pest_records.txt",line_number_to_edit, record);  // edit data of specified line
+                cout << "\nData succesfully edited\n\n";
+                break;
+              } else {
+                cout << "\nThere is no record to edit\n\n";
+                break;
+              }
+            } else if (record_kind_to_edit == "Irrigation") {
+              string irrig_crop;
+              string irrig_date;
+              string irrig_next_date;
+              string irrig_area;
+              cout << "Which crop did you irrigate ?:";
+              cin >> irrig_crop;
+              cout << "What is the date of irrigation ?(DD/MM/YYYY):";
+              cin >> irrig_date;
+              cout << "What is the planed date of next irrigation?(DD/MM/YYYY):";
+              cin >> irrig_next_date;
+              cout << "How big is the irrigated area?:";
+              cin >> irrig_area;
+              record = "  " + irrig_crop + "    |     " + irrig_date + "     |     " + irrig_next_date + "        |       " + irrig_area + "m2"; // sums all of the strings to one string
+              File.open("irrig_records.txt", ios::out | ios::in); // open file with both input and output tag
+
+              if (File.is_open()) { //checks if file exist
+                file_edit("irrig_records.txt", line_number_to_edit, record); // edit data of specified line
+                cout << "\nData succesfully edited\n\n";
+                break;
+              } else {
+                cout << "\nThere is no record to edit\n\n";
+                break;
+              }
+            } else {
+              cout << "Please sellect a correct option\n\n";
+              goto choice2; // Goes back to "Harvest and production planning" menu if input is not valid
+            }
+
+            break;
+          }
+
+          case 4: {
+            int line_number_to_delete;
+            string record_kind_to_delete;
+            string line_or_record;
+            cout << "Which kind of record do you want to delete?(Pest/Irrýgation):";
+            cin >> record_kind_to_delete; //Asks which record type to delete from
+
+            if (record_kind_to_delete == "Pest") {
+              cout << "Do you want to delete all records or just a single one?(All/Single):";
+              cin >> line_or_record; // Asks if user goin to delte all data or just one specified line
+
+              if (line_or_record == "All") {
+                File.open("pest_records.txt", ios::out | ios::in);
+
+                if (File.is_open()) { //checks if file exist
+                  File.close();
+                  file_write("pest_records.txt", "PEST TYPE | PEST CONTROLLED CROP | DATE OF PEST CONTROL | DATE OF NEXT PEST CONTROL | AREA"); //Rewrite all file from scratch
+                  cout << "\nData succesfully deleted\n\n";
+                  break;
+                } else {
+                  cout << "There is no record to delete"; //if there is no file throws error
+                  break;
+                }
+              } else if (line_or_record == "Single") {
+                File.open("pest_records.txt", ios::out | ios::in);
+
+                if (File.is_open()) { //checks if file exist
+                  File.close();
+                  cout << "Which line dou you want to delete?:";
+                  cin >> line_number_to_delete; // Asks which line to delete
+                  file_line_delete("pest_records.txt", line_number_to_delete); // Deletes specified line
+                  cout << "\nData succesfully deleted\n\n";
+                  break;
+                } else {
+                  cout << "There is no record to delete"; //if there is no file throws error
+                  break;
+                }
+              } else {
+                cout << "Please sellect a correct option\n\n";
+                goto choice1;
+              }
+            } else if (record_kind_to_delete == "Irrýgation") {
+              cout << "Do you want to delete all records or just a single one?(All/Single):";
+              cin >> line_or_record; // Asks if user goin to delte all data or just one specified line
+
+              if (line_or_record == "All") {
+                File.open("irrig_records.txt", ios::out | ios::in);
+
+                if (File.is_open()) { //checks if file exist
+                  File.close();
+                  file_write("irrig_records.txt",
+                             "IRRIGATED CONTROLLED CROP | DATE OF IRRIGATION | DATE OF NEXT IRRIGATION | AREA"); //Rewrite all file from scratch
+                  cout << "\nData succesfully deleted\n\n";
+                  break;
+                } else {
+                  cout << "There is no record to delete"; //if there is no file throws error
+                  break;
+                }
+              } else if (line_or_record == "Single") {
+                File.open("irrig_records.txt", ios::out | ios::in);
+
+                if (File.is_open()) { //checks if file exist
+                  File.close();
+                  cout << "Which line dou you want to delete?:";
+                  cin >> line_number_to_delete; // Asks which line to delete
+                  file_line_delete("irrig_records.txt", line_number_to_delete); // Deletes specified line
+                  cout << "\nData succesfully deleted\n\n";
+                  break;
+                } else {
+                  cout << "There is no record to delete"; //if there is no file throws error
+                  break;
+                }
+              } else {
+                cout << "Please sellect a correct option\n\n";
+                goto choice1;
+              }
+            } else {
+              cout << "\nPlease sellect a correct option\n\n";
+              goto choice1;
+            }
+
+            break;
+          }
+
+          case 5: {
+            goto mainmenu;
+          }
           break;
         }
 
-        case 3: {
-          cout << "Choice 2st option.\n";
-          break;
-        }
+        break;
+      }
 
-        case 4: {
-          cout << "Choice 2st option.\n";
-          break;
-        }
+      case 3: {
+        cout << "Choice 2st option.\n";
+        break;
+      }
 
-        case 5: {
-          app_running = false;
-          break;
-        }
+      case 4: {
+        cout << "Choice 2st option.\n";
+        break;
+      }
+
+      case 5: {
+        app_running = false;
+        break;
       }
     }
   } while (app_running);
