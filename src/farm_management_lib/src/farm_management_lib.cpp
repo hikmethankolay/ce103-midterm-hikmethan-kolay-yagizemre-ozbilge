@@ -34,7 +34,7 @@ void file_append(string file_name,string text) {
   }
 
   size_t pos = lastLine.find("-)"); // Finds location of "-)" inn last line
-  int lineNumber = stoi(lastLine.substr(0, pos))+1; //Finds number of the last line
+  int lineNumber = stoi(lastLine.substr(0, pos))+1; //Finds number for the appended line
   myFile.open(file_name, ios::app);//Opens file with append tag
 
   if (myFile.is_open()) {
