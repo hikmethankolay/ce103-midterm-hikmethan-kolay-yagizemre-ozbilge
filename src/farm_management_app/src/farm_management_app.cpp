@@ -442,7 +442,7 @@ choice3:
                          future_maintenace_date_month;
               } else {
                 cout << "Please sellect a correct option\n\n";
-                goto choice1; // Goes back to "Equipment and vehicle maintenance" menu if input is not valid
+                goto choice3; // Goes back to "Equipment and vehicle maintenance" menu if input is not valid
               }
 
               File.open("vehicle_records.txt", ios::in | ios::out);
@@ -524,11 +524,40 @@ choice3:
                   cout << "the vehicle future maintenance date is certain ? (DD / MM / YYYY) :";
                   cin >> vehicle_future_maintenance_date;
                   break;
+
+                  if (vehicle_future_maintenance_date <= 6) {  //The date month is less ore equal to 6
+                      string future_maintenace_date_month;
+                      cout << "The date month is six or less than?(Y/N)";
+                      cin >> future_maintenace_date_month;
+                      new_record = "  " + vehicle_type + "   |    " + vehicle_received_date + "    |     " + vehicle_sold_date + "     |     " + vehicle_last_maintenance_date + " | " + vehicle_last_maintenance_date + " | " +
+                          future_maintenace_date_month;
+                  }
+                  else {
+                      cout << "Please sellect a correct option\n\n";
+                      goto choice3; // Goes back to "Equipment and vehicle maintenance" menu if input is not valid.
+
+
+                      file_edit("livestock_records.txt", line_number_to_edit, new_record);
+                      cout << "\nData succesfully edited\n\n";
+                      break;
+                    }
+                  
+                     cout << "There is no record to edit";
+                     break;
+                }
+                }
+                else {
+                    cout << "\nPlease sellect a correct option\n\n";
+                    goto choice3;
                 }
               }
-            }
-          }
-        }
+                  }
+                }
+
+              
+            
+          
+        
 
         case 4: {
           cout << "Choice 4st option.\n";
