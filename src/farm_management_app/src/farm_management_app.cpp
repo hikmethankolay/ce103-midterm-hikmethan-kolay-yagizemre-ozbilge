@@ -358,7 +358,7 @@ eartag2:
       }
 
       case 5: {
-        break;
+          app_running = false;
       }
     }
   } while (app_running);
