@@ -415,40 +415,43 @@ eartag2:
                             break;
                         }
                         else { //if there is no file creates one print records table
-                            file_write("Equipment_plane_records.txt")
-                            file_append("Equipment_plane_records.txt")
-                        
-                        {
-
+                            file_write("Equipment_plane_records.txt", "PLANE TYPE | ENTRY DATE | EXIT DATE | DESRINATION AREA | CAPACITY");
+                            file_append("Equipment_plane_records.txt", record);
+                            cout << "\nDatas successfully record\n\n";
+                            break;
                         }
-                         {
+                             
+                        else if (record_kind_to_usage == "Ship") {
+                                string ship;
+                                string ship;
+                                string plane;
+                                string plane;
+                                string plane;
+                    
+                              
 
 
 
                         
 
 
+      
+        case 4: {
+          cout << "Choice 4st option.\n";
+          break;
+        }
 
+        case 5: {
+          app_running = false;
+          break;
+        }
 
-
-
-                    
-                        } 
-
-      case 4: {
-        cout << "Choice 4st option.\n";
-        break;
-      }
-
-      case 5: {
-        app_running = false;
-        break;
-      }
-
-      default:
-        cout << "Please try again.\n\n";
+        default:
+          cout << "Please try again.\n\n";
+        }
     }
-  } while (app_running);
 
-  return 0;
-}
+    while (app_running);
+
+    return 0;
+  }
