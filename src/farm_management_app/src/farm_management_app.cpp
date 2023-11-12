@@ -348,20 +348,121 @@ eartag2:
       }
 
       case 3: {
-        cout << "Choice 2st option.\n";
-        break;
-      }
+          switch (choice_c) {
+          case 1: {
+              string record_kind_to_see;
+              cout << "\nWhich record do you want to see? Equipment/Vehicle?: ";
+              cin >> record_kind_to_see;
 
-      case 4: {
-        cout << "Choice 2st option.\n";
-        break;
-      }
+              if (record_kind_to_see == "Equipment") {
+                  cout << "\n--------------------------------------------------------------------------------------------\n";
+                  file_read("Equipment_records.txt"); // Prints Equipment records
+                  cout << "--------------------------------------------------------------------------------------------\n\n";
+              }
+              else if (record_kind_to_see == "Vehicle") {
+                  cout << "\n-----------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+                  file_read("Vehicle_records.txt"); //Prints Vehicle records
+                  cout << "-----------------------------------------------------------------------------------------------------------------------------------------------------------\n\n";
+              }
+              else {
+                  cout << "\nPlease sellect a correct option\n\n";
+                  goto choice3;
+              }
 
-      case 5: {
-          app_running = false;
-      }
-    }
-  } while (app_running);
+              break;
+          }
 
-  return 0;
-}
+          case 2: {
+              string record;
+              string record_kind_to_usage;
+              cout << "\nWhich one of the use prefer this data? Equipment/Vehicle";
+              cin >> record_kind_to_usage;
+
+              if (record_kind_to_usage == "Equipment") {
+                  string Equipment;
+                  string Equipment_type;
+                  string Equipment_instructions;
+                  string Equipment_quantity;
+                  string Equipment_material;
+                  cout << "What kind of equipment do you want to use?:";
+                  cin >> Equipment_type;
+                  cout << "What is the instructions of equipment?:";
+                  cin >> Equipment_instructions;
+                  cout << "How many do you use equipment?:";
+                  cin >> Equipment_quantity;
+                  cout << "What material is the equipment made of?:";
+                  cin >> Equipment_material;
+                  record = "  " + Equipment_type + "   |    " + Equipment_instructions + "    |     " + Equipment_quantity + "     |     " + Equipment_material 
+                      
+                      File.open("Equipment_records.txt", ios::out | ios:: in); //open file and we will see input and output
+
+                  if (File.is_open()) {  //checks if file exist.
+                      file_append("Equipment_records.txt", record); //appends to data file
+                      cout << "\nData is accomplished\n\n";
+                      break;
+                  }
+                  else { //if there is no file creates one print records table
+                      file_write("Equipment_records.txt", "EQUIPMENT TYPE | EQUIPMENT INSTRUCTIONS | EQUIPMENT AVAILIBILITY | EQUIPMENT QUANTITY |");
+                  }    file_append("Equipment_records.txt", record);
+                  cout << "\nDatas successfully record\n\n";
+                  break;
+
+                  else  if (record_kind_to_edit = "Vehicle") {// Take a new data and replaces it with old data in the specified line
+                  File.open("Vehicle_records.txt", ios::in | ios::out);
+
+                  if (File.is_open()) {
+                      string vehicle_type;
+                      string vehicle_maintenance_stages;
+                      string vehicle_construction;
+                      string vehicle_maintenance;
+
+                      cout << "What kind of vehicle do you want to use?";
+                      cin >> vehicle_type;
+
+                      cout << "What is the stages of vehicle maintenance?:";
+                      cin >> vehicle_maintenance_stages;
+
+                      cout << "How many do you use equipment?:";
+                      cin >> vehicle_construction;
+
+                      cout << "What material is the equipment made of?:";
+                      cin >> vehicle_maintenance;
+                      new_record = "  " +  vehicle_type  + "   |    " + vehicle_maintenance_stages + "    |     " + vehicle_construction + "     |     " + vehicle_maintenance +
+
+
+
+
+
+
+                  }
+
+
+
+
+
+
+
+
+
+
+
+
+          case 4: {
+              cout << "Choice 4st option.\n";
+              break;
+          }
+
+          case 5: {
+              app_running = false;
+              break;
+          }
+
+          default:
+              cout << "Please try again.\n\n";
+              }
+          }
+
+                while (app_running);
+
+                return 0;
+          }
