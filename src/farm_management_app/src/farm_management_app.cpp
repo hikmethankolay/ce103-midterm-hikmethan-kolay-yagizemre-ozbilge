@@ -553,8 +553,84 @@ choice3:
               }
                   }
                 }
+            case 4: {
+                int line_number_to_delete;
+                string record_kind_to_delete;
+                string line_or_record;
+                cout << "Which kind of record do you want to delete?(Equipment/Vehicle):";
+                cin >> line_number_to_delete; // Asks which record to delete
+                cout << "Which line do you want to edit?:";
+                cin >> record_kind_to_delete; // Ask which line number to delete
 
-              
+                if (record_kind_to_delete == "Equipment") {
+                    cout << "Do you want to delete all records or just a single one?(All/Single):";
+                    cin >> line_or_record; // Asks if user goin to delte all data or just one specified line
+
+                    if (line_or_record == "All") {
+                        File.open("equipment_records.txt", ios::out | ios::in);
+
+                        if (File.is_open()) { //checks if file exist
+                            File.close();
+                            file_write("equipment_records.txt", "EQUIPMENT TYPE | EQUIPMENT RECEIVED DATE | EQUIPMENT SOLD DATE | EQUIPMENT LAST PRODUCTION DATE | EQUIPMENT FUTURE PRODUCTION DATE |"); //Rewrite all file from scratch
+                            cout << "\nData succesfully deleted\n\n";
+                            break;
+                        }
+                        else {
+                            cout << "There is no record to delete"; //if there is no file throws error
+                            break;
+                        }
+                    }   else if (line_or_record == "Single") {
+                        File.open("vehicle_records.txt", ios::out | ios::in);
+
+                        if (File.is_open()) {  //checks if file exist
+                          File.close();
+                         cout << "Which line do you want to delete?"
+                         cin >> line_number_to_delete  //Ask which line to delete
+                         file_line_delete("vehicle_records.txt", line_number_to_delete); //Deletes specified line
+                         cout << "\nData succesfully deleted\n\n";
+                        break;
+                        }
+                        else {
+                            cout << "There is no record to delete;"  //if there is no file throws error.
+                        break;
+                        }
+                       } else {
+                         cout << "Please select a  correct option\n\n";
+                         goto choice3;
+                       }
+                }
+                else if (record_kind_to_delete == "Vehicle") {
+                    cout << "Do you want to delete all records or just a single one?(All/Single):";
+                    cin >> line_or_record; // Asks if user goin to delte all data or just one specified line
+
+                    if (line_or_record == "All") {
+                        File.open("vehicle_records.txt", ios::out | ios::in);
+
+                        if (File.is_open()) { //checks if file exist
+                            File.close();
+                            file_write("vehicle_records.txt", "VEHICLE TYPE | VEHICLE RECEÝVED SOLD DATE  | VEHICLE LAST SOLD DATE | VEHICLE LAST PRODUCTION DATE | VEHICLE FUTURE PRODUCTION DATE"); //Rewrite all file from scratch
+                            cout << "\nData succesfully deleted\n\n";
+                            break;
+                        }
+                        else {
+                            cout << "There is no record to delete"; //if there is no file throws error
+                            break;
+                        }
+                    } else if (line_or_record == "Single") {
+                        File.open("vehicle_records.txt", ios::out | ios::in);
+
+                        if (File.is_open()) { //checks if file exist
+                            File.close();
+                            cout << "There is no record to delete"; //if there is no file throwns error.
+                            break;
+                        } else {
+                            cout << "Please sellect a correct option\n\n";
+                            goto choice3;
+                        }
+                case 5: {
+                break;
+                }
+                   }
             
           
         
