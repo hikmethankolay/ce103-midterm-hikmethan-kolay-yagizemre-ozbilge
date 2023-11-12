@@ -24,6 +24,9 @@ echo Build CMAKE Debug/Release
 call cmake --build build_win --config Debug -j4
 call cmake --build build_win --config Release -j4
 call cmake --install build_win --strip
+
+call 8-build-txt-files-for-test-windows.bat
+
 echo Test CMAKE
 cd build_win
 call ctest -C Debug --output-on-failure
