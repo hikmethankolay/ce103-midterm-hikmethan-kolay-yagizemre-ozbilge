@@ -44,13 +44,11 @@ option(ENABLE_FARM_APP "Enable farm management Application" ON)
 option(ENABLE_TESTS "Enable All Tests" ON)
 
 # Configure tests
-add_compile_definitions(ENABLE_UTILITY_TEST)
-add_compile_definitions(ENABLE_CALCULATOR_TEST)
+add_compile_definitions(ENABLE_FARM_MANAGEMENT_TEST)
 
 
 # Configure logs
-add_compile_definitions(ENABLE_UTILITY_LOGGER)
-add_compile_definitions(ENABLE_CALCULATOR_LOGGER)
+add_compile_definitions(ENABLE_FARM_MANAGEMENT_LOGGER)
 
 # Set the output directories for Debug and Release configurations
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR}/build/Debug)
@@ -93,8 +91,6 @@ else()
 endif()
 
 
-
-# Utility submodule
 
 # Logger submodule
 if(ENABLE_FARM_LIB)
