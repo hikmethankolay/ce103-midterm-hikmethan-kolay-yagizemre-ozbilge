@@ -1104,8 +1104,8 @@ choice4:
               app_running = false;
                  break;
                  }
-           }
-        } while (app_running);
+             } 
+          } while (app_running);
 
           return 0;
           }
