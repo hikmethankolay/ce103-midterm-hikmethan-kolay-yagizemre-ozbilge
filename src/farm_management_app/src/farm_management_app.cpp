@@ -481,7 +481,7 @@ choice2:
               File.open("pest_records.txt", ios::out | ios::in); // open file with both input and output tag
 
               if (File.is_open()) { //checks if file exist
-                file_edit("pest_records.txt",line_number_to_edit, record);  // edit data of specified line
+                file_edit("pest_records.txt", line_number_to_edit, record);  // edit data of specified line
                 cout << "\nData succesfully edited\n\n";
                 break;
               } else {
@@ -669,7 +669,7 @@ choice3:
               cin >> Equipment_last_maintenanace_date;
               cout << "What is the equipment future maintenance date?(DD/MM/YYYY):";
               cin >> Equipment_next_maintenanace_date;
-              record = "  " + Equipment_type + "   |    " + Equipment_model + "   |    " + Equipment_bought_date + "    |     "  + Equipment_last_maintenanace_date + "  | " + Equipment_next_maintenanace_date;
+              record = "  " + Equipment_type + "   |    " + Equipment_model + "   |    " + Equipment_bought_date + "    |     " + Equipment_last_maintenanace_date + "  | " + Equipment_next_maintenanace_date;
               File.open("equipment_records.txt", ios::out | ios::in); //open file and we will see input and output
 
               if (File.is_open()) {  //checks if file exist.
@@ -747,7 +747,7 @@ choice3:
                 cout << "\nData is accomplished\n\n";
                 break;
               } else { //if there is no file creates one print records table
-                cout << "\There is no data to edit.\n\n";
+                cout << "\nThere is no data to edit.\n\n";
                 break;
               }
             } else if (record_kind_to_edit == "Vehicle") {
@@ -775,7 +775,7 @@ choice3:
               cout << "\nData is accomplished\n\n";
               break;
             } else { //if there is no file creates one print records table
-              cout << "\There is no data to edit.\n\n";
+              cout << "\nThere is no data to edit.\n\n";
               break;
             }
           }
@@ -852,260 +852,371 @@ choice3:
                 cout << "Please sellect a correct option\n\n";
                 goto choice3;
               }
+
+              break;
             }
           }
+
+          case 5: {
+            goto mainmenu;
+          }
+          break;
         }
+
+        break;
       }
 
       case 4: {
 choice4:
-          cout << "\n--------Reporting--------\n";
-          cout << "What operation do you want to do ? \n";
-          cout << "1-)Show Records\n";
-          cout << "2-)Register Record\n";
-          cout << "3-)Update Record\n";
-          cout << "4-)Delete Record\n",
-              cout << "5-)Return previous menu\n",
-              cout << "\nMake a choice(1 - 5): ";
-          cin >> choice_d;
+        cout << "\n--------Reporting--------\n";
+        cout << "What operation do you want to do ? \n";
+        cout << "1-)Show Records\n";
+        cout << "2-)Register Record\n";
+        cout << "3-)Update Record\n";
+        cout << "4-)Delete Record\n";
+        cout << "5-)Return previous menu\n";
+        cout << "\nMake a choice(1 - 5): ";
+        cin >> choice_d;
 
-          switch (choice_d) {
+        switch (choice_d) {
           case 1: {
-             string record_kind_to_see;
-             cout << "\nWhich record do you want to see? Crop yields/Farm profitability?: ";
-             cin >> record_kind_to_see;
+            string record_kind_to_see;
+            cout << "\nWhich record do you want to see? Crop yields/Profit/Livestock health?: ";
+            cin >> record_kind_to_see;
 
-              if (record_kind_to_see == "Crop yields") {
-                  cout << "\n--------------------------------------------------------------------------------------------\n";
-                  file_read("crop_yields_records.txt"); // Prints Crop yields records
-                  cout << "--------------------------------------------------------------------------------------------\n\n";
-              }
-              else if (record_kind_to_see == "Farm profitability") {
-                  cout << "\n-----------------------------------------------------------------------------------------------------------------------------------------------------------\n";
-                  file_read("farm_profitability_records.txt"); //Prints Farm profitability records
-                  cout << "-----------------------------------------------------------------------------------------------------------------------------------------------------------\n\n";
-              }
-              else {
-                  cout << "\nPlease sellect a correct option\n\n";
-                  goto choice4;
-              }
+            if (record_kind_to_see == "Crop yields") {
+              cout << "\n--------------------------------------------------------------------------------------------\n";
+              file_read("crop_yields_records.txt"); // Prints Crop yields records
+              cout << "--------------------------------------------------------------------------------------------\n\n";
+            } else if (record_kind_to_see == "Profit") {
+              cout << "\n-----------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+              file_read("farm_profitability_records.txt"); //Prints Farm profitability records
+              cout << "-----------------------------------------------------------------------------------------------------------------------------------------------------------\n\n";
+            } else if (record_kind_to_see == "Livestock health") {
+              cout << "\n-----------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+              file_read("livestock_health_records.txt"); //Prints Farm profitability records
+              cout << "-----------------------------------------------------------------------------------------------------------------------------------------------------------\n\n";
+            } else {
+              cout << "\nPlease sellect a correct option\n\n";
+              goto choice4;
+            }
 
-              break;
-          } 
+            break;
+          }
 
           case 2: {
-              string record;
-              string record_kind_to_register;
-              cout << "\nWhat kind of data you want to register? Crop yields/Farm?:";
-              cin >> record_kind_to_register;
+            string record;
+            string record_kind_to_register;
+            cout << "\nWhat kind of data you want to register? Crop yields/Profit/Livestock health?:";
+            cin >> record_kind_to_register;
 
-              if (record_kind_to_register == "Crop yields") {
-                  string Crop_yield_rate;
-                  string Crop_status;
-                  string Crop_durability;
-                  string Crop_collection_area_size;
-                  cout << "How much is the crop yields rate?(%):";
-                  cin >> Crop_yield_rate;
-                  cout << "What is the crop status?:";
-                  cin >> Crop_status,
-                  cout << "What is the crop durability?:";
-                  cin >> Crop_durability;
-                  cout << "What is the size of the area where the crops are collected??(m2):";
-                  cin >> Crop_collection_area_size;
-                  record = "" + Crop_yield_rate + "   |    " + Crop_status + "   |    " + Crop_durability + "    |     " + Crop_collection_area_size; +
-                  File.open("crop_yields_records.txt", ios::out | ios::in); //open file and we will see input and output
-
-                  if (File.is_open()) {  //checks if file exist.
-                      file_append("crop_yields_records.txt", record); //appends to data file
-                      cout << "\nData is accomplished\n\n";
-                      break;
-                  }
-                  else { //if there is no file creates one print records table
-                      file_write("crop_yields_records.txt", "CROP YIELD RATE | CROP STATUS | CROP DURABILITY| CROP YIELD AREA SIZE |");
-                      file_append("crop_yields_records.txt", record);
-                      cout << "\nDatas successfully record\n\n";
-                      break;
-                  }
-              }
-              else if (record_kind_to_register == "Farm") {
-                  string Farm_plant_type;
-                  string Farm_cost;
-                  string Farm_amount_money;
-                  string Farm_profitability;
-                  cout << "What kind of farm plant do you want to register?:";
-                  cin >> Farm_plant_type;
-                  cout << "What is the cost?:";
-                  cin >> Farm_cost;
-                  cout << "How much amount money?($):";
-                  cin >> Farm_amount_money;
-                  cout << "How much profit was made from the farm?(%):";
-                  cin >> Farm_profitability;
-                  record = "  " + Farm_plant_type + "   |    " + Farm_cost + "    |     " + Farm_amount_money + "     |     " + Farm_profitability;
-                  File.open("farm_records.txt", ios::in | ios::out);
-              }
+            if (record_kind_to_register == "Crop yields") {
+              int Crop_yield_sample_size;
+              int Crop_collected_area_size;
+              int actual_field_size;
+              int expected_harvest;
+              cout << "How much collected sample?(Kg):";
+              cin >> Crop_yield_sample_size;
+              cout << "What is the size of the area where the crops are collected?(m2):";
+              cin >> Crop_collected_area_size;
+              cout << "What is the actual size of field?(m2)";
+              cin >> actual_field_size;
+              expected_harvest = (Crop_yield_sample_size / Crop_collected_area_size) * actual_field_size;
+              record = "  " + to_string(Crop_yield_sample_size) + "Kg" + "   |    " + to_string(Crop_collected_area_size) + "m2" + "   |    " + to_string(actual_field_size) + "m2" + "    |     " + to_string(
+                         expected_harvest) + "Kg";
+              File.open("crop_yields_records.txt", ios::out | ios::in); //open file and we will see input and output
 
               if (File.is_open()) {  //checks if file exist.
-                  file_append("crop_yields_records.txt", record); //appends to data file
-                  cout << "\nData is accomplished\n\n";
-                  break;
+                file_append("crop_yields_records.txt", record); //appends to data file
+                cout << "\nData is accomplished\n\n";
+                break;
+              } else { //if there is no file creates one print records table
+                file_write("crop_yields_records.txt", "CROP SAMPLE SIZE | AREA SAMPLE SIZE | ACTUAL AREA | EXPECTED HARVEST");
+                file_append("crop_yields_records.txt", record);
+                cout << "\nDatas successfully record\n\n";
+                break;
               }
-              else { //if there is no file creates one print records table
-                  file_write("farm_records.txt", "FARM PLANT TYPE | FARM COST | FARM AMOUNT MONEY | FARM PROFITABILITY | ");
-                  file_append("farm_records.txt", record);
-                  cout << "\nDatas successfully record\n\n";
-                  break;
+            } else if (record_kind_to_register == "Profit") {
+              string Farm_plant_type;
+              int Farm_cost;
+              int Farm_income;
+              int Farm_profitability;
+              cout << "What kind of farm plant do you want to register?:";
+              cin >> Farm_plant_type;
+              cout << "What is the cost?:";
+              cin >> Farm_cost;
+              cout << "How much money you will gain after selling this crop?($):";
+              cin >> Farm_income;
+              Farm_profitability = Farm_income - Farm_cost;
+              record = "  " + Farm_plant_type + "   |    " + to_string(Farm_cost) + "    |     " + to_string(Farm_income) + "     |     " + to_string(Farm_profitability);
+              File.open("profit_records.txt", ios::in | ios::out);
+
+              if (File.is_open()) {  //checks if file exist.
+                file_append("profit_records.txt", record); //appends to data file
+                cout << "\nData succesfully recored\n\n";
+                break;
+              } else { //if there is no file creates one print records table
+                file_write("profit_records.txt", "FARM PLANT TYPE | FARM COST | FARM AMOUNT MONEY | FARM PROFITABILITY");
+                file_append("profit_records.txt", record);
+                cout << "\nDatas successfully recorded\n\n";
+                break;
               }
+            } else if (record_kind_to_register == "Livestock health") {
+              string livestock_type;
+              string livestock_ear_tag;
+              string livestock_known_ilness;
+              string livestock_last_vet_check;
+              string livestock_nex_vet_check;
+              cout << "What type is the livestock?";
+              cin >> livestock_type;
+eartag3:
+              cout << "what is the eartag(AIN)(***-***-***-***-***)";
+              cin >> livestock_ear_tag;
+
+              if (size(livestock_ear_tag) != 19) { //checks if AIN number correct
+                cout << "Please enter a correct form of ear tag number!\n";
+                goto eartag3; // Goes back to "cin >> livestock_ear_tag;" if input is not valid
+              }
+
+              cout << "Does it have known ilnes?";
+              cin >> livestock_known_ilness;
+              cout << "when was the last vet check?";
+              cin >> livestock_last_vet_check;
+              cout << "when is the next vet check?";
+              cin >> livestock_nex_vet_check;
+              record = "  " + livestock_type + "   |    " + livestock_ear_tag + "    |     " + livestock_known_ilness + "     |     " + livestock_last_vet_check + "     |     " + livestock_nex_vet_check;
+              File.open("livestock_health_records.txt", ios::in | ios::out);
+
+              if (File.is_open()) {  //checks if file exist.
+                file_append("livestock_health_records.txt", record); //appends to data file
+                cout << "\nData succesfully recored\n\n";
+                break;
+              } else { //if there is no file creates one print records table
+                file_write("livestock_health_records.txt", "LIVESTOCK TYPE | EAR TAG | KNOWN ILNESS | LAST VET CHECK | NEXT VET CHECK");
+                file_append("livestock_health_records.txt", record);
+                cout << "\nDatas successfully recorded\n\n";
+                break;
+              }
+            }
           }
 
           case 3: {
-              string record;
-              string record_kind_to_edit;
-              int record_line_number_to_edit;
-              cout << "\nWhat kind of data you want to register? Crop yields/Farm?:";
-              cin >> record_kind_to_edit;
-              cout << "\nWhich line do you want to edit?:";
-              cin >> record_line_number_to_edit;
+            string record;
+            string record_kind_to_edit;
+            int record_line_number_to_edit;
+            cout << "\nWhat kind of data you want to register? Crop yields/Profit/Livestock health?:";
+            cin >> record_kind_to_edit;
+            cout << "\nWhich line do you want to edit?:";
+            cin >> record_line_number_to_edit;
 
-              if (record_kind_to_edit == "Crop yields") {
-                  string Crop_yield_rate;
-                  string Crop_status;
-                  string Crop_durability;
-                  string Crop_collection_area_size;
-                  cout << "How much is the crop yields rate?(%):";
-                  cin >> Crop_yield_rate;
-                  cout << "What is the crop status?:";
-                  cin >> Crop_status;
-                  cout << "What is the crop durability?:";
-                  cin >> Crop_durability;
-                  cout << "What is the size of the area where the crops are collected??(m2):";
-                  cin >> Crop_collection_area_size;
-                  record = "" + Crop_yield_rate + "   |    " + Crop_status + "   |    " + Crop_durability + "    |     " + Crop_collection_area_size; +
-                  File.open("crop_yields_records.txt", ios::out | ios::in); //open file and we will see input and output
-
-                  if (File.is_open()) {  //checks if file exist.
-                      file_edit("crop_yields_records.txt", record_line_number_to_edit, record); //appends to data file
-                      cout << "\nData is accomplished\n\n";
-                      break;
-                  }
-                  else { //if there is no file creates one print records table
-                      cout << "\There is no data to edit.\n\n";
-                      break;
-                  }
-              }
-              else if (record_kind_to_edit == "Farm") {
-                  string Farm_plant_type;
-                  string Farm_cost;
-                  string Farm_amount_money;
-                  string Farm_profitability;
-                  cout << "What kind of farm plant do you want to register?:";
-                  cin >> Farm_plant_type;
-                  cout << "What is the cost?:";
-                  cin >> Farm_cost;
-                  cout << "How much amount money?($):";
-                  cin >> Farm_amount_money;
-                  cout << "How much profit was made from the farm?(%):";
-                  cin >> Farm_profitability;
-                  record = "  " + Farm_plant_type + "   |    " + Farm_cost + "    |     " + Farm_amount_money + "     |     " + Farm_profitability 
-                  File.open("vehicle_records.txt", ios::in | ios::out);
-              }
+            if (record_kind_to_edit == "Crop yields") {
+              int Crop_yield_sample_size;
+              int Crop_collected_area_size;
+              int actual_field_size;
+              int expected_harvest;
+              cout << "How much collected sample?(Kg):";
+              cin >> Crop_yield_sample_size;
+              cout << "What is the size of the area where the crops are collected?(m2):";
+              cin >> Crop_collected_area_size;
+              cout << "What is the actual size of field?(m2)";
+              cin >> actual_field_size;
+              expected_harvest = (Crop_yield_sample_size / Crop_collected_area_size) * actual_field_size;
+              record = "  " + to_string(Crop_yield_sample_size) + "Kg" + "   |    " + to_string(Crop_collected_area_size) + "m2" + "   |    " + to_string(actual_field_size) + "m2" + "    |     " + to_string(
+                         expected_harvest) + "Kg";
+              File.open("crop_yields_records.txt", ios::out | ios::in); //open file and we will see input and output
 
               if (File.is_open()) {  //checks if file exist.
-                  file_edit("crop_yields_records.txt", record_line_number_to_edit, record); //appends to data file
-                  cout << "\nData is accomplished\n\n";
-                  break;
+                file_edit("livestock_health_records.txt", record_line_number_to_edit, record); //appends to data file
+                cout << "\nData is accomplished\n\n";
+                break;
+              } else { //if there is no file creates one print records table
+                cout << "\nThere is no data to edit.\n\n";
+                break;
               }
-              else { //if there is no file creates one print records table
-                  cout << "\There is no data to edit.\n\n";
-                  break;
+            } else if (record_kind_to_edit == "Profit") {
+              string Farm_plant_type;
+              int Farm_cost;
+              int Farm_income;
+              int Farm_profitability;
+              cout << "What kind of farm plant do you want to register?:";
+              cin >> Farm_plant_type;
+              cout << "What is the cost?:";
+              cin >> Farm_cost;
+              cout << "How much money you will gain after selling this crop?($):";
+              cin >> Farm_income;
+              Farm_profitability = Farm_income - Farm_cost;
+              record = "  " + Farm_plant_type + "   |    " + to_string(Farm_cost) + "    |     " + to_string(Farm_income) + "     |     " + to_string(Farm_profitability);
+              File.open("profit_records.txt", ios::in | ios::out);
+
+              if (File.is_open()) {  //checks if file exist.
+                file_edit("livestock_health_records.txt", record_line_number_to_edit, record); //appends to data file
+                cout << "\nData is accomplished\n\n";
+                break;
+              } else { //if there is no file creates one print records table
+                cout << "\nThere is no data to edit.\n\n";
+                break;
               }
+            } else if (record_kind_to_edit == "Livestock health") {
+              string livestock_type;
+              string livestock_ear_tag;
+              string livestock_known_ilness;
+              string livestock_last_vet_check;
+              string livestock_nex_vet_check;
+              cout << "What type is the livestock?";
+              cin >> livestock_type;
+eartag4:
+              cout << "what is the eartag(AIN)(***-***-***-***-***)";
+              cin >> livestock_ear_tag;
+
+              if (size(livestock_ear_tag) != 19) { //checks if AIN number correct
+                cout << "Please enter a correct form of ear tag number!\n";
+                goto eartag4; // Goes back to "cin >> livestock_ear_tag;" if input is not valid
+              }
+
+              cout << "Does it have known ilnes?";
+              cin >> livestock_known_ilness;
+              cout << "when was the last vet check?";
+              cin >> livestock_last_vet_check;
+              cout << "when is the next vet check?";
+              cin >> livestock_nex_vet_check;
+              record = "  " + livestock_type + "   |    " + livestock_ear_tag + "    |     " + livestock_known_ilness + "     |     " + livestock_last_vet_check + "     |     " + livestock_nex_vet_check;
+              File.open("livestock_health_records.txt", ios::in | ios::out);
+
+              if (File.is_open()) {  //checks if file exist.
+                file_edit("livestock_health_records.txt", record_line_number_to_edit, record); //appends to data file
+                cout << "\nData is accomplished\n\n";
+                break;
+              } else { //if there is no file creates one print records table
+                cout << "\nThere is no data to edit.\n\n";
+                break;
+              }
+            } else {
+              cout << "Please sellect a correct option\n\n";
+              goto choice4;
+            }
           }
 
           case 4: {
-              int line_number_to_delete;
-              string record_kind_to_delete;
-              string line_or_record;
-              cout << "Which kind of record do you want to delete?(Crop yields/Farm):";
-              cin >> record_kind_to_delete; // Asks which record to delete
+            int line_number_to_delete;
+            string record_kind_to_delete;
+            string line_or_record;
+            cout << "Which kind of record do you want to delete? Crop yields/Profit/Livestock health?:";
+            cin >> record_kind_to_delete; // Asks which record to delete
 
-              if (record_kind_to_delete == "Crop yields") {
-                  cout << "Do you want to delete all records or just a single one?(All/Single):";
-                  cin >> line_or_record; // Asks if user going to delete all data or just one specified line
+            if (record_kind_to_delete == "Crop yields") {
+              cout << "Do you want to delete all records or just a single one?(All/Single):";
+              cin >> line_or_record; // Asks if user going to delete all data or just one specified line
 
-                  if (line_or_record == "All") {
-                      File.open("crop_yields_records.txt", ios::out | ios::in);
+              if (line_or_record == "All") {
+                File.open("crop_yields_records.txt", ios::out | ios::in);
 
-                      if (File.is_open()) { //checks if file exist
-                          file_write("crop_yields_records.txt",
-                              "CROP YIELD RATE | CROP STATUS | CROP DURABILITY| CROP COLLECTION AREA SIZE"); //Rewrite all file from scratch
-                          cout << "\nData succesfully deleted\n\n";
-                          break;
-                      }
-                      else {
-                          cout << "There is no record to delete"; //if there is no file throws error
-                          break;
-                      }
-                  }
-                  else if (line_or_record == "Single") {
-                      File.open("crop_yields_records.txt", ios::out | ios::in);
+                if (File.is_open()) { //checks if file exist
+                  file_write("crop_yields_records.txt",
+                             "CROP SAMPLE SIZE | AREA SAMPLE SIZE | ACTUAL AREA | EXPECTED HARVEST"); //Rewrite all file from scratch
+                  cout << "\nData succesfully deleted\n\n";
+                  break;
+                } else {
+                  cout << "There is no record to delete"; //if there is no file throws error
+                  break;
+                }
+              } else if (line_or_record == "Single") {
+                File.open("crop_yields_records.txt", ios::out | ios::in);
 
-                      if (File.is_open()) {  //checks if file exist
-                          cout << "Which line do you want to delete?";
-                          cin >> line_number_to_delete;  //Ask which line to delete
-                          file_line_delete("farm_records.txt", line_number_to_delete); //Deletes specified line
-                          cout << "\nData succesfully deleted\n\n";
-                          break;
-                      }
-                      else {
-                          cout << "There is no record to delete;";  //if there is no file throws error.
-                          break;
-                      }
-                  }
-                  else {
-                      cout << "Please select a  correct option\n\n";
-                      goto choice3;
-                  }
+                if (File.is_open()) {  //checks if file exist
+                  cout << "Which line do you want to delete?";
+                  cin >> line_number_to_delete;  //Ask which line to delete
+                  file_line_delete("farm_records.txt", line_number_to_delete); //Deletes specified line
+                  cout << "\nData succesfully deleted\n\n";
+                  break;
+                } else {
+                  cout << "There is no record to delete;";  //if there is no file throws error.
+                  break;
+                }
+              } else {
+                cout << "Please select a  correct option\n\n";
+                goto choice3;
               }
-              else if (record_kind_to_delete == "Farm") {
-                  cout << "Do you want to delete all records or just a single one?(All/Single):";
-                  cin >> line_or_record; // Asks if user goin to delte all data or just one specified line
+            } else if (record_kind_to_delete == "Profit") {
+              cout << "Do you want to delete all records or just a single one?(All/Single):";
+              cin >> line_or_record; // Asks if user goin to delte all data or just one specified line
 
-                  if (line_or_record == "All") {
-                      File.open("vehicle_records.txt", ios::out | ios::in);
+              if (line_or_record == "All") {
+                File.open("profit_records.txt", ios::out | ios::in);
 
-                      if (File.is_open()) { //checks if file exist
-                          file_write("farm_records.txt",
-                              "FARM PLANT TYPE | FARM COST | FARM AMOUNT MONEY | FARM PROFITABILITY | "); //Rewrite all file from scratch
-                          cout << "\nData succesfully deleted\n\n";
-                          break;
-                      }
-                      else {
-                          cout << "There is no record to delete"; //if there is no file throws error
-                          break;
-                      }
-                  }
-                  else if (line_or_record == "Single") {
-                      File.open("farm_records.txt", ios::out | ios::in);
+                if (File.is_open()) { //checks if file exist
+                  file_write("profit_records.txt",
+                             "FARM PLANT TYPE | FARM COST | FARM AMOUNT MONEY | FARM PROFITABILITY"); //Rewrite all file from scratch
+                  cout << "\nData succesfully deleted\n\n";
+                  break;
+                } else {
+                  cout << "There is no record to delete"; //if there is no file throws error
+                  break;
+                }
+              } else if (line_or_record == "Single") {
+                File.open("profit_records.txt", ios::out | ios::in);
 
-                      if (File.is_open()) { //checks if file exist
-                          cout << "Which line do you want to delete?";
-                          cin >> line_number_to_delete;  //Ask which line to delete
-                          file_line_delete("farm_records.txt", line_number_to_delete); //Deletes specified line
-                          break;
-                      }
-                      else {
-                          cout << "There is no record to delete";
-                          break;
-                      }
+                if (File.is_open()) { //checks if file exist
+                  cout << "Which line do you want to delete?";
+                  cin >> line_number_to_delete;  //Ask which line to delete
+                  file_line_delete("profit_records.txt", line_number_to_delete); //Deletes specified line
+                  break;
+                } else {
+                  cout << "There is no record to delete";
+                  break;
+                }
+              } else if (record_kind_to_delete == "Livestock health") {
+                cout << "Do you want to delete all records or just a single one?(All/Single):";
+                cin >> line_or_record; // Asks if user goin to delte all data or just one specified line
+
+                if (line_or_record == "All") {
+                  File.open("livestock_health_records.txt", ios::out | ios::in);
+
+                  if (File.is_open()) { //checks if file exist
+                    file_write("livestock_health_records.txt",
+                               "LIVESTOCK TYPE | EAR TAG | KNOWN ILNESS | LAST VET CHECK | NEXT VET CHECK | "); //Rewrite all file from scratch
+                    cout << "\nData succesfully deleted\n\n";
+                    break;
                   } else {
-                      cout << "Please sellect a correct option\n\n";
-                      goto choice4;
+                    cout << "There is no record to delete"; //if there is no file throws error
+                    break;
+                  }
+                } else if (line_or_record == "Single") {
+                  File.open("livestock_health_records.txt", ios::out | ios::in);
 
-              case 5: {
-              app_running = false;
-                 break;
-                 }
-             } 
-          } while (app_running);
+                  if (File.is_open()) { //checks if file exist
+                    cout << "Which line do you want to delete?";
+                    cin >> line_number_to_delete;  //Ask which line to delete
+                    file_line_delete("livestock_health_records.txt", line_number_to_delete); //Deletes specified line
+                    break;
+                  } else {
+                    cout << "There is no record to delete";
+                    break;
+                  }
+                }
+              } else {
+                cout << "Please sellect a correct option\n\n";
+                goto choice4;
+              }
 
-          return 0;
+              break;
+            }
           }
+
+          case 5: {
+            goto mainmenu;
+          }
+          break;
+        }
+
+        break;
+      }
+
+      case 5: {
+        app_running = false;
+        break;
+      }
+    }
+  } while (app_running);
+
+  return 0;
+}
