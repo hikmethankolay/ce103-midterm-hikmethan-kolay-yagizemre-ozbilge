@@ -27,8 +27,6 @@ mkdir doxygentestwin
 mkdir testresultswin
 cd ..
 
-
-
 echo Create the "site" folder and its contents
 mkdir site
 
@@ -74,7 +72,7 @@ rem call cmake --install build_win --strip
 start "Install Debug" cmake --install build_win --config Debug --strip
 start "Install Release" cmake --install build_win --config Release --strip
 
-call 8-build-txt-files-for-test-windows
+call 8-build-txt-files-for-test-windows.bat
 
 echo Test CMAKE
 cd build_win

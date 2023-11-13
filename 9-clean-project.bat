@@ -28,7 +28,6 @@ del test3.txt
 del test4.txt
 del test5.txt
 
-
 echo Delete and Create Required Folders and Their Files.
 rd /S /Q ".vs"
 rd /S /Q ".vscode"
