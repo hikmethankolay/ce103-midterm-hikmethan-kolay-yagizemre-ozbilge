@@ -72,6 +72,9 @@ cmake --build build_linux --config Debug -j4
 cmake --build build_linux --config Release -j4
 cmake --install build_linux --strip
 echo "Test CMAKE"
+
+bash 8-build-txt-files-for-test-linux.sh
+
 cd build_linux
 # ctest -C Debug -j4 --output-on-failure --output-log test_results_linux.log
 ctest -C Debug -j4 --output-junit testResults_linux.xml --output-log test_results_linux.log

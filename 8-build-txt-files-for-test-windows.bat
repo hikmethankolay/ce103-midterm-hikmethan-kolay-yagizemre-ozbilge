@@ -1,5 +1,3 @@
-echo Create txt files for unit testing
-
 cd build_win\src\tests\farm_management
 
 @echo off
