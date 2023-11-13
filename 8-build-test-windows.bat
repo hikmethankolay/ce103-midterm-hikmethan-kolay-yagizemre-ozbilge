@@ -17,6 +17,38 @@ mkdir build_win
 
 echo Folders are Recreated successfully.
 
+echo create txt files for unit tests
+
+echo 0-)TEXT STRING0> test1.txt
+echo 1-)TEXT STRING1>> test1.txt
+echo 2-)TEXT STRING2>> test1.txt
+echo 3-)TEXT STRING3>> test1.txt
+echo 4-)TEXT STRING4>> test1.txt
+
+echo 0-)TEXT STRING0> test2.txt
+echo 1-)TEXT STRING1>> test2.txt
+echo 2-)TEXT STRING2>> test2.txt
+echo 3-)TEXT STRING3>> test2.txt
+echo 4-)TEXT STRING4>> test2.txt
+
+echo 0-)TEXT STRING0> test3.txt
+echo 1-)TEXT STRING1>> test3.txt
+echo 2-)TEXT STRING2>> test3.txt
+echo 3-)TEXT STRING3>> test3.txt
+echo 4-)TEXT STRING4>> test3.txt
+
+echo 0-)TEXT STRING0> test4.txt
+echo 1-)TEXT STRING1>> test4.txt
+echo 2-)TEXT STRING2>> test4.txt
+echo 3-)TEXT STRING3>> test4.txt
+echo 4-)TEXT STRING4>> test4.txt
+
+echo 0-)TEXT STRING0> test5.txt
+echo 1-)TEXT STRING1>> test5.txt
+echo 2-)TEXT STRING2>> test5.txt
+echo 3-)TEXT STRING3>> test5.txt
+echo 4-)TEXT STRING4>> test5.txt
+
 echo Testing Application with Coverage
 echo Configure CMAKE
 call cmake -B build_win -DCMAKE_BUILD_TYPE=Debug -G "Visual Studio 17 2022" -DCMAKE_INSTALL_PREFIX:PATH=publish_win
@@ -25,7 +57,11 @@ call cmake --build build_win --config Debug -j4
 call cmake --build build_win --config Release -j4
 call cmake --install build_win --strip
 
-call 8-build-txt-files-for-test-windows.bat
+copy test1.txt build_win\src\tests\farm_management
+copy test2.txt build_win\src\tests\farm_management
+copy test3.txt build_win\src\tests\farm_management
+copy test4.txt build_win\src\tests\farm_management
+copy test5.txt build_win\src\tests\farm_management
 
 echo Test CMAKE
 cd build_win
@@ -51,6 +87,12 @@ echo Package Publish Debug Windows Binaries
 call robocopy src\farm_management_lib\include "build_win\build\Debug" /E
 call robocopy src\farm_management_app\include "build_win\build\Debug" /E
 tar -czvf release_win\windows-debug-binaries.tar.gz -C build_win\build\Debug .
+
+copy test1.txt publish_win\bin
+copy test2.txt publish_win\bin
+copy test3.txt publish_win\bin
+copy test4.txt publish_win\bin
+copy test5.txt publish_win\bin
 
 echo ....................
 echo Operation Completed!
