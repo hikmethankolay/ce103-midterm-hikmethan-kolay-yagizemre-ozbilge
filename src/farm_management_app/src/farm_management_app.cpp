@@ -980,9 +980,9 @@ eartag3:
 
               cout << "Does it have known ilnes?";
               cin >> livestock_known_ilness;
-              cout << "when was the last vet check?";
+              cout << "when was the last vet check?(DD/MM/YYYY)";
               cin >> livestock_last_vet_check;
-              cout << "when is the next vet check?";
+              cout << "when is the next vet check?(DD/MM/YYYY)";
               cin >> livestock_nex_vet_check;
               record = "  " + livestock_type + "   |    " + livestock_ear_tag + "    |     " + livestock_known_ilness + "     |     " + livestock_last_vet_check + "     |     " + livestock_nex_vet_check;
               File.open("livestock_health_records.txt", ios::in | ios::out);
@@ -1075,9 +1075,9 @@ eartag4:
 
               cout << "Does it have known ilnes?";
               cin >> livestock_known_ilness;
-              cout << "when was the last vet check?";
+              cout << "when was the last vet check?(DD/MM/YYYY)";
               cin >> livestock_last_vet_check;
-              cout << "when is the next vet check?";
+              cout << "when is the next vet check?(DD/MM/YYYY)";
               cin >> livestock_nex_vet_check;
               record = "  " + livestock_type + "   |    " + livestock_ear_tag + "    |     " + livestock_known_ilness + "     |     " + livestock_last_vet_check + "     |     " + livestock_nex_vet_check;
               File.open("livestock_health_records.txt", ios::in | ios::out);
