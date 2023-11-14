@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<coverage version="1.0" date="2023-11-14_17-08-50" tag="">
+  <assembly name="Default">
+    <class name="/mnt/c/Users/hikme/OneDrive/Masaüstü/Git/ce103-midterm-hikmethan-kolay-yagizemre-ozbilge/src/tests/farm_management/farm_management.cpp" coveredlines="0" coverablelines="11" totallines="58" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="0" />
+  </assembly>
+</coverage>

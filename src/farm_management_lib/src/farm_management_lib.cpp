@@ -75,7 +75,7 @@ void file_edit(string file_name, int line_number_to_edit, string new_line) {
       lines.push_back(line); // ads line variable to lines vector
     }
 
-    if (line_number_to_edit > 0 && line_number_to_edit+1 <= lines.size()) {
+    if (line_number_to_edit > 0 && static_cast<std::vector<int>::size_type>(line_number_to_edit+1) <= lines.size()) {
       lines[line_number_to_edit] = to_string(line_number_to_edit) + "-)" + new_line; // Changes a member of Lines vector to new line with its line number
     } else {
       cout << "You can only edit existing lines" << endl;
@@ -105,7 +105,7 @@ void file_line_delete(string file_name, int line_number_to_delete) {
       lines.push_back(line); // ads line variable to lines vector
     }
 
-    if (line_number_to_delete >= 0 && line_number_to_delete < lines.size()) {
+    if (line_number_to_delete >= 0 && static_cast<std::vector<int>::size_type>(line_number_to_delete) < lines.size()) {
       lines.erase(lines.begin() + line_number_to_delete); // Deletes a line from lines vector
     } else {
       cout << "You can only erase existing lines" << endl;

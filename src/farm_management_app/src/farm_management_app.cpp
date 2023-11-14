@@ -111,7 +111,7 @@ eartag:
               cout << "What is the ear tag number?(AIN)(***-***-***-***-***):";
               cin >> livestock_ear_tag;
 
-              if (size(livestock_ear_tag) != 19) { //checks if AIN number correct
+              if (livestock_ear_tag.size() != 19) { //checks if AIN number correct
                 cout << "Please enter a correct form of ear tag number!\n";
                 goto eartag; // Goes back to "cin >> livestock_ear_tag;" if input is not valid
               }
@@ -212,7 +212,7 @@ eartag2:
                 cout << "What is the ear tag number?(AIN)(***-***-***-***-***):";
                 cin >> livestock_ear_tag;
 
-                if (size(livestock_ear_tag) != 19) {
+                if (livestock_ear_tag.size() != 19) {
                   cout << "Please enter a correct form of ear tag number!\n";
                   goto eartag2;
                 }
@@ -524,7 +524,7 @@ choice2:
             int line_number_to_delete;
             string record_kind_to_delete;
             string line_or_record;
-            cout << "Which kind of record do you want to delete?(Pest/Irrýgation):";
+            cout << "Which kind of record do you want to delete?(Pest/Irrï¿½gation):";
             cin >> record_kind_to_delete; //Asks which record type to delete from
 
             if (record_kind_to_delete == "Pest") {
@@ -561,7 +561,7 @@ choice2:
                 cout << "Please sellect a correct option\n\n";
                 goto choice1;
               }
-            } else if (record_kind_to_delete == "Irrýgation") {
+            } else if (record_kind_to_delete == "Irrï¿½gation") {
               cout << "Do you want to delete all records or just a single one?(All/Single):";
               cin >> line_or_record; // Asks if user goin to delte all data or just one specified line
 
@@ -973,7 +973,7 @@ eartag3:
               cout << "what is the eartag(AIN)(***-***-***-***-***)";
               cin >> livestock_ear_tag;
 
-              if (size(livestock_ear_tag) != 19) { //checks if AIN number correct
+              if (livestock_ear_tag.size() != 19) { //checks if AIN number correct
                 cout << "Please enter a correct form of ear tag number!\n";
                 goto eartag3; // Goes back to "cin >> livestock_ear_tag;" if input is not valid
               }
@@ -997,7 +997,11 @@ eartag3:
                 cout << "\nDatas successfully recorded\n\n";
                 break;
               }
+
+              break;
             }
+
+            break;
           }
 
           case 3: {
@@ -1068,7 +1072,7 @@ eartag4:
               cout << "what is the eartag(AIN)(***-***-***-***-***)";
               cin >> livestock_ear_tag;
 
-              if (size(livestock_ear_tag) != 19) { //checks if AIN number correct
+              if (livestock_ear_tag.size() != 19) { //checks if AIN number correct
                 cout << "Please enter a correct form of ear tag number!\n";
                 goto eartag4; // Goes back to "cin >> livestock_ear_tag;" if input is not valid
               }
