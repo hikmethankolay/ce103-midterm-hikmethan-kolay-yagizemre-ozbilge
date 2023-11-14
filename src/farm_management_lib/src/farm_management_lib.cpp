@@ -64,7 +64,7 @@ string file_read(string file_name) {
   return stringForTest; //This is a variable for tests to run since function needs to retrun someting for them to run properly
 }
 
-void file_edit(string file_name, int line_number_to_edit, string new_line) {
+int file_edit(string file_name, int line_number_to_edit, string new_line) {
   myFile.open(file_name, ios::in);//Opens file with read tag
 
   if (myFile.is_open()) {
@@ -79,7 +79,7 @@ void file_edit(string file_name, int line_number_to_edit, string new_line) {
       lines[line_number_to_edit] = to_string(line_number_to_edit) + "-)" + new_line; // Changes a member of Lines vector to new line with its line number
     } else {
       cout << "You can only edit existing lines" << endl;
-      exit(0);
+      return 0;
     }
 
     myFile.close();
@@ -91,12 +91,14 @@ void file_edit(string file_name, int line_number_to_edit, string new_line) {
 
     cout << "\nData succesfully edited\n\n";
     myFile.close();
+    return 0;
   } else {
     cout << "File operation failed" << endl;
+    return 0;
   }
 }
 
-void file_line_delete(string file_name, int line_number_to_delete) {
+int file_line_delete(string file_name, int line_number_to_delete) {
   myFile.open(file_name, ios::in);// Opens file in read mode
 
   if (myFile.is_open()) {
@@ -111,7 +113,7 @@ void file_line_delete(string file_name, int line_number_to_delete) {
       lines.erase(lines.begin() + line_number_to_delete); // Deletes a line from lines vector
     } else {
       cout << "You can only erase existing lines" << endl;
-      exit(0);
+      return 0;
     }
 
     myFile.close();
@@ -131,7 +133,9 @@ void file_line_delete(string file_name, int line_number_to_delete) {
 
     cout << "\nData succesfully deleted\n\n";
     myFile.close();
+    return 0;
   } else {
     cout << "File operation failed" << endl;
+    return 0;
   }
 }
