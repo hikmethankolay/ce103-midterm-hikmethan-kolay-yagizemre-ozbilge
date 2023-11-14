@@ -1,0 +1,3 @@
+0-)LIVESTOCK TYPE   |      EAR TAG NUMBER       |   DATE OF BIRTH   |   GIVEN FOOD   |   WEIGHT   |   IS ALIVE   |   DATE OF DEATH   |   CAUSE OF DEATH
+1-)     123         |    1234567891234567891    |     123123    |     123123      |   123Kg    |      No     |     123123    |       1231
+2-)     123         |    1231231231231231231    |     123123123    |     123123      |   123123Kg    |      Yes     |     ----------    |       ----------

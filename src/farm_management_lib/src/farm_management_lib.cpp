@@ -79,6 +79,7 @@ void file_edit(string file_name, int line_number_to_edit, string new_line) {
       lines[line_number_to_edit] = to_string(line_number_to_edit) + "-)" + new_line; // Changes a member of Lines vector to new line with its line number
     } else {
       cout << "You can only edit existing lines" << endl;
+      exit(0);
     }
 
     myFile.close();
@@ -88,6 +89,7 @@ void file_edit(string file_name, int line_number_to_edit, string new_line) {
       myFile << updated_line << '\n';
     }
 
+    cout << "\nData succesfully edited\n\n";
     myFile.close();
   } else {
     cout << "File operation failed" << endl;
@@ -109,6 +111,7 @@ void file_line_delete(string file_name, int line_number_to_delete) {
       lines.erase(lines.begin() + line_number_to_delete); // Deletes a line from lines vector
     } else {
       cout << "You can only erase existing lines" << endl;
+      exit(0);
     }
 
     myFile.close();
@@ -126,6 +129,7 @@ void file_line_delete(string file_name, int line_number_to_delete) {
       }
     }
 
+    cout << "\nData succesfully deleted\n\n";
     myFile.close();
   } else {
     cout << "File operation failed" << endl;

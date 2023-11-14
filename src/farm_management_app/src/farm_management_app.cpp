@@ -190,7 +190,6 @@ eartag:
                 cin >> crop_exp_quantity;
                 new_record = "  " + crop_type + "   |    " + crop_plant_date + "    |     " + crop_harvest_date + "     |     " + crop_field + "m2" + "        |       " + crop_exp_quantity + "Kg";
                 file_edit("crop_records.txt", line_number_to_edit, new_record);
-                cout << "\nData succesfully edited\n\n";
                 break;
               } else {
                 cout << "There is no record to edit";
@@ -244,7 +243,6 @@ eartag2:
                 }
 
                 file_edit("livestock_records.txt", line_number_to_edit, new_record);
-                cout << "\nData succesfully edited\n\n";
                 break;
               } else {
                 cout << "There is no record to edit";
@@ -322,7 +320,6 @@ eartag2:
                   cout << "Which line dou you want to delete?:";
                   cin >> line_number_to_delete; // Asks which line to delete
                   file_line_delete("livestock_records.txt", line_number_to_delete); // Deletes specified line
-                  cout << "\nData succesfully deleted\n\n";
                   break;
                 } else {
                   cout << "There is no record to delete"; //if there is no file throws error
@@ -482,7 +479,6 @@ choice2:
 
               if (File.is_open()) { //checks if file exist
                 file_edit("pest_records.txt", line_number_to_edit, record);  // edit data of specified line
-                cout << "\nData succesfully edited\n\n";
                 break;
               } else {
                 cout << "\nThere is no record to edit\n\n";
@@ -506,7 +502,6 @@ choice2:
 
               if (File.is_open()) { //checks if file exist
                 file_edit("irrig_records.txt", line_number_to_edit, record); // edit data of specified line
-                cout << "\nData succesfully edited\n\n";
                 break;
               } else {
                 cout << "\nThere is no record to edit\n\n";
@@ -551,7 +546,6 @@ choice2:
                   cout << "Which line dou you want to delete?:";
                   cin >> line_number_to_delete; // Asks which line to delete
                   file_line_delete("pest_records.txt", line_number_to_delete); // Deletes specified line
-                  cout << "\nData succesfully deleted\n\n";
                   break;
                 } else {
                   cout << "There is no record to delete"; //if there is no file throws error
@@ -586,7 +580,6 @@ choice2:
                   cout << "Which line dou you want to delete?:";
                   cin >> line_number_to_delete; // Asks which line to delete
                   file_line_delete("irrig_records.txt", line_number_to_delete); // Deletes specified line
-                  cout << "\nData succesfully deleted\n\n";
                   break;
                 } else {
                   cout << "There is no record to delete"; //if there is no file throws error
@@ -810,7 +803,6 @@ choice3:
                   cout << "Which line do you want to delete?";
                   cin >> line_number_to_delete;  //Ask which line to delete
                   file_line_delete("vehicle_records.txt", line_number_to_delete); //Deletes specified line
-                  cout << "\nData succesfully deleted\n\n";
                   break;
                 } else {
                   cout << "There is no record to delete;";  //if there is no file throws error.
@@ -1130,7 +1122,6 @@ eartag4:
                   cout << "Which line do you want to delete?";
                   cin >> line_number_to_delete;  //Ask which line to delete
                   file_line_delete("farm_records.txt", line_number_to_delete); //Deletes specified line
-                  cout << "\nData succesfully deleted\n\n";
                   break;
                 } else {
                   cout << "There is no record to delete;";  //if there is no file throws error.
