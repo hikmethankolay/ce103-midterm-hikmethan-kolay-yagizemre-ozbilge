@@ -27,6 +27,7 @@ del test2.txt
 del test3.txt
 del test4.txt
 del test5.txt
+del *_records.txt
 
 echo Delete and Create Required Folders and Their Files.
 rd /S /Q ".vs"
