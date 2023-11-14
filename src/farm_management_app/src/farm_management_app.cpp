@@ -28,7 +28,6 @@ mainmenu:
 
     switch (choice) {
       case 1: {
-choice1:
         cout << "\n--------Crop and livestock management--------\n";
         cout << "What operation do you want to do ? \n";
         cout << "1-)Show Records\n";
@@ -56,7 +55,7 @@ choice1:
               cout << "-----------------------------------------------------------------------------------------------------------------------------------------------------------\n\n";
             } else {
               cout << "\nPlease sellect a correct option\n\n";
-              goto choice1;
+              goto mainmenu;
             }
 
             break;
@@ -139,7 +138,7 @@ eartag:
                          + livestock_death + "     |     " + "----------" + "    |       " + "----------"; // sums all of the strings to one string
               } else {
                 cout << "Please sellect a correct option\n\n";
-                goto choice1; // Goes back to "Crop and livestock management" menu if input is not valid
+                goto mainmenu; // Goes back to "Crop and livestock management" menu if input is not valid
               }
 
               File.open("livestock_records.txt", ios::out | ios::in); // open file with both input and output tag
@@ -156,7 +155,7 @@ eartag:
               }
             } else {
               cout << "Please sellect a correct option\n\n";
-              goto choice1; // Goes back to "Crop and livestock management" menu if input is not valid
+              goto mainmenu; // Goes back to "Crop and livestock management" menu if input is not valid
             }
           }
 
@@ -239,7 +238,7 @@ eartag2:
                                "    |      " + livestock_death + "     |     " + "----------" + "    |       " + "----------";
                 } else {
                   cout << "Please sellect a correct option\n\n";
-                  goto choice1;
+                  goto mainmenu;
                 }
 
                 file_edit("livestock_records.txt", line_number_to_edit, new_record);
@@ -250,7 +249,7 @@ eartag2:
               }
             } else {
               cout << "\nPlease sellect a correct option\n\n";
-              goto choice1;
+              goto mainmenu;
             }
           }
 
@@ -293,7 +292,7 @@ eartag2:
                 }
               } else {
                 cout << "Please sellect a correct option\n\n";
-                goto choice1;
+                goto mainmenu;
               }
             } else if (record_kind_to_delete == "Livestock") {
               cout << "Do you want to delete all records or just a single one?(All/Single):";
@@ -327,11 +326,11 @@ eartag2:
                 }
               } else {
                 cout << "Please sellect a correct option\n\n";
-                goto choice1;
+                goto mainmenu;
               }
             } else {
               cout << "\nPlease sellect a correct option\n\n";
-              goto choice1;
+              goto mainmenu;
             }
           }
 
@@ -345,7 +344,6 @@ eartag2:
       }
 
       case 2: {
-choice2:
         cout << "\n--------Harvest and production planning--------\n";
         cout << "What operation do you want to do ? \n";
         cout << "1-)Show Records\n";
@@ -368,11 +366,11 @@ choice2:
               cout << "--------------------------------------------------------------------------------------------\n\n";
             } else if (record_kind_to_see == "Irrigation") {
               cout << "\n-------------------------------------------------------------------------------------------\n";
-              file_read("irrigation_records.txt"); //Prints irrigation records
+              file_read("irrig_records.txt"); //Prints irrigation records
               cout << "--------------------------------------------------------------------------------------------\n\n";
             } else {
               cout << "\nPlease sellect a correct option\n\n";
-              goto choice2;
+              goto mainmenu;
             }
 
             break;
@@ -432,18 +430,18 @@ choice2:
               if (File.is_open()) { //checks if file exist
                 file_append("irrig_records.txt", record); // appends data to file
                 cout << "\nData succesfully recored\n\n";
-                goto choice2;
+                goto mainmenu;
                 break;
               } else { //if there is no file creates one print records table
                 file_write("irrig_records.txt", "IRRIGATED CONTROLLED CROP | DATE OF IRRIGATION | DATE OF NEXT IRRIGATION | AREA");
                 file_append("irrig_records.txt", record);
                 cout << "\nData succesfully recored\n\n";
-                goto choice2;
+                goto mainmenu;
                 break;
               }
             } else {
               cout << "Please sellect a correct option\n\n";
-              goto choice2; // Goes back to "Harvest and production planning" menu if input is not valid
+              goto mainmenu; // Goes back to "Harvest and production planning" menu if input is not valid
             }
 
             break;
@@ -509,7 +507,7 @@ choice2:
               }
             } else {
               cout << "Please sellect a correct option\n\n";
-              goto choice2; // Goes back to "Harvest and production planning" menu if input is not valid
+              goto mainmenu; // Goes back to "Harvest and production planning" menu if input is not valid
             }
 
             break;
@@ -553,7 +551,7 @@ choice2:
                 }
               } else {
                 cout << "Please sellect a correct option\n\n";
-                goto choice1;
+                goto mainmenu;
               }
             } else if (record_kind_to_delete == "Irr�gation") {
               cout << "Do you want to delete all records or just a single one?(All/Single):";
@@ -587,11 +585,11 @@ choice2:
                 }
               } else {
                 cout << "Please sellect a correct option\n\n";
-                goto choice1;
+                goto mainmenu;
               }
             } else {
               cout << "\nPlease sellect a correct option\n\n";
-              goto choice1;
+              goto mainmenu;
             }
 
             break;
@@ -607,7 +605,6 @@ choice2:
       }
 
       case 3: {
-choice3:
         cout << "\n--------Equipment and vehicle maintenance--------\n";
         cout << "What operation do you want to do ? \n";
         cout << "1-)Show Records\n";
@@ -634,7 +631,7 @@ choice3:
               cout << "-----------------------------------------------------------------------------------------------------------------------------------------------------------\n\n";
             } else {
               cout << "\nPlease sellect a correct option\n\n";
-              goto choice3;
+              goto mainmenu;
             }
 
             break;
@@ -693,17 +690,20 @@ choice3:
               cin >> Vehicle_next_maintenanace_date;
               record = "  " + Vehicle_type + "   |    " + Vehicle_model + "    |     " + Vehicle_bought_date + "     |     " + Vehicle_last_maintenanace_date + " | " + Vehicle_next_maintenanace_date;
               File.open("vehicle_records.txt", ios::in | ios::out);
-            }
 
-            if (File.is_open()) {  //checks if file exist.
-              file_append("equipment_records.txt", record); //appends to data file
-              cout << "\nData is accomplished\n\n";
-              break;
-            } else { //if there is no file creates one print records table
-              file_write("vehicle_records.txt", "VEHICLE TYPE | VEHICLE MODEL | VEHICLE BOUGHT DATE | VEHICLE LAST MAINTENANCE DATE | VEHICLE NEXT MAINTENANCE DATE");
-              file_append("vehicle_records.txt", record);
-              cout << "\nDatas successfully record\n\n";
-              break;
+              if (File.is_open()) {  //checks if file exist.
+                file_append("equipment_records.txt", record); //appends to data file
+                cout << "\nData is accomplished\n\n";
+                break;
+              } else { //if there is no file creates one print records table
+                file_write("vehicle_records.txt", "VEHICLE TYPE | VEHICLE MODEL | VEHICLE BOUGHT DATE | VEHICLE LAST MAINTENANCE DATE | VEHICLE NEXT MAINTENANCE DATE");
+                file_append("vehicle_records.txt", record);
+                cout << "\nDatas successfully record\n\n";
+                break;
+              }
+            } else {
+              cout << "Please sellect a correct option\n\n";
+              goto mainmenu; // Goes back to "Equipment and vehicle maintenance" menu if input is not valid
             }
           }
 
@@ -761,15 +761,18 @@ choice3:
               cin >> Vehicle_next_maintenanace_date;
               record = "  " + Vehicle_type + "   |    " + Vehicle_model + "    |     " + Vehicle_bought_date + "     |     " + Vehicle_last_maintenanace_date + " | " + Vehicle_next_maintenanace_date;
               File.open("vehicle_records.txt", ios::in | ios::out);
-            }
 
-            if (File.is_open()) {  //checks if file exist.
-              file_edit("equipment_records.txt", record_line_number_to_edit, record); //appends to data file
-              cout << "\nData is accomplished\n\n";
-              break;
-            } else { //if there is no file creates one print records table
-              cout << "\nThere is no data to edit.\n\n";
-              break;
+              if (File.is_open()) {  //checks if file exist.
+                file_edit("equipment_records.txt", record_line_number_to_edit, record); //appends to data file
+                cout << "\nData is accomplished\n\n";
+                break;
+              } else { //if there is no file creates one print records table
+                cout << "\nThere is no data to edit.\n\n";
+                break;
+              }
+            } else {
+              cout << "Please sellect a correct option\n\n";
+              goto mainmenu; // Goes back to "Equipment and vehicle maintenance" menu if input is not valid
             }
           }
 
@@ -810,7 +813,7 @@ choice3:
                 }
               } else {
                 cout << "Please select a  correct option\n\n";
-                goto choice3;
+                goto mainmenu;
               }
             } else if (record_kind_to_delete == "Vehicle") {
               cout << "Do you want to delete all records or just a single one?(All/Single):";
@@ -842,7 +845,7 @@ choice3:
                 }
               } else {
                 cout << "Please sellect a correct option\n\n";
-                goto choice3;
+                goto mainmenu;
               }
 
               break;
@@ -859,7 +862,6 @@ choice3:
       }
 
       case 4: {
-choice4:
         cout << "\n--------Reporting--------\n";
         cout << "What operation do you want to do ? \n";
         cout << "1-)Show Records\n";
@@ -890,7 +892,7 @@ choice4:
               cout << "-----------------------------------------------------------------------------------------------------------------------------------------------------------\n\n";
             } else {
               cout << "\nPlease sellect a correct option\n\n";
-              goto choice4;
+              goto mainmenu;
             }
 
             break;
@@ -991,9 +993,10 @@ eartag3:
               }
 
               break;
+            } else {
+              cout << "Please sellect a correct option\n\n";
+              goto mainmenu; // Goes back to "Equipment and vehicle maintenance" menu if input is not valid
             }
-
-            break;
           }
 
           case 3: {
@@ -1088,7 +1091,7 @@ eartag4:
               }
             } else {
               cout << "Please sellect a correct option\n\n";
-              goto choice4;
+              goto mainmenu;
             }
           }
 
@@ -1129,7 +1132,7 @@ eartag4:
                 }
               } else {
                 cout << "Please select a  correct option\n\n";
-                goto choice3;
+                goto mainmenu;
               }
             } else if (record_kind_to_delete == "Profit") {
               cout << "Do you want to delete all records or just a single one?(All/Single):";
@@ -1190,7 +1193,7 @@ eartag4:
                 }
               } else {
                 cout << "Please sellect a correct option\n\n";
-                goto choice4;
+                goto mainmenu;
               }
 
               break;

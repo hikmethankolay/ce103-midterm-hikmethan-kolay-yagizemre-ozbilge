@@ -1,0 +1,4 @@
+0-)EQUIPMENT TYPE | EQUIPMENT MODEL | EQUIPMENT BOUGHT DATE | EQUIPMENT LAST MAINTENANCE DATE | EQUIPMENT NEXT MAINTENANCE DATE
+1-)  123123   |    123    |     123     |     123 | 123
+2-)  123123   |    123    |     123     |     123 | 123
+3-)  asdads   |    asd    |     asd     |     asd | asd
