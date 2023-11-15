@@ -1,0 +1,3 @@
+0-)LIVESTOCK TYPE | EAR TAG NUMBER | DATE OF BIRTH | GIVEN FOOD | WEIGHT | IS ALIVE | DATE OF DEATH | CAUSE OF DEATH
+1-)     asd | 123-123-123-123-123 | asd | asd | asdKg | No | asd | asd
+2-)     asd | 123-123-123-123-123 | asd | asd | asdKg | No | asd | asd

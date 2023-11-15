@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <typeinfo>
 #include "../../farm_management_lib/include/farm_management_lib.h"
 
 using namespace std;
@@ -176,6 +177,14 @@ eartag:
                 string crop_exp_quantity;
                 cout << "Which line do you want to edit?:";
                 cin >> line_number_to_edit; // Ask which line number to edit
+
+                if (!std::cin.good()) { //checks if line_number_to_edit is integer.
+                  std::cin.clear();
+                  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                  cout << "Please use a intreger\n";
+                  break;
+                }
+
                 cout << "What kind of crop do you want to register?:";
                 cin >> crop_type;
                 cout << "What is the date of plant?(DD/MM/YYYY):";
@@ -204,7 +213,14 @@ eartag:
                 string livestock_weight;
                 string livestock_death;
                 cout << "Which line do you want to edit?:";
-                cin >> line_number_to_edit; // Ask which line number to edit
+
+                if (!std::cin.good()) { //checks if line_number_to_edit is integer.
+                  std::cin.clear();
+                  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                  cout << "Please use a intreger\n";
+                  break;
+                }
+
                 cout << "What kind of livestock do you want to register?:";
                 cin >> livestock_type;
 eartag2:
@@ -284,6 +300,14 @@ eartag2:
                   File.close();
                   cout << "Which line dou you want to delete?:";
                   cin >> line_number_to_delete; // Asks which line to delete
+
+                  if (!std::cin.good()) { //checks if line_number_to_delete is integer.
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                    cout << "Please use a intreger\n";
+                    break;
+                  }
+
                   file_line_delete("crop_records.txt", line_number_to_delete); // Deletes specified line
                   cout << "\nData succesfully deleted\n\n";
                   break;
@@ -319,6 +343,14 @@ eartag2:
                   File.close();
                   cout << "Which line dou you want to delete?:";
                   cin >> line_number_to_delete; // Asks which line to delete
+
+                  if (!std::cin.good()) { //checks if line_number_to_delete is integer.
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                    cout << "Please use a intreger\n";
+                    break;
+                  }
+
                   file_line_delete("livestock_records.txt", line_number_to_delete); // Deletes specified line
                   break;
                 } else {
@@ -461,6 +493,14 @@ eartag2:
               string pest_area;
               cout << "Which line do you wish to edit?";
               cin >> line_number_to_edit;
+
+              if (!std::cin.good()) { //checks if line_number_to_edit is integer.
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                cout << "Please use a intreger\n";
+                break;
+              }
+
               cout << "What kind of pest control did you apply?:";
               cin >> pest_kind;
               cout << "To what crop did you apply this pest control?";
@@ -488,6 +528,14 @@ eartag2:
               string irrig_area;
               cout << "Which line do you wish to edit?";
               cin >> line_number_to_edit;
+
+              if (!std::cin.good()) { //checks if line_number_to_edit is integer.
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                cout << "Please use a intreger\n";
+                break;
+              }
+
               cout << "Which crop did you irrigate ?:";
               cin >> irrig_crop;
               cout << "What is the date of irrigation ?(DD/MM/YYYY):";
@@ -544,6 +592,14 @@ eartag2:
                   File.close();
                   cout << "Which line dou you want to delete?:";
                   cin >> line_number_to_delete; // Asks which line to delete
+
+                  if (!std::cin.good()) { //checks if line_number_to_delete is integer.
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                    cout << "Please use a intreger\n";
+                    break;
+                  }
+
                   file_line_delete("pest_records.txt", line_number_to_delete); // Deletes specified line
                   break;
                 } else {
@@ -578,6 +634,14 @@ eartag2:
                   File.close();
                   cout << "Which line dou you want to delete?:";
                   cin >> line_number_to_delete; // Asks which line to delete
+
+                  if (!std::cin.good()) { //checks if line_number_to_delete is integer.
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                    cout << "Please use a intreger\n";
+                    break;
+                  }
+
                   file_line_delete("irrig_records.txt", line_number_to_delete); // Deletes specified line
                   break;
                 } else {
@@ -723,6 +787,14 @@ eartag2:
               string Equipment_next_maintenanace_date;
               cout << "\nWhich line do you want to edit?:";
               cin >> record_line_number_to_edit;
+
+              if (!std::cin.good()) { //checks if line_number_to_edit is integer.
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                cout << "Please use a intreger\n";
+                break;
+              }
+
               cout << "What kind of equipment do you want to register?:";
               cin >> Equipment_type;
               cout << "What is the model of equipment?:";
@@ -752,6 +824,14 @@ eartag2:
               string Vehicle_next_maintenanace_date;
               cout << "\nWhich line do you want to edit?:";
               cin >> record_line_number_to_edit;
+
+              if (!std::cin.good()) { //checks if line_number_to_edit is integer.
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                cout << "Please use a intreger\n";
+                break;
+              }
+
               cout << "What kind of equipment do you want to register?:";
               cin >> Vehicle_type;
               cout << "What is the model of equipment?:";
@@ -808,6 +888,14 @@ eartag2:
                 if (File.is_open()) {  //checks if file exist
                   cout << "Which line do you want to delete?";
                   cin >> line_number_to_delete;  //Ask which line to delete
+
+                  if (!std::cin.good()) { //checks if line_number_to_delete is integer.
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                    cout << "Please use a intreger\n";
+                    break;
+                  }
+
                   file_line_delete("vehicle_records.txt", line_number_to_delete); //Deletes specified line
                   break;
                 } else {
@@ -840,6 +928,14 @@ eartag2:
                 if (File.is_open()) { //checks if file exist
                   cout << "Which line do you want to delete?";
                   cin >> line_number_to_delete;  //Ask which line to delete
+
+                  if (!std::cin.good()) { //checks if line_number_to_delete is integer.
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                    cout << "Please use a intreger\n";
+                    break;
+                  }
+
                   file_line_delete("vehicle_records.txt", line_number_to_delete); //Deletes specified line
                   break;
                 } else {
@@ -1019,6 +1115,14 @@ eartag3:
               int expected_harvest;
               cout << "\nWhich line do you want to edit?:";
               cin >> record_line_number_to_edit;
+
+              if (!std::cin.good()) { //checks if line_number_to_edit is integer.
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                cout << "Please use a intreger\n";
+                break;
+              }
+
               cout << "How much collected sample?(Kg):";
               cin >> Crop_yield_sample_size;
               cout << "What is the size of the area where the crops are collected?(m2):";
@@ -1045,6 +1149,14 @@ eartag3:
               int Farm_profitability;
               cout << "\nWhich line do you want to edit?:";
               cin >> record_line_number_to_edit;
+
+              if (!std::cin.good()) { //checks if line_number_to_edit is integer.
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                cout << "Please use a intreger\n";
+                break;
+              }
+
               cout << "What kind of farm plant do you want to register?:";
               cin >> Farm_plant_type;
               cout << "What is the cost?:";
@@ -1071,6 +1183,14 @@ eartag3:
               string livestock_nex_vet_check;
               cout << "\nWhich line do you want to edit?:";
               cin >> record_line_number_to_edit;
+
+              if (!std::cin.good()) { //checks if line_number_to_edit is integer.
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                cout << "Please use a intreger\n";
+                break;
+              }
+
               cout << "What type is the livestock?";
               cin >> livestock_type;
 eartag4:
@@ -1134,6 +1254,14 @@ eartag4:
                 if (File.is_open()) {  //checks if file exist
                   cout << "Which line do you want to delete?";
                   cin >> line_number_to_delete;  //Ask which line to delete
+
+                  if (!std::cin.good()) { //checks if line_number_to_delete is integer.
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                    cout << "Please use a intreger\n";
+                    break;
+                  }
+
                   file_line_delete("farm_records.txt", line_number_to_delete); //Deletes specified line
                   break;
                 } else {
@@ -1166,6 +1294,14 @@ eartag4:
                 if (File.is_open()) { //checks if file exist
                   cout << "Which line do you want to delete?";
                   cin >> line_number_to_delete;  //Ask which line to delete
+
+                  if (!std::cin.good()) { //checks if line_number_to_delete is integer.
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                    cout << "Please use a intreger\n";
+                    break;
+                  }
+
                   file_line_delete("profit_records.txt", line_number_to_delete); //Deletes specified line
                   break;
                 } else {
@@ -1195,6 +1331,14 @@ eartag4:
                 if (File.is_open()) { //checks if file exist
                   cout << "Which line do you want to delete?";
                   cin >> line_number_to_delete;  //Ask which line to delete
+
+                  if (!std::cin.good()) { //checks if line_number_to_delete is integer.
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                    cout << "Please use a intreger\n";
+                    break;
+                  }
+
                   file_line_delete("livestock_health_records.txt", line_number_to_delete); //Deletes specified line
                   break;
                 } else {
