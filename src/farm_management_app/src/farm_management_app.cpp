@@ -50,13 +50,6 @@ int main() {
           cout << "Please use a intreger\n";
         }
 
-        if (!std::cin.good()) { //checks if line_number_to_edit is integer.
-          std::cin.clear();
-          std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-          cout << "Please use a intreger\n";
-          break;
-        }
-
         switch (choice_a) {
           case 1: {
             string record_kind_to_see;
@@ -232,6 +225,7 @@ eartag:
                 string livestock_weight;
                 string livestock_death;
                 cout << "Which line do you want to edit?:";
+                cin >> line_number_to_edit; // Ask which line number to edit
 
                 if (!std::cin.good()) { //checks if line_number_to_edit is integer.
                   std::cin.clear();
