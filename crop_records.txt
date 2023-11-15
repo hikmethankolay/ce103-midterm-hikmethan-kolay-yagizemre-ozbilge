@@ -1,2 +1,2 @@
 0-)CROP TYPE | DATE OF PLANTING | DATE OF HARVESTING | CULTIVATED FIELD | EXPECTED QUANTITY
-1-)  asd | asd | asdasd | asdasdm2 | asdasdKg
+1-)  asd | asd | asd | asdm2 | asdKg

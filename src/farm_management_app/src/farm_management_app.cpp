@@ -26,6 +26,12 @@ int main() {
     cout << "Make a choice(1 - 5): ";
     cin >> choice;
 
+    while (!std::cin.good()) { //checks if choice is integer.
+      std::cin.clear();
+      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+      cout << "Please use a intreger\n";
+    }
+
     switch (choice) {
       case 1: {
         cout << "\n--------Crop and livestock management--------\n";
@@ -37,6 +43,19 @@ int main() {
         cout << "5-)Return previous menu\n";
         cout << "\nMake a choice(1 - 5): ";
         cin >> choice_a;
+
+        while (!std::cin.good()) { //checks if choice is integer.
+          std::cin.clear();
+          std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+          cout << "Please use a intreger\n";
+        }
+
+        if (!std::cin.good()) { //checks if line_number_to_edit is integer.
+          std::cin.clear();
+          std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+          cout << "Please use a intreger\n";
+          break;
+        }
 
         switch (choice_a) {
           case 1: {
@@ -387,6 +406,12 @@ eartag2:
         cout << "\nMake a choice(1 - 5): ";
         cin >> choice_b;
 
+        while (!std::cin.good()) { //checks if choice is integer.
+          std::cin.clear();
+          std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+          cout << "Please use a intreger\n";
+        }
+
         switch (choice_b) {
           case 1: {
             string record_kind_to_see;
@@ -680,6 +705,12 @@ eartag2:
              cout << "\nMake a choice(1 - 5): ";
         cin >> choice_c;
 
+        while (!std::cin.good()) { //checks if choice is integer.
+          std::cin.clear();
+          std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+          cout << "Please use a intreger\n";
+        }
+
         switch (choice_c) {
           case 1: {
             string record_kind_to_see;
@@ -970,6 +1001,12 @@ eartag2:
         cout << "5-)Return previous menu\n";
         cout << "\nMake a choice(1 - 5): ";
         cin >> choice_d;
+
+        while (!std::cin.good()) { //checks if choice is integer.
+          std::cin.clear();
+          std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+          cout << "Please use a intreger\n";
+        }
 
         switch (choice_d) {
           case 1: {
