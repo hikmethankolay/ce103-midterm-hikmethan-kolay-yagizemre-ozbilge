@@ -74,7 +74,7 @@ Whole management system uses fstream library with file operation functions we cr
 
 -file_line_delete() – Deletes a specified record line
 
--file_append() – Adds a record at the and of file
+-file_append() – Adds a record at the end of file
 
 	
 ### Functionalities
@@ -84,73 +84,117 @@ These records contains information as below:
 ### a. Crop and livestock management: 
 
 1)Crop records
--Crop’s type
--Crop’s plant date
--Crop’s harvest date
--Planted field area
--Expected harvest quantity
+
+a-Crop’s type
+
+b-Crop’s plant date
+
+c-Crop’s harvest date
+
+d-Planted field area
+
+e-Expected harvest quantity
+
 
 2)Livestock records
--Livestock’s type
--Livestock’s ear tag number
--Livestock’s birth date
--Livestock’s food
--Livestock's weight
--Is livestock dead?
+a-Livestock’s type
+
+b-Livestock’s ear tag number
+
+c-Livestock’s birth date
+
+d-Livestock’s food
+
+e-Livestock's weight
+
+f-Is livestock dead?
 	-Death date
 	-Death cause
 
 ### b. Harvesting and production planning:  
 
 3)Pest records
--Applied pest type
--Pest applied crops type
--Pest date
--Next pest date
--Pest area
+a-Applied pest type
+
+b-Pest applied crops type
+
+c-Pest date
+
+d-Next pest date
+
+e-Pest area
+
 
 4)İrrigation records
--irrigated crops type
--irrigation date
--Next irrigation date
--Irrigated area
+a-irrigated crops type
+
+b-irrigation date
+
+c-Next irrigation date
+
+d-Irrigated area
+
 
 ### c. Equipment and vehicle maintenance: 
 
 5)Vehicle records
--Vehicle’s type
--Vehicle’s model
--Vehicle’s bought date
--Vehicle’s last maintenance date
--Vehicle’s next maintenance date
+a-Vehicle’s type
+
+b-Vehicle’s model
+
+c-Vehicle’s bought date
+
+d-Vehicle’s last maintenance date
+
+e-Vehicle’s next maintenance date
+
+
 
 6)Equipment records
--Equipment’s type
--Equipment’s model
--Equipment’s bought date
--Equipment’s last maintenance date
--Equipment’s next maintenance date
+a-Equipment’s type
+
+b-Equipment’s model
+
+c-Equipment’s bought date
+
+d-Equipment’s last maintenance date
+
+e-Equipment’s next maintenance date
+
 
 ### d. Reporting:
 
 7)Crop yield records
--Sample size of crop
--Sample area
--Actual field size
--Expected harvest (automatically calculate and saves it)
+a-Sample size of crop
+
+b-Sample area
+
+c-Actual field size
+
+d-Expected harvest (automatically calculate and saves it)
+
 
 8)Profit records
--Crop’s 	
--Crop’s cost
--Expected income form crop
--Expected profit (automatically calculate and saves it)
+a-Crop
+
+b-Crop’s cost
+
+c-Expected income form crop
+
+d-Expected profit (automatically calculate and saves it)
+
 
 9)Livestock health records
--Livestock’s type
--Livestock’s ear tag number
--Livestock’s known illness
--Livestock’s last vet check
--Livestock's next vet check
+a-Livestock’s type
+
+b-Livestock’s ear tag number
+
+c-Livestock’s known illness
+
+d-Livestock’s last vet check
+
+e-Livestock's next vet check
+
 
 
 ### Testing and Validation
