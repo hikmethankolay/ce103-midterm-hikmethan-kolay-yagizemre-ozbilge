@@ -40,7 +40,7 @@ int file_append(string file_name,string text) {
   myFile.open(file_name, ios::app);//Opens file with append tag
 
   if (myFile.is_open()) {
-    myFile << lineNumber << "-)"  << text << "\n"; //Appends text with its line number
+    myFile << lineNumber << "-)" << text << "\n"; //Appends text with its line number
     myFile.close();
     return 0;
   } else {
@@ -69,17 +69,19 @@ string file_read(string file_name) {
 }
 
 int file_edit(string file_name, int line_number_to_edit, string new_line) {
+  const int max_line_count = 100; // An variable for array
   myFile.open(file_name, ios::in);//Opens file with read tag
 
   if (myFile.is_open()) {
-    vector<string> lines; // A vector to store lines
+    string lines[max_line_count]; // A array to to store lines
     string line;
+    int line_count = 0; // A variable for if statement to check if there is a line that user wants to edit
 
     while (getline(myFile, line)) { // gets lines one by oone and assaign them to line variable
-      lines.push_back(line); // ads line variable to lines vector
+      lines[line_count++] = line; // Adds line variable to lines array and increase line_count after operation
     }
 
-    if (line_number_to_edit > 0 && static_cast<std::vector<int>::size_type>(line_number_to_edit+1) <= lines.size()) {
+    if (line_number_to_edit > 0 && line_number_to_edit <= line_count) {
       lines[line_number_to_edit] = to_string(line_number_to_edit) + "-)" + new_line; // Changes a member of Lines vector to new line with its line number
     } else {
       cout << "You can only edit existing lines" << endl;
@@ -89,7 +91,11 @@ int file_edit(string file_name, int line_number_to_edit, string new_line) {
     myFile.close();
     myFile.open(file_name, ios::out); // Opens file in write mode
 
-    for (const string &updated_line : lines) { // writes every member of lines vector to file
+    for (const string &updated_line : lines) {  // writes every member of lines array to file
+      if (updated_line == "") {
+        break; // Stops if there is nothing on next line since arrays have fixed slots inside tehem fromm start
+      }
+
       myFile << updated_line << '\n';
     }
 
@@ -103,18 +109,25 @@ int file_edit(string file_name, int line_number_to_edit, string new_line) {
 }
 
 int file_line_delete(string file_name, int line_number_to_delete) {
+  const int max_line_count = 100; // An variable for array to work properly
   myFile.open(file_name, ios::in);// Opens file in read mode
 
   if (myFile.is_open()) {
-    vector<string> lines;// A vector to store lines
+    string lines[max_line_count]; // A array to to store lines
     string line;
+    int line_count = 0; // A variable for if statement to check if there is a line that user wants to edit
 
     while (getline(myFile, line)) { // gets lines one by oone and assaign them to line variable
-      lines.push_back(line); // ads line variable to lines vector
+      lines[line_count++] = line; // Adds line variable to lines array and increase line_count after operation
     }
 
-    if (line_number_to_delete >= 0 && static_cast<std::vector<int>::size_type>(line_number_to_delete) < lines.size()) {
-      lines.erase(lines.begin() + line_number_to_delete); // Deletes a line from lines vector
+    if (line_number_to_delete > 0 && line_number_to_delete < line_count) {
+      // Shift elements to "erase" the line at line_number_to_delete
+      for (int i = line_number_to_delete; i < line_count - 1; ++i) {
+        lines[i] = lines[i + 1];
+      }
+
+      lines[line_count - 1] = ""; // clears last element of lines so same thing wouldn't write to file twice
     } else {
       cout << "You can only erase existing lines" << endl;
       return 0;
@@ -124,10 +137,14 @@ int file_line_delete(string file_name, int line_number_to_delete) {
     myFile.open(file_name, ios::out); // Opens file in write mode
 
     for (const string &updated_line : lines) {
+      if (updated_line == "") {
+        break; // Stops if there is nothing on next line since arrays have fixed slots inside tehem fromm start
+      }
+
       size_t pos = updated_line.find("-)"); // Finds postion of "-)"
       int lineNumber = stoi(updated_line.substr(0, pos)); // Finds each lines line number
 
-      if (lineNumber > line_number_to_delete) { // decrase a lines line number if its bigger than deleted lines line number
+      if (lineNumber > line_number_to_delete) { // decrase a lines line number if its bigger than deleted line's line number
         string updated_line_with_new_number = to_string(lineNumber - 1) + updated_line.substr(pos);
         myFile << updated_line_with_new_number << '\n';
       } else {

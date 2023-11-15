@@ -47,6 +47,7 @@ TEST_F(FarmTest, TestFileWrite) {
   file_write("test5.txt", writeString);
   EXPECT_EQ(testString, file_read("test5.txt"));
 }
+
 int main(int argc, char **argv) {
 #ifdef ENABLE_TESTS
   ::testing::InitGoogleTest(&argc, argv);
