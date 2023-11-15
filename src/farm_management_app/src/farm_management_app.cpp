@@ -100,10 +100,12 @@ int main() {
               File.open("crop_records.txt", ios::out | ios::in); // open file with both input and output tag
 
               if (File.is_open()) { //checks if file exist
+                File.close();
                 file_append("crop_records.txt", record); // appends data to file
                 cout << "\nData succesfully recored\n\n";
                 break;
               } else { //if there is no file creates one print records table
+                File.close();
                 file_write("crop_records.txt", "CROP TYPE | DATE OF PLANTING | DATE OF HARVESTING | CULTIVATED FIELD | EXPECTED QUANTITY");
                 file_append("crop_records.txt", record);
                 cout << "\nData succesfully recored\n\n";
@@ -156,10 +158,12 @@ eartag:
               File.open("livestock_records.txt", ios::out | ios::in); // open file with both input and output tag
 
               if (File.is_open()) { //checks if file exist
+                File.close();
                 file_append("livestock_records.txt", record); // appends data to file
                 cout << "\nData succesfully recored\n\n";
                 break;
               } else { //if there is no file creates one print records table
+                File.close();
                 file_write("livestock_records.txt", "LIVESTOCK TYPE | EAR TAG NUMBER | DATE OF BIRTH | GIVEN FOOD | WEIGHT | IS ALIVE | DATE OF DEATH | CAUSE OF DEATH");
                 file_append("livestock_records.txt", record);
                 cout << "\nData succesfully recored\n\n";
@@ -182,6 +186,7 @@ eartag:
               File.open("crop_records.txt", ios::out | ios::in);
 
               if (File.is_open()) {
+                File.close();
                 string crop_type;
                 string crop_plant_date;
                 string crop_harvest_date;
@@ -218,6 +223,7 @@ eartag:
               File.open("livestock_records.txt", ios::out | ios::in);
 
               if (File.is_open()) {
+                File.close();
                 string livestock_type;
                 string livestock_ear_tag;
                 string livestock_birth_date;
@@ -454,10 +460,12 @@ eartag2:
               File.open("pest_records.txt", ios::out | ios::in); // open file with both input and output tag
 
               if (File.is_open()) { //checks if file exist
+                File.close();
                 file_append("pest_records.txt", record); // appends data to file
                 cout << "\nData succesfully recored\n\n";
                 break;
               } else { //if there is no file creates one print records table
+                File.close();
                 file_write("pest_records.txt", "PEST TYPE | PEST CONTROLLED CROP | DATE OF PEST CONTROL | DATE OF NEXT PEST CONTROL | AREA");
                 file_append("pest_records.txt", record);
                 cout << "\nData succesfully recored\n\n";
@@ -480,10 +488,12 @@ eartag2:
               File.open("irrig_records.txt", ios::out | ios::in); // open file with both input and output tag
 
               if (File.is_open()) { //checks if file exist
+                File.close();
                 file_append("irrig_records.txt", record); // appends data to file
                 cout << "\nData succesfully recored\n\n";
                 break;
               } else { //if there is no file creates one print records table
+                File.close();
                 file_write("irrig_records.txt", "IRRIGATED CONTROLLED CROP | DATE OF IRRIGATION | DATE OF NEXT IRRIGATION | AREA");
                 file_append("irrig_records.txt", record);
                 cout << "\nData succesfully recored\n\n";
@@ -534,6 +544,7 @@ eartag2:
               File.open("pest_records.txt", ios::out | ios::in); // open file with both input and output tag
 
               if (File.is_open()) { //checks if file exist
+                File.close();
                 file_edit("pest_records.txt", line_number_to_edit, record);  // edit data of specified line
                 break;
               } else {
@@ -567,6 +578,7 @@ eartag2:
               File.open("irrig_records.txt", ios::out | ios::in); // open file with both input and output tag
 
               if (File.is_open()) { //checks if file exist
+                File.close();
                 file_edit("irrig_records.txt", line_number_to_edit, record); // edit data of specified line
                 break;
               } else {
@@ -753,10 +765,12 @@ eartag2:
               File.open("equipment_records.txt", ios::out | ios::in); //open file and we will see input and output
 
               if (File.is_open()) {  //checks if file exist.
+                File.close();
                 file_append("equipment_records.txt", record); //appends to data file
                 cout << "\nData is accomplished\n\n";
                 break;
               } else { //if there is no file creates one print records table
+                File.close();
                 file_write("equipment_records.txt", "EQUIPMENT TYPE | EQUIPMENT MODEL | EQUIPMENT BOUGHT DATE | EQUIPMENT LAST MAINTENANCE DATE | EQUIPMENT NEXT MAINTENANCE DATE");
                 file_append("equipment_records.txt", record);
                 cout << "\nDatas successfully record\n\n";
@@ -782,6 +796,7 @@ eartag2:
               File.open("vehicle_records.txt", ios::in | ios::out);
 
               if (File.is_open()) {  //checks if file exist.
+                File.close();
                 file_append("equipment_records.txt", record); //appends to data file
                 cout << "\nData is accomplished\n\n";
                 break;
@@ -834,6 +849,7 @@ eartag2:
               File.open("equipment_records.txt", ios::out | ios::in); //open file and we will see input and output
 
               if (File.is_open()) {  //checks if file exist.
+                File.close();
                 file_edit("equipment_records.txt", record_line_number_to_edit, record); //appends to data file
                 cout << "\nData is accomplished\n\n";
                 break;
@@ -871,6 +887,7 @@ eartag2:
               File.open("vehicle_records.txt", ios::in | ios::out);
 
               if (File.is_open()) {  //checks if file exist.
+                File.close();
                 file_edit("equipment_records.txt", record_line_number_to_edit, record); //appends to data file
                 cout << "\nData is accomplished\n\n";
                 break;
@@ -899,6 +916,7 @@ eartag2:
                 File.open("equipment_records.txt", ios::out | ios::in);
 
                 if (File.is_open()) { //checks if file exist
+                  File.close();
                   file_write("equipment_records.txt",
                              "EQUIPMENT TYPE | EQUIPMENT MODEL | EQUIPMENT BOUGHT DATE | EQUIPMENT LAST MAINTENANCE DATE | EQUIPMENT NEXT MAINTENANCE DATE|"); //Rewrite all file from scratch
                   cout << "\nData succesfully deleted\n\n";
@@ -911,6 +929,7 @@ eartag2:
                 File.open("equipment_records.txt", ios::out | ios::in);
 
                 if (File.is_open()) {  //checks if file exist
+                  File.close();
                   cout << "Which line do you want to delete?";
                   cin >> line_number_to_delete;  //Ask which line to delete
 
@@ -939,6 +958,7 @@ eartag2:
                 File.open("vehicle_records.txt", ios::out | ios::in);
 
                 if (File.is_open()) { //checks if file exist
+                  File.close();
                   file_write("vehicle_records.txt",
                              "VEHICLE TYPE | VEHICLE MODEL | VEHICLE BOUGHT DATE | VEHICLE LAST MAINTENANCE DATE | VEHICLE NEXT MAINTENANCE DATE"); //Rewrite all file from scratch
                   cout << "\nData succesfully deleted\n\n";
@@ -951,6 +971,7 @@ eartag2:
                 File.open("vehicle_records.txt", ios::out | ios::in);
 
                 if (File.is_open()) { //checks if file exist
+                  File.close();
                   cout << "Which line do you want to delete?";
                   cin >> line_number_to_delete;  //Ask which line to delete
 
@@ -1054,10 +1075,12 @@ eartag2:
               File.open("crop_yields_records.txt", ios::out | ios::in); //open file and we will see input and output
 
               if (File.is_open()) {  //checks if file exist.
+                File.close();
                 file_append("crop_yields_records.txt", record); //appends to data file
                 cout << "\nData is accomplished\n\n";
                 break;
               } else { //if there is no file creates one print records table
+                File.close();
                 file_write("crop_yields_records.txt", "CROP SAMPLE SIZE | AREA SAMPLE SIZE | ACTUAL AREA | EXPECTED HARVEST");
                 file_append("crop_yields_records.txt", record);
                 cout << "\nDatas successfully record\n\n";
@@ -1079,10 +1102,12 @@ eartag2:
               File.open("profit_records.txt", ios::in | ios::out);
 
               if (File.is_open()) {  //checks if file exist.
+                File.close();
                 file_append("profit_records.txt", record); //appends to data file
                 cout << "\nData succesfully recored\n\n";
                 break;
               } else { //if there is no file creates one print records table
+                File.close();
                 file_write("profit_records.txt", "FARM PLANT TYPE | FARM COST | FARM AMOUNT MONEY | FARM PROFITABILITY");
                 file_append("profit_records.txt", record);
                 cout << "\nDatas successfully recorded\n\n";
@@ -1115,10 +1140,12 @@ eartag3:
               File.open("livestock_health_records.txt", ios::in | ios::out);
 
               if (File.is_open()) {  //checks if file exist.
+                File.close();
                 file_append("livestock_health_records.txt", record); //appends to data file
                 cout << "\nData succesfully recored\n\n";
                 break;
               } else { //if there is no file creates one print records table
+                File.close();
                 file_write("livestock_health_records.txt", "LIVESTOCK TYPE | EAR TAG | KNOWN ILNESS | LAST VET CHECK | NEXT VET CHECK");
                 file_append("livestock_health_records.txt", record);
                 cout << "\nDatas successfully recorded\n\n";
@@ -1166,10 +1193,11 @@ eartag3:
               File.open("crop_yields_records.txt", ios::out | ios::in); //open file and we will see input and output
 
               if (File.is_open()) {  //checks if file exist.
+                File.close();
                 file_edit("livestock_health_records.txt", record_line_number_to_edit, record); //appends to data file
                 cout << "\nData is accomplished\n\n";
                 break;
-              } else { //if there is no file creates one print records table
+              } else {
                 cout << "\nThere is no data to edit.\n\n";
                 break;
               }
@@ -1199,10 +1227,11 @@ eartag3:
               File.open("profit_records.txt", ios::in | ios::out);
 
               if (File.is_open()) {  //checks if file exist.
+                File.close();
                 file_edit("livestock_health_records.txt", record_line_number_to_edit, record); //appends to data file
                 cout << "\nData is accomplished\n\n";
                 break;
-              } else { //if there is no file creates one print records table
+              } else {
                 cout << "\nThere is no data to edit.\n\n";
                 break;
               }
@@ -1243,10 +1272,11 @@ eartag4:
               File.open("livestock_health_records.txt", ios::in | ios::out);
 
               if (File.is_open()) {  //checks if file exist.
+                File.close();
                 file_edit("livestock_health_records.txt", record_line_number_to_edit, record); //appends to data file
                 cout << "\nData is accomplished\n\n";
                 break;
-              } else { //if there is no file creates one print records table
+              } else {
                 cout << "\nThere is no data to edit.\n\n";
                 break;
               }
@@ -1271,6 +1301,7 @@ eartag4:
                 File.open("crop_yields_records.txt", ios::out | ios::in);
 
                 if (File.is_open()) { //checks if file exist
+                  File.close();
                   file_write("crop_yields_records.txt",
                              "CROP SAMPLE SIZE | AREA SAMPLE SIZE | ACTUAL AREA | EXPECTED HARVEST"); //Rewrite all file from scratch
                   cout << "\nData succesfully deleted\n\n";
@@ -1283,6 +1314,7 @@ eartag4:
                 File.open("crop_yields_records.txt", ios::out | ios::in);
 
                 if (File.is_open()) {  //checks if file exist
+                  File.close();
                   cout << "Which line do you want to delete?";
                   cin >> line_number_to_delete;  //Ask which line to delete
 
@@ -1311,6 +1343,7 @@ eartag4:
                 File.open("profit_records.txt", ios::out | ios::in);
 
                 if (File.is_open()) { //checks if file exist
+                  File.close();
                   file_write("profit_records.txt",
                              "FARM PLANT TYPE | FARM COST | FARM AMOUNT MONEY | FARM PROFITABILITY"); //Rewrite all file from scratch
                   cout << "\nData succesfully deleted\n\n";
@@ -1323,6 +1356,7 @@ eartag4:
                 File.open("profit_records.txt", ios::out | ios::in);
 
                 if (File.is_open()) { //checks if file exist
+                  File.close();
                   cout << "Which line do you want to delete?";
                   cin >> line_number_to_delete;  //Ask which line to delete
 
@@ -1348,6 +1382,7 @@ eartag4:
                 File.open("livestock_health_records.txt", ios::out | ios::in);
 
                 if (File.is_open()) { //checks if file exist
+                  File.close();
                   file_write("livestock_health_records.txt",
                              "LIVESTOCK TYPE | EAR TAG | KNOWN ILNESS | LAST VET CHECK | NEXT VET CHECK | "); //Rewrite all file from scratch
                   cout << "\nData succesfully deleted\n\n";
@@ -1360,6 +1395,7 @@ eartag4:
                 File.open("livestock_health_records.txt", ios::out | ios::in);
 
                 if (File.is_open()) { //checks if file exist
+                  File.close();
                   cout << "Which line do you want to delete?";
                   cin >> line_number_to_delete;  //Ask which line to delete
 

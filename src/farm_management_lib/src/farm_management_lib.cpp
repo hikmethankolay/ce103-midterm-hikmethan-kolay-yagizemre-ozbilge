@@ -11,11 +11,11 @@ int file_write(string file_name, string text) {
   myFile.open(file_name, ios::out); //Opens file with output tag
 
   if (myFile.is_open()) {
-    myFile << "0-)" << text << "\n"; //Deletes everting insde file and inserts Text with "0-)" line number
+    myFile << "0-)" << text << "\n"; //Deletes everting inside file and inserts Text with "0-)" line number
     myFile.close();
     return 0;
   } else {
-    cout << "File operation failed\n"; //trowhs error if fails
+    cout << "File operation failed\n"; //throws error if fails
     return 0;
   }
 }
@@ -77,18 +77,19 @@ int file_edit(string file_name, int line_number_to_edit, string new_line) {
     string line;
     int line_count = 0; // A variable for if statement to check if there is a line that user wants to edit
 
-    while (getline(myFile, line)) { // gets lines one by oone and assaign them to line variable
+    while (getline(myFile, line)) { // gets lines one by one and assaign them to line variable
       lines[line_count++] = line; // Adds line variable to lines array and increase line_count after operation
     }
 
+    myFile.close();
+
     if (line_number_to_edit > 0 && line_number_to_edit <= line_count) {
-      lines[line_number_to_edit] = to_string(line_number_to_edit) + "-)" + new_line; // Changes a member of Lines vector to new line with its line number
+      lines[line_number_to_edit] = to_string(line_number_to_edit) + "-)" + new_line; // Changes a member of Lines array to new line with its line number
     } else {
-      cout << "You can only edit existing lines" << endl;
+      cout << "You can only edit existing lines\n";
       return 0;
     }
 
-    myFile.close();
     myFile.open(file_name, ios::out); // Opens file in write mode
 
     for (const string &updated_line : lines) {  // writes every member of lines array to file
@@ -99,9 +100,9 @@ int file_edit(string file_name, int line_number_to_edit, string new_line) {
       myFile << updated_line << '\n';
     }
 
-    cout << "\nData succesfully edited\n\n";
     myFile.close();
-    return 0;
+    cout << "\nData succesfully edited\n\n";
+    return 1;
   } else {
     cout << "File operation failed" << endl;
     return 0;
