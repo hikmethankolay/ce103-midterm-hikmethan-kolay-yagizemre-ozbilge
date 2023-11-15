@@ -83,8 +83,7 @@ mainmenu:
               cin >> crop_field;
               cout << "What is the expected harvest quantity?(Kg);";
               cin >> crop_exp_quantity;
-              record = "  " + crop_type + "   |    " + crop_plant_date + "    |     " + crop_harvest_date + "     |     " + crop_field + "m2" + "        |       " + crop_exp_quantity +
-                       "Kg"; // sums all of the strings to one string
+              record = "  " + crop_type + " | " + crop_plant_date + " | " + crop_harvest_date + " | " + crop_field + "m2" + " | " + crop_exp_quantity +"Kg"; // sums all of the strings to one string
               File.open("crop_records.txt", ios::out | ios::in); // open file with both input and output tag
 
               if (File.is_open()) { //checks if file exist
@@ -131,11 +130,11 @@ eartag:
                 cin >> livestock_death_date;
                 cout << "What is the cause of death?:";
                 cin >> livestock_death_cause;
-                record = "     " + livestock_type + "         |    " + livestock_ear_tag + "    |     " + livestock_birth_date + "    |     " + livestock_food + "      |   " + livestock_weight + "Kg" + "    |      "
-                         + livestock_death + "     |     " + livestock_death_date + "    |       " + livestock_death_cause; // sums all of the strings to one string
+                record = "     " + livestock_type + " | " + livestock_ear_tag + " | " + livestock_birth_date + " | " + livestock_food + " | " + livestock_weight + "Kg" + " | "
+                         + livestock_death + " | " + livestock_death_date + " | " + livestock_death_cause; // sums all of the strings to one string
               } else if (livestock_death == "Yes") {
-                record = "     " + livestock_type + "         |    " + livestock_ear_tag + "    |     " + livestock_birth_date + "    |     " + livestock_food + "      |   " + livestock_weight + "Kg" + "    |      "
-                         + livestock_death + "     |     " + "----------" + "    |       " + "----------"; // sums all of the strings to one string
+                record = "     " + livestock_type + " | " + livestock_ear_tag + " | " + livestock_birth_date + " |  " + livestock_food + " | " + livestock_weight + "Kg" + " | "
+                         + livestock_death + " | " + "----------" + " | " + "----------"; // sums all of the strings to one string
               } else {
                 cout << "Please sellect a correct option\n\n";
                 goto mainmenu; // Goes back to "Crop and livestock management" menu if input is not valid
@@ -148,7 +147,7 @@ eartag:
                 cout << "\nData succesfully recored\n\n";
                 break;
               } else { //if there is no file creates one print records table
-                file_write("livestock_records.txt", "LIVESTOCK TYPE   |      EAR TAG NUMBER       |   DATE OF BIRTH   |   GIVEN FOOD   |   WEIGHT   |   IS ALIVE   |   DATE OF DEATH   |   CAUSE OF DEATH");
+                file_write("livestock_records.txt", "LIVESTOCK TYPE | EAR TAG NUMBER | DATE OF BIRTH | GIVEN FOOD | WEIGHT | IS ALIVE | DATE OF DEATH | CAUSE OF DEATH");
                 file_append("livestock_records.txt", record);
                 cout << "\nData succesfully recored\n\n";
                 break;
@@ -187,7 +186,7 @@ eartag:
                 cin >> crop_field;
                 cout << "What is the expected harvest quantity?(Kg);";
                 cin >> crop_exp_quantity;
-                new_record = "  " + crop_type + "   |    " + crop_plant_date + "    |     " + crop_harvest_date + "     |     " + crop_field + "m2" + "        |       " + crop_exp_quantity + "Kg";
+                new_record = "  " + crop_type + " | " + crop_plant_date + " | " + crop_harvest_date + " | " + crop_field + "m2" + " | " + crop_exp_quantity + "Kg";
                 file_edit("crop_records.txt", line_number_to_edit, new_record);
                 break;
               } else {
@@ -231,11 +230,11 @@ eartag2:
                   cin >> livestock_death_date;
                   cout << "What is the cause of death?:";
                   cin >> livestock_death_cause;
-                  new_record = "     " + livestock_type + "         |    " + livestock_ear_tag + "    |     " + livestock_birth_date + "    |     " + livestock_food + "      |   " + livestock_weight + "Kg" +
-                               "    |      " + livestock_death + "     |     " + livestock_death_date + "    |       " + livestock_death_cause;
+                  new_record = "     " + livestock_type + " | " + livestock_ear_tag + " | " + livestock_birth_date + " | " + livestock_food + " | " + livestock_weight + "Kg" +
+                               " | " + livestock_death + " | " + livestock_death_date + " | " + livestock_death_cause;
                 } else if (livestock_death == "Yes") {
-                  new_record = "     " + livestock_type + "         |    " + livestock_ear_tag + "    |     " + livestock_birth_date + "    |     " + livestock_food + "      |   " + livestock_weight + "Kg" +
-                               "    |      " + livestock_death + "     |     " + "----------" + "    |       " + "----------";
+                  new_record = "     " + livestock_type + " | " + livestock_ear_tag + " | " + livestock_birth_date + " | " + livestock_food + " | " + livestock_weight + "Kg" +
+                               " | " + livestock_death + " | " + "----------" + " | " + "----------";
                 } else {
                   cout << "Please sellect a correct option\n\n";
                   goto mainmenu;
@@ -304,7 +303,7 @@ eartag2:
                 if (File.is_open()) { //checks if file exist
                   File.close();
                   file_write("livestock_records.txt",
-                             "LIVESTOCK TYPE   |      EAR TAG NUMBER       |   DATE OF BIRTH   |   GIVEN FOOD   |   WEIGHT   |   IS ALIVE   |   DATE OF DEATH   |   CAUSE OF DEATH"); //Rewrite all file from scratch
+                             "LIVESTOCK TYPE | EAR TAG NUMBER |  DATE OF BIRTH | GIVEN FOOD | WEIGHT | IS ALIVE | DATE OF DEATH | CAUSE OF DEATH"); //Rewrite all file from scratch
                   cout << "\nData succesfully deleted\n\n";
                   break;
                 } else {
@@ -351,7 +350,7 @@ eartag2:
         cout << "3-)Update Record\n";
         cout << "4-)Delete Record\n";
         cout << "5-)Return previous menu\n";
-        cout << "\nMake a choice(1 - 6): ";
+        cout << "\nMake a choice(1 - 5): ";
         cin >> choice_b;
 
         switch (choice_b) {
@@ -398,7 +397,7 @@ eartag2:
               cin >> pest_next_date;
               cout << "How big is the area pest control applied?:";
               cin >> pest_area;
-              record = "  " + pest_kind + "   |    " + pest_crop + "    |     " + pest_date + "     |     " + pest_next_date + "        |       " + pest_area + "m2"; // sums all of the strings to one string
+              record = "  " + pest_kind + " | " + pest_crop + " | " + pest_date + " | " + pest_next_date + " | " + pest_area + "m2"; // sums all of the strings to one string
               File.open("pest_records.txt", ios::out | ios::in); // open file with both input and output tag
 
               if (File.is_open()) { //checks if file exist
@@ -424,7 +423,7 @@ eartag2:
               cin >> irrig_next_date;
               cout << "How big is the irrigated area?:";
               cin >> irrig_area;
-              record = "  " + irrig_crop + "    |     " + irrig_date + "     |     " + irrig_next_date + "        |       " + irrig_area + "m2"; // sums all of the strings to one string
+              record = "  " + irrig_crop + " | " + irrig_date + " | " + irrig_next_date + " | " + irrig_area + "m2"; // sums all of the strings to one string
               File.open("irrig_records.txt", ios::out | ios::in); // open file with both input and output tag
 
               if (File.is_open()) { //checks if file exist
@@ -472,7 +471,7 @@ eartag2:
               cin >> pest_next_date;
               cout << "How big is the area pest control applied?:";
               cin >> pest_area;
-              record = "  " + pest_kind + "   |    " + pest_crop + "    |     " + pest_date + "     |     " + pest_next_date + "        |       " + pest_area + "m2"; // sums all of the strings to one string
+              record = "  " + pest_kind + " | " + pest_crop + " | " + pest_date + " | " + pest_next_date + " | " + pest_area + "m2"; // sums all of the strings to one string
               File.open("pest_records.txt", ios::out | ios::in); // open file with both input and output tag
 
               if (File.is_open()) { //checks if file exist
@@ -495,7 +494,7 @@ eartag2:
               cin >> irrig_next_date;
               cout << "How big is the irrigated area?:";
               cin >> irrig_area;
-              record = "  " + irrig_crop + "    |     " + irrig_date + "     |     " + irrig_next_date + "        |       " + irrig_area + "m2"; // sums all of the strings to one string
+              record = "  " + irrig_crop + " | " + irrig_date + " | " + irrig_next_date + " | " + irrig_area + "m2"; // sums all of the strings to one string
               File.open("irrig_records.txt", ios::out | ios::in); // open file with both input and output tag
 
               if (File.is_open()) { //checks if file exist
@@ -517,7 +516,7 @@ eartag2:
             int line_number_to_delete;
             string record_kind_to_delete;
             string line_or_record;
-            cout << "Which kind of record do you want to delete?(Pest/Irr�gation):";
+            cout << "Which kind of record do you want to delete?(Pest/Irrigation):";
             cin >> record_kind_to_delete; //Asks which record type to delete from
 
             if (record_kind_to_delete == "Pest") {
@@ -553,7 +552,7 @@ eartag2:
                 cout << "Please sellect a correct option\n\n";
                 goto mainmenu;
               }
-            } else if (record_kind_to_delete == "Irr�gation") {
+            } else if (record_kind_to_delete == "Irrigation") {
               cout << "Do you want to delete all records or just a single one?(All/Single):";
               cin >> line_or_record; // Asks if user goin to delte all data or just one specified line
 
@@ -659,7 +658,7 @@ eartag2:
               cin >> Equipment_last_maintenanace_date;
               cout << "What is the equipment future maintenance date?(DD/MM/YYYY):";
               cin >> Equipment_next_maintenanace_date;
-              record = "  " + Equipment_type + "   |    " + Equipment_model + "   |    " + Equipment_bought_date + "    |     " + Equipment_last_maintenanace_date + "  | " + Equipment_next_maintenanace_date;
+              record = "  " + Equipment_type + " | " + Equipment_model + " | " + Equipment_bought_date + " | " + Equipment_last_maintenanace_date + " | " + Equipment_next_maintenanace_date;
               File.open("equipment_records.txt", ios::out | ios::in); //open file and we will see input and output
 
               if (File.is_open()) {  //checks if file exist.
@@ -732,7 +731,7 @@ eartag2:
               cin >> Equipment_last_maintenanace_date;
               cout << "What is the equipment future production date?(DD/MM/YYYY):";
               cin >> Equipment_next_maintenanace_date;
-              record = "  " + Equipment_type + "   |    " + Equipment_model + "   |    " + Equipment_bought_date + "    |     " + Equipment_last_maintenanace_date + "  | " + Equipment_next_maintenanace_date;
+              record = "  " + Equipment_type + " | " + Equipment_model + " | " + Equipment_bought_date + " | " + Equipment_last_maintenanace_date + " | " + Equipment_next_maintenanace_date;
               File.open("equipment_records.txt", ios::out | ios::in); //open file and we will see input and output
 
               if (File.is_open()) {  //checks if file exist.
@@ -916,7 +915,7 @@ eartag2:
               cout << "What is the actual size of field?(m2)";
               cin >> actual_field_size;
               expected_harvest = (Crop_yield_sample_size / Crop_collected_area_size) * actual_field_size;
-              record = "  " + to_string(Crop_yield_sample_size) + "Kg" + "   |    " + to_string(Crop_collected_area_size) + "m2" + "   |    " + to_string(actual_field_size) + "m2" + "    |     " + to_string(
+              record = "  " + to_string(Crop_yield_sample_size) + "Kg" + " | " + to_string(Crop_collected_area_size) + "m2" + " | " + to_string(actual_field_size) + "m2" + " | " + to_string(
                          expected_harvest) + "Kg";
               File.open("crop_yields_records.txt", ios::out | ios::in); //open file and we will see input and output
 
@@ -942,7 +941,7 @@ eartag2:
               cout << "How much money you will gain after selling this crop?($):";
               cin >> Farm_income;
               Farm_profitability = Farm_income - Farm_cost;
-              record = "  " + Farm_plant_type + "   |    " + to_string(Farm_cost) + "    |     " + to_string(Farm_income) + "     |     " + to_string(Farm_profitability);
+              record = "  " + Farm_plant_type + "   |    " + to_string(Farm_cost) + " | " + to_string(Farm_income) + " | " + to_string(Farm_profitability);
               File.open("profit_records.txt", ios::in | ios::out);
 
               if (File.is_open()) {  //checks if file exist.
@@ -1020,7 +1019,7 @@ eartag3:
               cout << "What is the actual size of field?(m2)";
               cin >> actual_field_size;
               expected_harvest = (Crop_yield_sample_size / Crop_collected_area_size) * actual_field_size;
-              record = "  " + to_string(Crop_yield_sample_size) + "Kg" + "   |    " + to_string(Crop_collected_area_size) + "m2" + "   |    " + to_string(actual_field_size) + "m2" + "    |     " + to_string(
+              record = "  " + to_string(Crop_yield_sample_size) + "Kg" + " | " + to_string(Crop_collected_area_size) + "m2" + " | " + to_string(actual_field_size) + "m2" + " | " + to_string(
                          expected_harvest) + "Kg";
               File.open("crop_yields_records.txt", ios::out | ios::in); //open file and we will see input and output
 
@@ -1044,7 +1043,7 @@ eartag3:
               cout << "How much money you will gain after selling this crop?($):";
               cin >> Farm_income;
               Farm_profitability = Farm_income - Farm_cost;
-              record = "  " + Farm_plant_type + "   |    " + to_string(Farm_cost) + "    |     " + to_string(Farm_income) + "     |     " + to_string(Farm_profitability);
+              record = "  " + Farm_plant_type + " | " + to_string(Farm_cost) + " | " + to_string(Farm_income) + " | " + to_string(Farm_profitability);
               File.open("profit_records.txt", ios::in | ios::out);
 
               if (File.is_open()) {  //checks if file exist.
@@ -1078,7 +1077,7 @@ eartag4:
               cin >> livestock_last_vet_check;
               cout << "when is the next vet check?(DD/MM/YYYY)";
               cin >> livestock_nex_vet_check;
-              record = "  " + livestock_type + "   |    " + livestock_ear_tag + "    |     " + livestock_known_ilness + "     |     " + livestock_last_vet_check + "     |     " + livestock_nex_vet_check;
+              record = "  " + livestock_type + " | " + livestock_ear_tag + " | " + livestock_known_ilness + " | " + livestock_last_vet_check + " | " + livestock_nex_vet_check;
               File.open("livestock_health_records.txt", ios::in | ios::out);
 
               if (File.is_open()) {  //checks if file exist.

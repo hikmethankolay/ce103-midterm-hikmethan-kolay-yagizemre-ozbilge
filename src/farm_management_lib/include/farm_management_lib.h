@@ -3,9 +3,9 @@
 #include <string>
 using namespace std;
 
-void file_write(string file_name, string text);
+int file_write(string file_name, string text);
 
-void file_append(string file_name,string text);
+int file_append(string file_name,string text);
 
 string file_read(string file_name);
 

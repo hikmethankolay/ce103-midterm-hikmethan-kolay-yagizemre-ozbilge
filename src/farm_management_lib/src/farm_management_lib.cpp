@@ -7,18 +7,20 @@ using namespace std;
 
 fstream myFile;
 
-void file_write(string file_name, string text) {
+int file_write(string file_name, string text) {
   myFile.open(file_name, ios::out); //Opens file with output tag
 
   if (myFile.is_open()) {
     myFile << "0-)" << text << "\n"; //Deletes everting insde file and inserts Text with "0-)" line number
     myFile.close();
+    return 0;
   } else {
     cout << "File operation failed\n"; //trowhs error if fails
+    return 0;
   }
 }
 
-void file_append(string file_name,string text) {
+int file_append(string file_name,string text) {
   myFile.open(file_name, ios::in);//Opens file with input tag
   string lastLine;
   string currentLine;
@@ -40,8 +42,10 @@ void file_append(string file_name,string text) {
   if (myFile.is_open()) {
     myFile << lineNumber << "-)"  << text << "\n"; //Appends text with its line number
     myFile.close();
+    return 0;
   } else {
     cout << "File operation failed\n";
+    return 0;
   }
 }
 string file_read(string file_name) {

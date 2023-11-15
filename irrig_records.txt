@@ -1,4 +1,0 @@
-0-)IRRIGATED CONTROLLED CROP | DATE OF IRRIGATION | DATE OF NEXT IRRIGATION | AREA
-1-)  Irrigation    |     Irrigation     |     Irrigation        |       Irrigationm2
-2-)  1231    |     123     |     123        |       123m2
-3-)  asd    |     asd     |     asd        |       asdm2

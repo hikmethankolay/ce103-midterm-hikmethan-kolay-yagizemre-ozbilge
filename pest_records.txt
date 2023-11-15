@@ -1,4 +1,0 @@
-0-)PEST TYPE | PEST CONTROLLED CROP | DATE OF PEST CONTROL | DATE OF NEXT PEST CONTROL | AREA
-1-)  asdasdasd   |    asdasdasd    |     asdasdasd     |     asdasdasd        |       asdasdasdm2
-2-)  asdasdasd   |    asdasdasd    |     asdasdasd     |     asdasdasd        |       asdasdasdm2
-3-)  1231   |    123    |     123     |     123        |       123m2
