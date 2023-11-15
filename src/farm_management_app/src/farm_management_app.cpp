@@ -15,7 +15,6 @@ int main() {
   bool app_running = true;
 
   do {
-mainmenu:
     // Prints main menu
     cout << "-----------Main menu-----------\n";
     cout << "1)Crop and livestock management\n";
@@ -53,9 +52,10 @@ mainmenu:
               cout << "\n-----------------------------------------------------------------------------------------------------------------------------------------------------------\n";
               file_read("livestock_records.txt"); //Prints livestock records
               cout << "-----------------------------------------------------------------------------------------------------------------------------------------------------------\n\n";
+              break;
             } else {
               cout << "\nPlease sellect a correct option\n\n";
-              goto mainmenu;
+              break;
             }
 
             break;
@@ -137,7 +137,7 @@ eartag:
                          + livestock_death + " | " + "----------" + " | " + "----------"; // sums all of the strings to one string
               } else {
                 cout << "Please sellect a correct option\n\n";
-                goto mainmenu; // Goes back to "Crop and livestock management" menu if input is not valid
+                break;
               }
 
               File.open("livestock_records.txt", ios::out | ios::in); // open file with both input and output tag
@@ -154,7 +154,7 @@ eartag:
               }
             } else {
               cout << "Please sellect a correct option\n\n";
-              goto mainmenu; // Goes back to "Crop and livestock management" menu if input is not valid
+              break;
             }
           }
 
@@ -164,8 +164,6 @@ eartag:
             string new_record;
             cout << "Which kind of record do you want to edit?(Crop/Livestock):";
             cin >> record_kind_to_edit; // Asks which record to edit
-            cout << "Which line do you want to edit?:";
-            cin >> line_number_to_edit; // Ask which line number to edit
 
             if (record_kind_to_edit == "Crop") { // Takes new data and replaces it with old data in the specified line
               File.open("crop_records.txt", ios::out | ios::in);
@@ -176,6 +174,8 @@ eartag:
                 string crop_harvest_date;
                 string crop_field;
                 string crop_exp_quantity;
+                cout << "Which line do you want to edit?:";
+                cin >> line_number_to_edit; // Ask which line number to edit
                 cout << "What kind of crop do you want to register?:";
                 cin >> crop_type;
                 cout << "What is the date of plant?(DD/MM/YYYY):";
@@ -203,6 +203,8 @@ eartag:
                 string livestock_food;
                 string livestock_weight;
                 string livestock_death;
+                cout << "Which line do you want to edit?:";
+                cin >> line_number_to_edit; // Ask which line number to edit
                 cout << "What kind of livestock do you want to register?:";
                 cin >> livestock_type;
 eartag2:
@@ -237,7 +239,7 @@ eartag2:
                                " | " + livestock_death + " | " + "----------" + " | " + "----------";
                 } else {
                   cout << "Please sellect a correct option\n\n";
-                  goto mainmenu;
+                  break;
                 }
 
                 file_edit("livestock_records.txt", line_number_to_edit, new_record);
@@ -248,7 +250,7 @@ eartag2:
               }
             } else {
               cout << "\nPlease sellect a correct option\n\n";
-              goto mainmenu;
+              break;
             }
           }
 
@@ -272,7 +274,7 @@ eartag2:
                   cout << "\nData succesfully deleted\n\n";
                   break;
                 } else {
-                  cout << "There is no record to delete"; //if there is no file throws error
+                  cout << "There is no record to delete\n"; //if there is no file throws error
                   break;
                 }
               } else if (line_or_record == "Single") {
@@ -286,12 +288,12 @@ eartag2:
                   cout << "\nData succesfully deleted\n\n";
                   break;
                 } else {
-                  cout << "There is no record to delete"; //if there is no file throws error
+                  cout << "There is no record to delete\n"; //if there is no file throws error
                   break;
                 }
               } else {
                 cout << "Please sellect a correct option\n\n";
-                goto mainmenu;
+                break;
               }
             } else if (record_kind_to_delete == "Livestock") {
               cout << "Do you want to delete all records or just a single one?(All/Single):";
@@ -307,7 +309,7 @@ eartag2:
                   cout << "\nData succesfully deleted\n\n";
                   break;
                 } else {
-                  cout << "There is no record to delete"; //if there is no file throws error
+                  cout << "There is no record to delete\n"; //if there is no file throws error
                   break;
                 }
               } else if (line_or_record == "Single") {
@@ -320,21 +322,21 @@ eartag2:
                   file_line_delete("livestock_records.txt", line_number_to_delete); // Deletes specified line
                   break;
                 } else {
-                  cout << "There is no record to delete"; //if there is no file throws error
+                  cout << "There is no record to delete\n"; //if there is no file throws error
                   break;
                 }
               } else {
                 cout << "Please sellect a correct option\n\n";
-                goto mainmenu;
+                break;
               }
             } else {
               cout << "\nPlease sellect a correct option\n\n";
-              goto mainmenu;
+              break;
             }
           }
 
           case 5: {
-            goto mainmenu;
+            break;
           }
           break;
         }
@@ -369,7 +371,7 @@ eartag2:
               cout << "--------------------------------------------------------------------------------------------\n\n";
             } else {
               cout << "\nPlease sellect a correct option\n\n";
-              goto mainmenu;
+              break;
             }
 
             break;
@@ -429,18 +431,16 @@ eartag2:
               if (File.is_open()) { //checks if file exist
                 file_append("irrig_records.txt", record); // appends data to file
                 cout << "\nData succesfully recored\n\n";
-                goto mainmenu;
                 break;
               } else { //if there is no file creates one print records table
                 file_write("irrig_records.txt", "IRRIGATED CONTROLLED CROP | DATE OF IRRIGATION | DATE OF NEXT IRRIGATION | AREA");
                 file_append("irrig_records.txt", record);
                 cout << "\nData succesfully recored\n\n";
-                goto mainmenu;
                 break;
               }
             } else {
               cout << "Please sellect a correct option\n\n";
-              goto mainmenu; // Goes back to "Harvest and production planning" menu if input is not valid
+              break;
             }
 
             break;
@@ -452,8 +452,6 @@ eartag2:
             int line_number_to_edit;
             cout << "\nWhat kind of data do you want to edit? Pest/Irrigation?: ";
             cin >> record_kind_to_edit;
-            cout << "Which line do you wish to edit?";
-            cin >> line_number_to_edit;
 
             if (record_kind_to_edit == "Pest") {
               string pest_kind;
@@ -461,6 +459,8 @@ eartag2:
               string pest_date;
               string pest_next_date;
               string pest_area;
+              cout << "Which line do you wish to edit?";
+              cin >> line_number_to_edit;
               cout << "What kind of pest control did you apply?:";
               cin >> pest_kind;
               cout << "To what crop did you apply this pest control?";
@@ -486,6 +486,8 @@ eartag2:
               string irrig_date;
               string irrig_next_date;
               string irrig_area;
+              cout << "Which line do you wish to edit?";
+              cin >> line_number_to_edit;
               cout << "Which crop did you irrigate ?:";
               cin >> irrig_crop;
               cout << "What is the date of irrigation ?(DD/MM/YYYY):";
@@ -506,7 +508,7 @@ eartag2:
               }
             } else {
               cout << "Please sellect a correct option\n\n";
-              goto mainmenu; // Goes back to "Harvest and production planning" menu if input is not valid
+              break;
             }
 
             break;
@@ -532,7 +534,7 @@ eartag2:
                   cout << "\nData succesfully deleted\n\n";
                   break;
                 } else {
-                  cout << "There is no record to delete"; //if there is no file throws error
+                  cout << "There is no record to delete\n"; //if there is no file throws error
                   break;
                 }
               } else if (line_or_record == "Single") {
@@ -545,12 +547,12 @@ eartag2:
                   file_line_delete("pest_records.txt", line_number_to_delete); // Deletes specified line
                   break;
                 } else {
-                  cout << "There is no record to delete"; //if there is no file throws error
+                  cout << "There is no record to delete\n"; //if there is no file throws error
                   break;
                 }
               } else {
                 cout << "Please sellect a correct option\n\n";
-                goto mainmenu;
+                break;
               }
             } else if (record_kind_to_delete == "Irrigation") {
               cout << "Do you want to delete all records or just a single one?(All/Single):";
@@ -566,7 +568,7 @@ eartag2:
                   cout << "\nData succesfully deleted\n\n";
                   break;
                 } else {
-                  cout << "There is no record to delete"; //if there is no file throws error
+                  cout << "There is no record to delete\n"; //if there is no file throws error
                   break;
                 }
               } else if (line_or_record == "Single") {
@@ -579,23 +581,23 @@ eartag2:
                   file_line_delete("irrig_records.txt", line_number_to_delete); // Deletes specified line
                   break;
                 } else {
-                  cout << "There is no record to delete"; //if there is no file throws error
+                  cout << "There is no record to delete\n"; //if there is no file throws error
                   break;
                 }
               } else {
                 cout << "Please sellect a correct option\n\n";
-                goto mainmenu;
+                break;
               }
             } else {
               cout << "\nPlease sellect a correct option\n\n";
-              goto mainmenu;
+              break;
             }
 
             break;
           }
 
           case 5: {
-            goto mainmenu;
+            break;
           }
           break;
         }
@@ -617,20 +619,20 @@ eartag2:
         switch (choice_c) {
           case 1: {
             string record_kind_to_see;
-            cout << "\nWhich record do you want to see? Equipment/Vehicle?: ";
+            cout << "\nWhich record do you want to see? Equipment(E)/Vehicle(V)?: ";
             cin >> record_kind_to_see;
 
-            if (record_kind_to_see == "Equipment") {
+            if (record_kind_to_see == "E") {
               cout << "\n--------------------------------------------------------------------------------------------\n";
               file_read("equipment_records.txt"); // Prints Equipment records
               cout << "--------------------------------------------------------------------------------------------\n\n";
-            } else if (record_kind_to_see == "Vehicle") {
+            } else if (record_kind_to_see == "V") {
               cout << "\n-----------------------------------------------------------------------------------------------------------------------------------------------------------\n";
               file_read("vehicle_records.txt"); //Prints Vehicle records
               cout << "-----------------------------------------------------------------------------------------------------------------------------------------------------------\n\n";
             } else {
               cout << "\nPlease sellect a correct option\n\n";
-              goto mainmenu;
+              break;
             }
 
             break;
@@ -639,10 +641,10 @@ eartag2:
           case 2: {
             string record;
             string record_kind_to_register;
-            cout << "\nWhat kind of data you want to register? Equipment/Vehicle?:";
+            cout << "\nWhat kind of data you want to register? Equipment(E)/Vehicle(V)?:";
             cin >> record_kind_to_register;
 
-            if (record_kind_to_register == "Equipment") {
+            if (record_kind_to_register == "E") {
               string Equipment_type;
               string Equipment_model;
               string Equipment_bought_date;
@@ -671,7 +673,7 @@ eartag2:
                 cout << "\nDatas successfully record\n\n";
                 break;
               }
-            } else if (record_kind_to_register == "Vehicle") {
+            } else if (record_kind_to_register == "V") {
               string Vehicle_type;
               string Vehicle_model;
               string Vehicle_bought_date;
@@ -702,7 +704,7 @@ eartag2:
               }
             } else {
               cout << "Please sellect a correct option\n\n";
-              goto mainmenu; // Goes back to "Equipment and vehicle maintenance" menu if input is not valid
+              break;
             }
           }
 
@@ -710,17 +712,17 @@ eartag2:
             string record;
             string record_kind_to_edit;
             int record_line_number_to_edit;
-            cout << "\nWhat kind of data you want to register? Equipment/Vehicle?:";
+            cout << "\nWhat kind of data you want to register? Equipment(E)/Vehicle(V)?:";
             cin >> record_kind_to_edit;
-            cout << "\nWhich line do you want to edit?:";
-            cin >> record_line_number_to_edit;
 
-            if (record_kind_to_edit == "Equipment") {
+            if (record_kind_to_edit == "E") {
               string Equipment_type;
               string Equipment_model;
               string Equipment_bought_date;
               string Equipment_last_maintenanace_date;
               string Equipment_next_maintenanace_date;
+              cout << "\nWhich line do you want to edit?:";
+              cin >> record_line_number_to_edit;
               cout << "What kind of equipment do you want to register?:";
               cin >> Equipment_type;
               cout << "What is the model of equipment?:";
@@ -742,12 +744,14 @@ eartag2:
                 cout << "\nThere is no data to edit.\n\n";
                 break;
               }
-            } else if (record_kind_to_edit == "Vehicle") {
+            } else if (record_kind_to_edit == "V") {
               string Vehicle_type;
               string Vehicle_model;
               string Vehicle_bought_date;
               string Vehicle_last_maintenanace_date;
               string Vehicle_next_maintenanace_date;
+              cout << "\nWhich line do you want to edit?:";
+              cin >> record_line_number_to_edit;
               cout << "What kind of equipment do you want to register?:";
               cin >> Vehicle_type;
               cout << "What is the model of equipment?:";
@@ -771,7 +775,7 @@ eartag2:
               }
             } else {
               cout << "Please sellect a correct option\n\n";
-              goto mainmenu; // Goes back to "Equipment and vehicle maintenance" menu if input is not valid
+              break;
             }
           }
 
@@ -779,10 +783,10 @@ eartag2:
             int line_number_to_delete;
             string record_kind_to_delete;
             string line_or_record;
-            cout << "Which kind of record do you want to delete?(Equipment/Vehicle):";
+            cout << "Which kind of record do you want to delete?(Equipment(E)/Vehicle(V)):";
             cin >> record_kind_to_delete; // Asks which record to delete
 
-            if (record_kind_to_delete == "Equipment") {
+            if (record_kind_to_delete == "E") {
               cout << "Do you want to delete all records or just a single one?(All/Single):";
               cin >> line_or_record; // Asks if user going to delete all data or just one specified line
 
@@ -795,7 +799,7 @@ eartag2:
                   cout << "\nData succesfully deleted\n\n";
                   break;
                 } else {
-                  cout << "There is no record to delete"; //if there is no file throws error
+                  cout << "There is no record to delete\n"; //if there is no file throws error
                   break;
                 }
               } else if (line_or_record == "Single") {
@@ -807,14 +811,14 @@ eartag2:
                   file_line_delete("vehicle_records.txt", line_number_to_delete); //Deletes specified line
                   break;
                 } else {
-                  cout << "There is no record to delete;";  //if there is no file throws error.
+                  cout << "There is no record to delete\n";  //if there is no file throws error.
                   break;
                 }
               } else {
                 cout << "Please select a  correct option\n\n";
-                goto mainmenu;
+                break;
               }
-            } else if (record_kind_to_delete == "Vehicle") {
+            } else if (record_kind_to_delete == "V") {
               cout << "Do you want to delete all records or just a single one?(All/Single):";
               cin >> line_or_record; // Asks if user goin to delte all data or just one specified line
 
@@ -827,7 +831,7 @@ eartag2:
                   cout << "\nData succesfully deleted\n\n";
                   break;
                 } else {
-                  cout << "There is no record to delete"; //if there is no file throws error
+                  cout << "There is no record to delete\n"; //if there is no file throws error
                   break;
                 }
               } else if (line_or_record == "Single") {
@@ -839,12 +843,12 @@ eartag2:
                   file_line_delete("vehicle_records.txt", line_number_to_delete); //Deletes specified line
                   break;
                 } else {
-                  cout << "There is no record to delete";
+                  cout << "There is no record to delete\n";
                   break;
                 }
               } else {
                 cout << "Please sellect a correct option\n\n";
-                goto mainmenu;
+                break;
               }
 
               break;
@@ -852,7 +856,7 @@ eartag2:
           }
 
           case 5: {
-            goto mainmenu;
+            break;
           }
           break;
         }
@@ -874,24 +878,27 @@ eartag2:
         switch (choice_d) {
           case 1: {
             string record_kind_to_see;
-            cout << "\nWhich record do you want to see? Crop yields/Profit/Livestock health?: ";
+            cout << "\nWhich record do you want to see? Crop yields(C)/Profit(P)/Livestock_health(L)?: ";
             cin >> record_kind_to_see;
 
-            if (record_kind_to_see == "Crop yields") {
+            if (record_kind_to_see == "C") {
               cout << "\n--------------------------------------------------------------------------------------------\n";
               file_read("crop_yields_records.txt"); // Prints Crop yields records
               cout << "--------------------------------------------------------------------------------------------\n\n";
-            } else if (record_kind_to_see == "Profit") {
+              break;
+            } else if (record_kind_to_see == "P") {
               cout << "\n-----------------------------------------------------------------------------------------------------------------------------------------------------------\n";
-              file_read("farm_profitability_records.txt"); //Prints Farm profitability records
+              file_read("profit_records.txt"); //Prints Farm profitability records
               cout << "-----------------------------------------------------------------------------------------------------------------------------------------------------------\n\n";
-            } else if (record_kind_to_see == "Livestock health") {
+              break;
+            } else if (record_kind_to_see == "L") {
               cout << "\n-----------------------------------------------------------------------------------------------------------------------------------------------------------\n";
               file_read("livestock_health_records.txt"); //Prints Farm profitability records
               cout << "-----------------------------------------------------------------------------------------------------------------------------------------------------------\n\n";
+              break;
             } else {
               cout << "\nPlease sellect a correct option\n\n";
-              goto mainmenu;
+              break;
             }
 
             break;
@@ -900,10 +907,10 @@ eartag2:
           case 2: {
             string record;
             string record_kind_to_register;
-            cout << "\nWhat kind of data you want to register? Crop yields/Profit/Livestock health?:";
+            cout << "\nWhat kind of data you want to register? Crop yields(C)/Profit(P)/Livestock_health(L)?:";
             cin >> record_kind_to_register;
 
-            if (record_kind_to_register == "Crop yields") {
+            if (record_kind_to_register == "C") {
               int Crop_yield_sample_size;
               int Crop_collected_area_size;
               int actual_field_size;
@@ -929,7 +936,7 @@ eartag2:
                 cout << "\nDatas successfully record\n\n";
                 break;
               }
-            } else if (record_kind_to_register == "Profit") {
+            } else if (record_kind_to_register == "P") {
               string Farm_plant_type;
               int Farm_cost;
               int Farm_income;
@@ -954,7 +961,7 @@ eartag2:
                 cout << "\nDatas successfully recorded\n\n";
                 break;
               }
-            } else if (record_kind_to_register == "Livestock health") {
+            } else if (record_kind_to_register == "L") {
               string livestock_type;
               string livestock_ear_tag;
               string livestock_known_ilness;
@@ -977,7 +984,7 @@ eartag3:
               cin >> livestock_last_vet_check;
               cout << "when is the next vet check?(DD/MM/YYYY)";
               cin >> livestock_nex_vet_check;
-              record = "  " + livestock_type + "   |    " + livestock_ear_tag + "    |     " + livestock_known_ilness + "     |     " + livestock_last_vet_check + "     |     " + livestock_nex_vet_check;
+              record = "  " + livestock_type + " | " + livestock_ear_tag + " | " + livestock_known_ilness + " | " + livestock_last_vet_check + " | " + livestock_nex_vet_check;
               File.open("livestock_health_records.txt", ios::in | ios::out);
 
               if (File.is_open()) {  //checks if file exist.
@@ -994,7 +1001,7 @@ eartag3:
               break;
             } else {
               cout << "Please sellect a correct option\n\n";
-              goto mainmenu; // Goes back to "Equipment and vehicle maintenance" menu if input is not valid
+              break;
             }
           }
 
@@ -1002,16 +1009,16 @@ eartag3:
             string record;
             string record_kind_to_edit;
             int record_line_number_to_edit;
-            cout << "\nWhat kind of data you want to register? Crop yields/Profit/Livestock health?:";
+            cout << "\nWhat kind of data you want to register? Crop yields(C)/Profit(P)/Livestock_health(L)?:";
             cin >> record_kind_to_edit;
-            cout << "\nWhich line do you want to edit?:";
-            cin >> record_line_number_to_edit;
 
-            if (record_kind_to_edit == "Crop yields") {
+            if (record_kind_to_edit == "C") {
               int Crop_yield_sample_size;
               int Crop_collected_area_size;
               int actual_field_size;
               int expected_harvest;
+              cout << "\nWhich line do you want to edit?:";
+              cin >> record_line_number_to_edit;
               cout << "How much collected sample?(Kg):";
               cin >> Crop_yield_sample_size;
               cout << "What is the size of the area where the crops are collected?(m2):";
@@ -1031,11 +1038,13 @@ eartag3:
                 cout << "\nThere is no data to edit.\n\n";
                 break;
               }
-            } else if (record_kind_to_edit == "Profit") {
+            } else if (record_kind_to_edit == "P") {
               string Farm_plant_type;
               int Farm_cost;
               int Farm_income;
               int Farm_profitability;
+              cout << "\nWhich line do you want to edit?:";
+              cin >> record_line_number_to_edit;
               cout << "What kind of farm plant do you want to register?:";
               cin >> Farm_plant_type;
               cout << "What is the cost?:";
@@ -1054,12 +1063,14 @@ eartag3:
                 cout << "\nThere is no data to edit.\n\n";
                 break;
               }
-            } else if (record_kind_to_edit == "Livestock health") {
+            } else if (record_kind_to_edit == "L") {
               string livestock_type;
               string livestock_ear_tag;
               string livestock_known_ilness;
               string livestock_last_vet_check;
               string livestock_nex_vet_check;
+              cout << "\nWhich line do you want to edit?:";
+              cin >> record_line_number_to_edit;
               cout << "What type is the livestock?";
               cin >> livestock_type;
 eartag4:
@@ -1090,7 +1101,7 @@ eartag4:
               }
             } else {
               cout << "Please sellect a correct option\n\n";
-              goto mainmenu;
+              break;
             }
           }
 
@@ -1098,10 +1109,10 @@ eartag4:
             int line_number_to_delete;
             string record_kind_to_delete;
             string line_or_record;
-            cout << "Which kind of record do you want to delete? Crop yields/Profit/Livestock health?:";
+            cout << "Which kind of record do you want to delete? Crop yields(C)/Profit(P)/Livestock_health(L)?:";
             cin >> record_kind_to_delete; // Asks which record to delete
 
-            if (record_kind_to_delete == "Crop yields") {
+            if (record_kind_to_delete == "C") {
               cout << "Do you want to delete all records or just a single one?(All/Single):";
               cin >> line_or_record; // Asks if user going to delete all data or just one specified line
 
@@ -1114,7 +1125,7 @@ eartag4:
                   cout << "\nData succesfully deleted\n\n";
                   break;
                 } else {
-                  cout << "There is no record to delete"; //if there is no file throws error
+                  cout << "There is no record to delete\n"; //if there is no file throws error
                   break;
                 }
               } else if (line_or_record == "Single") {
@@ -1126,14 +1137,14 @@ eartag4:
                   file_line_delete("farm_records.txt", line_number_to_delete); //Deletes specified line
                   break;
                 } else {
-                  cout << "There is no record to delete;";  //if there is no file throws error.
+                  cout << "There is no record to delete\n";  //if there is no file throws error.
                   break;
                 }
               } else {
                 cout << "Please select a  correct option\n\n";
-                goto mainmenu;
+                break;
               }
-            } else if (record_kind_to_delete == "Profit") {
+            } else if (record_kind_to_delete == "P") {
               cout << "Do you want to delete all records or just a single one?(All/Single):";
               cin >> line_or_record; // Asks if user goin to delte all data or just one specified line
 
@@ -1146,7 +1157,7 @@ eartag4:
                   cout << "\nData succesfully deleted\n\n";
                   break;
                 } else {
-                  cout << "There is no record to delete"; //if there is no file throws error
+                  cout << "There is no record to delete\n"; //if there is no file throws error
                   break;
                 }
               } else if (line_or_record == "Single") {
@@ -1158,49 +1169,49 @@ eartag4:
                   file_line_delete("profit_records.txt", line_number_to_delete); //Deletes specified line
                   break;
                 } else {
-                  cout << "There is no record to delete";
+                  cout << "There is no record to delete\n";
                   break;
                 }
-              } else if (record_kind_to_delete == "Livestock health") {
-                cout << "Do you want to delete all records or just a single one?(All/Single):";
-                cin >> line_or_record; // Asks if user goin to delte all data or just one specified line
-
-                if (line_or_record == "All") {
-                  File.open("livestock_health_records.txt", ios::out | ios::in);
-
-                  if (File.is_open()) { //checks if file exist
-                    file_write("livestock_health_records.txt",
-                               "LIVESTOCK TYPE | EAR TAG | KNOWN ILNESS | LAST VET CHECK | NEXT VET CHECK | "); //Rewrite all file from scratch
-                    cout << "\nData succesfully deleted\n\n";
-                    break;
-                  } else {
-                    cout << "There is no record to delete"; //if there is no file throws error
-                    break;
-                  }
-                } else if (line_or_record == "Single") {
-                  File.open("livestock_health_records.txt", ios::out | ios::in);
-
-                  if (File.is_open()) { //checks if file exist
-                    cout << "Which line do you want to delete?";
-                    cin >> line_number_to_delete;  //Ask which line to delete
-                    file_line_delete("livestock_health_records.txt", line_number_to_delete); //Deletes specified line
-                    break;
-                  } else {
-                    cout << "There is no record to delete";
-                    break;
-                  }
-                }
-              } else {
-                cout << "Please sellect a correct option\n\n";
-                goto mainmenu;
               }
+            } else if (record_kind_to_delete == "L") {
+              cout << "Do you want to delete all records or just a single one?(All/Single):";
+              cin >> line_or_record; // Asks if user goin to delte all data or just one specified line
 
+              if (line_or_record == "All") {
+                File.open("livestock_health_records.txt", ios::out | ios::in);
+
+                if (File.is_open()) { //checks if file exist
+                  file_write("livestock_health_records.txt",
+                             "LIVESTOCK TYPE | EAR TAG | KNOWN ILNESS | LAST VET CHECK | NEXT VET CHECK | "); //Rewrite all file from scratch
+                  cout << "\nData succesfully deleted\n\n";
+                  break;
+                } else {
+                  cout << "There is no record to delete\n"; //if there is no file throws error
+                  break;
+                }
+              } else if (line_or_record == "Single") {
+                File.open("livestock_health_records.txt", ios::out | ios::in);
+
+                if (File.is_open()) { //checks if file exist
+                  cout << "Which line do you want to delete?";
+                  cin >> line_number_to_delete;  //Ask which line to delete
+                  file_line_delete("livestock_health_records.txt", line_number_to_delete); //Deletes specified line
+                  break;
+                } else {
+                  cout << "There is no record to delete\n";
+                  break;
+                }
+              }
+            } else {
+              cout << "Please sellect a correct option\n\n";
               break;
             }
+
+            break;
           }
 
           case 5: {
-            goto mainmenu;
+            break;
           }
           break;
         }
@@ -1215,5 +1226,5 @@ eartag4:
     }
   } while (app_running);
 
-  return 0;
+  return 1;
 }
