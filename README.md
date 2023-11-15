@@ -84,6 +84,7 @@ These records contains information as below:
 ### a. Crop and livestock management: 
 
 1)Crop records
+
 	a-Crop’s type
 	b-Crop’s plant date
 	c-Crop’s harvest date
@@ -92,6 +93,7 @@ These records contains information as below:
 
 
 2)Livestock records
+
 	a-Livestock’s type
 	b-Livestock’s ear tag number
 	c-Livestock’s birth date
@@ -104,6 +106,7 @@ These records contains information as below:
 ### b. Harvesting and production planning:  
 
 3)Pest records
+
 	a-Applied pest type
 	b-Pest applied crops type
 	c-Pest date
@@ -112,6 +115,7 @@ These records contains information as below:
 
 
 4)İrrigation records
+
 	a-irrigated crops type
 	b-irrigation date
 	c-Next irrigation date
@@ -121,6 +125,7 @@ These records contains information as below:
 ### c. Equipment and vehicle maintenance: 
 
 5)Vehicle records
+
 	a-Vehicle’s type
 	b-Vehicle’s model
 	c-Vehicle’s bought date
@@ -130,6 +135,7 @@ These records contains information as below:
 
 
 6)Equipment records
+
 	a-Equipment’s type
 	b-Equipment’s model
 	c-Equipment’s bought date
@@ -140,6 +146,7 @@ These records contains information as below:
 ### d. Reporting:
 
 7)Crop yield records
+
 	a-Sample size of crop
 	b-Sample area
 	c-Actual field size
@@ -147,6 +154,7 @@ These records contains information as below:
 
 
 8)Profit records
+
 	a-Crop
 	b-Crop’s cost
 	c-Expected income form crop
@@ -154,6 +162,7 @@ These records contains information as below:
 
 
 9)Livestock health records
+
 	a-Livestock’s type
 	b-Livestock’s ear tag number
 	c-Livestock’s known illness
