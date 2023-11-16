@@ -131,7 +131,6 @@ int file_line_delete(string file_name, int line_number_to_delete) {
       lines[line_count - 1] = ""; // clears last element of lines so same thing wouldn't write to file twice
     } else {
       cout << "You can only erase existing lines" << endl;
-      return 0;
     }
 
     myFile.close();
