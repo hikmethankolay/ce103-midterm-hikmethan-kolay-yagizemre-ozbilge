@@ -216,7 +216,7 @@ eartag:
                 file_edit("crop_records.txt", line_number_to_edit, new_record);
                 break;
               } else {
-                cout << "There is no record to edit";
+                cout << "\nThere is no record to edit\n";
                 break;
               }
             } else if (record_kind_to_edit == "L") { // Takes new data and replaces it with old data in the specified line
@@ -280,7 +280,7 @@ eartag2:
                 file_edit("livestock_records.txt", line_number_to_edit, new_record);
                 break;
               } else {
-                cout << "There is no record to edit";
+                cout << "\nThere is no record to edit\n";
                 break;
               }
             } else {
