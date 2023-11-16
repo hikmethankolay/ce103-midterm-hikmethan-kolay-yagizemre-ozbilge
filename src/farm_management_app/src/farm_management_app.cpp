@@ -767,7 +767,6 @@ eartag2:
               if (File.is_open()) {  //checks if file exist.
                 File.close();
                 file_append("equipment_records.txt", record); //appends to data file
-                cout << "\nData is accomplished\n\n";
                 break;
               } else { //if there is no file creates one print records table
                 File.close();
@@ -782,28 +781,26 @@ eartag2:
               string Vehicle_bought_date;
               string Vehicle_last_maintenanace_date;
               string Vehicle_next_maintenanace_date;
-              cout << "What kind of equipment do you want to register?:";
+              cout << "What kind of vehicle's do you want to register?:";
               cin >> Vehicle_type;
               cout << "What is the model of equipment?:";
               cin >> Vehicle_model;
-              cout << "When is the equipment bought?(DD/MM/YYYY):";
+              cout << "When is the vehicle's bought?(DD/MM/YYYY):";
               cin >> Vehicle_bought_date;
-              cout << "What is the equipment last production date?(DD/MM/YYYY):";
+              cout << "What is the vehicle's last production date?(DD/MM/YYYY):";
               cin >> Vehicle_last_maintenanace_date;
-              cout << "What is the equipment future production date?(DD/MM/YYYY):";
+              cout << "What is the vehicle's future production date?(DD/MM/YYYY):";
               cin >> Vehicle_next_maintenanace_date;
               record = "  " + Vehicle_type + "   |    " + Vehicle_model + "    |     " + Vehicle_bought_date + "     |     " + Vehicle_last_maintenanace_date + " | " + Vehicle_next_maintenanace_date;
               File.open("vehicle_records.txt", ios::in | ios::out);
 
               if (File.is_open()) {  //checks if file exist.
                 File.close();
-                file_append("equipment_records.txt", record); //appends to data file
-                cout << "\nData is accomplished\n\n";
+                file_append("vehicle_records.txt", record); //appends to data file
                 break;
               } else { //if there is no file creates one print records table
                 file_write("vehicle_records.txt", "VEHICLE TYPE | VEHICLE MODEL | VEHICLE BOUGHT DATE | VEHICLE LAST MAINTENANCE DATE | VEHICLE NEXT MAINTENANCE DATE");
                 file_append("vehicle_records.txt", record);
-                cout << "\nDatas successfully record\n\n";
                 break;
               }
             } else {
@@ -851,7 +848,6 @@ eartag2:
               if (File.is_open()) {  //checks if file exist.
                 File.close();
                 file_edit("equipment_records.txt", record_line_number_to_edit, record); //appends to data file
-                cout << "\nData is accomplished\n\n";
                 break;
               } else { //if there is no file creates one print records table
                 cout << "\nThere is no data to edit.\n\n";
@@ -873,23 +869,22 @@ eartag2:
                 break;
               }
 
-              cout << "What kind of equipment do you want to register?:";
+              cout << "What kind of vehicle's do you want to register?:";
               cin >> Vehicle_type;
-              cout << "What is the model of equipment?:";
+              cout << "What is the model of vehicle?:";
               cin >> Vehicle_model;
-              cout << "When is the equipment bought?(DD/MM/YYYY):";
+              cout << "When is the vehicle's bought?(DD/MM/YYYY):";
               cin >> Vehicle_bought_date;
-              cout << "What is the equipment last production date?(DD/MM/YYYY):";
+              cout << "What is the vehicle's last production date?(DD/MM/YYYY):";
               cin >> Vehicle_last_maintenanace_date;
-              cout << "What is the equipment future production date?(DD/MM/YYYY):";
+              cout << "What is the vehicle's future production date?(DD/MM/YYYY):";
               cin >> Vehicle_next_maintenanace_date;
               record = "  " + Vehicle_type + "   |    " + Vehicle_model + "    |     " + Vehicle_bought_date + "     |     " + Vehicle_last_maintenanace_date + " | " + Vehicle_next_maintenanace_date;
               File.open("vehicle_records.txt", ios::in | ios::out);
 
               if (File.is_open()) {  //checks if file exist.
                 File.close();
-                file_edit("equipment_records.txt", record_line_number_to_edit, record); //appends to data file
-                cout << "\nData is accomplished\n\n";
+                file_edit("vehicle_records.txt", record_line_number_to_edit, record); //appends to data file
                 break;
               } else { //if there is no file creates one print records table
                 cout << "\nThere is no data to edit.\n\n";
@@ -940,7 +935,7 @@ eartag2:
                     break;
                   }
 
-                  file_line_delete("vehicle_records.txt", line_number_to_delete); //Deletes specified line
+                  file_line_delete("equipment_records.txt", line_number_to_delete); //Deletes specified line
                   break;
                 } else {
                   cout << "There is no record to delete\n";  //if there is no file throws error.
@@ -1077,7 +1072,6 @@ eartag2:
               if (File.is_open()) {  //checks if file exist.
                 File.close();
                 file_append("crop_yields_records.txt", record); //appends to data file
-                cout << "\nData is accomplished\n\n";
                 break;
               } else { //if there is no file creates one print records table
                 File.close();
@@ -1194,8 +1188,7 @@ eartag3:
 
               if (File.is_open()) {  //checks if file exist.
                 File.close();
-                file_edit("livestock_health_records.txt", record_line_number_to_edit, record); //appends to data file
-                cout << "\nData is accomplished\n\n";
+                file_edit("crop_yields_records.txt", record_line_number_to_edit, record); //appends to data file
                 break;
               } else {
                 cout << "\nThere is no data to edit.\n\n";
@@ -1228,8 +1221,7 @@ eartag3:
 
               if (File.is_open()) {  //checks if file exist.
                 File.close();
-                file_edit("livestock_health_records.txt", record_line_number_to_edit, record); //appends to data file
-                cout << "\nData is accomplished\n\n";
+                file_edit("profit_records.txt", record_line_number_to_edit, record); //appends to data file
                 break;
               } else {
                 cout << "\nThere is no data to edit.\n\n";
@@ -1274,7 +1266,6 @@ eartag4:
               if (File.is_open()) {  //checks if file exist.
                 File.close();
                 file_edit("livestock_health_records.txt", record_line_number_to_edit, record); //appends to data file
-                cout << "\nData is accomplished\n\n";
                 break;
               } else {
                 cout << "\nThere is no data to edit.\n\n";
@@ -1325,7 +1316,7 @@ eartag4:
                     break;
                   }
 
-                  file_line_delete("farm_records.txt", line_number_to_delete); //Deletes specified line
+                  file_line_delete("crop_yields_records.txt", line_number_to_delete); //Deletes specified line
                   break;
                 } else {
                   cout << "There is no record to delete\n";  //if there is no file throws error.
