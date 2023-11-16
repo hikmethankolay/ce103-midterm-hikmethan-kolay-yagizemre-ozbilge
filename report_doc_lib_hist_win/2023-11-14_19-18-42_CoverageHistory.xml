@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<coverage version="1.0" date="2023-11-14_19-18-42" tag="">
-  <assembly name="Default">
-    <class name="C:\Users\hikme\OneDrive\Masa�st�\Git\ce103-midterm-hikmethan-kolay-yagizemre-ozbilge\src\farm_management_app\include\farm_management_app.h" coveredlines="0" coverablelines="1" totallines="0" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="0" />
-    <class name="C:\Users\hikme\OneDrive\Masa�st�\Git\ce103-midterm-hikmethan-kolay-yagizemre-ozbilge\src\farm_management_app\src\farm_management_app.cpp" coveredlines="0" coverablelines="3" totallines="0" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="0" />
-    <class name="C:\Users\hikme\OneDrive\Masa�st�\Git\ce103-midterm-hikmethan-kolay-yagizemre-ozbilge\src\farm_management_lib\include\farm_management_lib.h" coveredlines="0" coverablelines="7" totallines="0" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="0" />
-    <class name="C:\Users\hikme\OneDrive\Masa�st�\Git\ce103-midterm-hikmethan-kolay-yagizemre-ozbilge\src\farm_management_lib\src\farm_management_lib.cpp" coveredlines="0" coverablelines="7" totallines="0" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="0" />
-  </assembly>
-</coverage>
