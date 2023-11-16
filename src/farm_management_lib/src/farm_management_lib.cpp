@@ -15,8 +15,7 @@ int file_write(string file_name, string text) {
     myFile.close();
     return 0;
   } else {
-    cout << "File operation failed\n"; //throws error if fails
-    return 0;
+    return -1;
   }
 }
 
@@ -33,6 +32,7 @@ int file_append(string file_name,string text) {
     myFile.close();
   } else {
     cout << "File operation failed\n";
+    return -1;
   }
 
   size_t pos = lastLine.find("-)"); // Finds location of "-)" inn last line
@@ -45,7 +45,7 @@ int file_append(string file_name,string text) {
     return 0;
   } else {
     cout << "File operation failed\n";
-    return 0;
+    return -1;
   }
 }
 string file_read(string file_name) {
@@ -63,6 +63,7 @@ string file_read(string file_name) {
     myFile.close();
   } else {
     cout << "File operation failed,There is no record\n";
+    return "-1";
   }
 
   return stringForTest; //This is a variable for tests to run since function needs to retrun someting for them to run properly
@@ -87,7 +88,7 @@ int file_edit(string file_name, int line_number_to_edit, string new_line) {
       lines[line_number_to_edit] = to_string(line_number_to_edit) + "-)" + new_line; // Changes a member of Lines array to new line with its line number
     } else {
       cout << "You can only edit existing lines\n";
-      return 0;
+      return -1;
     }
 
     myFile.open(file_name, ios::out); // Opens file in write mode
@@ -102,10 +103,10 @@ int file_edit(string file_name, int line_number_to_edit, string new_line) {
 
     myFile.close();
     cout << "\nData succesfully edited\n\n";
-    return 1;
+    return 0;
   } else {
     cout << "File operation failed" << endl;
-    return 0;
+    return -1;
   }
 }
 
@@ -132,7 +133,7 @@ int file_line_delete(string file_name, int line_number_to_delete) {
     } else {
       cout << "You can only erase existing lines" << endl;
       myFile.close();
-      return 0;
+      return -1;
     }
 
     myFile.close();
@@ -158,7 +159,7 @@ int file_line_delete(string file_name, int line_number_to_delete) {
     myFile.close();
     return 0;
   } else {
-    cout << "File operation failed" << endl;
-    return 0;
+    cout << "File operation failed\n";
+    return -1;
   }
 }

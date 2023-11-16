@@ -15,6 +15,7 @@ class FarmTest : public ::testing::Test {
 };
 
 string testString;
+int fail = -1;
 
 TEST_F(FarmTest, TestFileRead) {
   testString = "0-)TEXT STRING0\n1-)TEXT STRING1\n2-)TEXT STRING2\n3-)TEXT STRING3\n4-)TEXT STRING4\n";
@@ -46,6 +47,24 @@ TEST_F(FarmTest, TestFileWrite) {
   string writeString = "TEXT STRING WRITE";
   file_write("test5.txt", writeString);
   EXPECT_EQ(testString, file_read("test5.txt"));
+}
+
+TEST_F(FarmTest, TestFileReadFail) {
+  ASSERT_EQ("-1", file_read("test1f.txt"));
+}
+
+TEST_F(FarmTest, TestFileAppendFail) {
+  string appendString = "TEXT STRING5";
+  ASSERT_EQ(fail, file_append("test2f.txt", appendString));
+}
+
+TEST_F(FarmTest, TestFileEditFail) {
+  string editString = "TEXT STRING EDIT";
+  ASSERT_EQ(fail, file_edit("test3f.txt", 3, editString));
+}
+
+TEST_F(FarmTest, TestFileDeleteFail) {
+  ASSERT_EQ(fail, file_line_delete("test4f.txt", 2));
 }
 
 int main(int argc, char **argv) {
