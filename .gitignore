@@ -5,7 +5,7 @@
 #Publish_win && build_win && docs && test txt file
 publish
 docs
-build_win
+/build_win
 /test1.txt
 /test2.txt
 /test3.txt
