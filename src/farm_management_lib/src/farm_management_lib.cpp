@@ -131,6 +131,8 @@ int file_line_delete(string file_name, int line_number_to_delete) {
       lines[line_count - 1] = ""; // clears last element of lines so same thing wouldn't write to file twice
     } else {
       cout << "You can only erase existing lines" << endl;
+      myFile.close();
+      return 0;
     }
 
     myFile.close();
@@ -138,7 +140,7 @@ int file_line_delete(string file_name, int line_number_to_delete) {
 
     for (const string &updated_line : lines) {
       if (updated_line == "") {
-        break; // Stops if there is nothing on next line since arrays have fixed slots inside tehem fromm start
+        break; // Stops if there is nothing on next line since arrays have fixed slots inside them from start
       }
 
       size_t pos = updated_line.find("-)"); // Finds postion of "-)"

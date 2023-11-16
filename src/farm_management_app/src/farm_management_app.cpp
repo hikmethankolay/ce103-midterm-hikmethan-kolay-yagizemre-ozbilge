@@ -53,7 +53,7 @@ int main() {
         switch (choice_a) {
           case 1: {
             string record_kind_to_see;
-            cout << "\nWhich record do you want to see? Livestock/Crop?: ";
+            cout << "\nWhich record do you want to see? Crop(C)/Livestock?(L): ";
             cin >> record_kind_to_see;
 
             if (record_kind_to_see == "C") {
@@ -328,7 +328,6 @@ eartag2:
                   }
 
                   file_line_delete("crop_records.txt", line_number_to_delete); // Deletes specified line
-                  cout << "\nData succesfully deleted\n\n";
                   break;
                 } else {
                   cout << "There is no record to delete\n"; //if there is no file throws error
