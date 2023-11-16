@@ -56,12 +56,12 @@ int main() {
             cout << "\nWhich record do you want to see? Livestock/Crop?: ";
             cin >> record_kind_to_see;
 
-            if (record_kind_to_see == "Crop") {
+            if (record_kind_to_see == "C") {
               cout << "\n--------------------------------------------------------------------------------------------\n";
               file_read("crop_records.txt"); // Prints crop records
               cout << "--------------------------------------------------------------------------------------------\n\n";
               break;
-            } else if (record_kind_to_see == "Livestock") {
+            } else if (record_kind_to_see == "L") {
               cout << "\n-----------------------------------------------------------------------------------------------------------------------------------------------------------\n";
               file_read("livestock_records.txt"); //Prints livestock records
               cout << "-----------------------------------------------------------------------------------------------------------------------------------------------------------\n\n";
@@ -77,10 +77,10 @@ int main() {
           case 2: {
             string record;
             string record_kind_to_register;
-            cout << "\nWhat kind of data do you want to enter? Livestock/Crop?: ";
+            cout << "\nWhat kind of data do you want to enter? Crop(C)/Livestock?(L): ";
             cin >> record_kind_to_register;
 
-            if (record_kind_to_register == "Crop") {
+            if (record_kind_to_register == "C") {
               string crop_type;
               string crop_plant_date;
               string crop_harvest_date;
@@ -111,7 +111,7 @@ int main() {
                 cout << "\nData succesfully recored\n\n";
                 break;
               }
-            } else if (record_kind_to_register == "Livestock") {
+            } else if (record_kind_to_register == "L") {
               string livestock_type;
               string livestock_ear_tag;
               string livestock_birth_date;
@@ -179,10 +179,10 @@ eartag:
             int line_number_to_edit;
             string record_kind_to_edit;
             string new_record;
-            cout << "Which kind of record do you want to edit?(Crop/Livestock):";
+            cout << "Which kind of record do you want to edit? Crop(C)/Livestock?(L):";
             cin >> record_kind_to_edit; // Asks which record to edit
 
-            if (record_kind_to_edit == "Crop") { // Takes new data and replaces it with old data in the specified line
+            if (record_kind_to_edit == "C") { // Takes new data and replaces it with old data in the specified line
               File.open("crop_records.txt", ios::out | ios::in);
 
               if (File.is_open()) {
@@ -219,7 +219,7 @@ eartag:
                 cout << "There is no record to edit";
                 break;
               }
-            } else if (record_kind_to_edit == "Livestock") { // Takes new data and replaces it with old data in the specified line
+            } else if (record_kind_to_edit == "L") { // Takes new data and replaces it with old data in the specified line
               File.open("livestock_records.txt", ios::out | ios::in);
 
               if (File.is_open()) {
@@ -293,10 +293,10 @@ eartag2:
             int line_number_to_delete;
             string record_kind_to_delete;
             string line_or_record;
-            cout << "Which kind of record do you want to delete?(Crop/Livestock):";
+            cout << "Which kind of record do you want to delete?Crop(C)/Livestock?(L):";
             cin >> record_kind_to_delete; //Asks which record type to delete from
 
-            if (record_kind_to_delete == "Crop") {
+            if (record_kind_to_delete == "C") {
               cout << "Do you want to delete all records or just a single one?(All/Single):";
               cin >> line_or_record; // Asks if user goin to delte all data or just one specified line
 
@@ -338,7 +338,7 @@ eartag2:
                 cout << "Please sellect a correct option\n\n";
                 break;
               }
-            } else if (record_kind_to_delete == "Livestock") {
+            } else if (record_kind_to_delete == "L") {
               cout << "Do you want to delete all records or just a single one?(All/Single):";
               cin >> line_or_record; // Asks if user goin to delte all data or just one specified line
 
@@ -415,14 +415,14 @@ eartag2:
         switch (choice_b) {
           case 1: {
             string record_kind_to_see;
-            cout << "\nWhich record do you want to see? Pest/Irrigation?: ";
+            cout << "\nWhich record do you want to see? Pest(P)/Irrigation(I)?: ";
             cin >> record_kind_to_see;
 
-            if (record_kind_to_see == "Pest") {
+            if (record_kind_to_see == "P") {
               cout << "\n--------------------------------------------------------------------------------------------\n";
               file_read("pest_records.txt"); // Prints pest control records
               cout << "--------------------------------------------------------------------------------------------\n\n";
-            } else if (record_kind_to_see == "Irrigation") {
+            } else if (record_kind_to_see == "I") {
               cout << "\n-------------------------------------------------------------------------------------------\n";
               file_read("irrig_records.txt"); //Prints irrigation records
               cout << "--------------------------------------------------------------------------------------------\n\n";
@@ -437,10 +437,10 @@ eartag2:
           case 2: {
             string record;
             string record_kind_to_register;
-            cout << "\nWhat kind of data do you want to enter? Pest/Irrigation?: ";
+            cout << "\nWhat kind of data do you want to enter? Pest(P)/Irrigation(I)?: ";
             cin >> record_kind_to_register;
 
-            if (record_kind_to_register == "Pest") {
+            if (record_kind_to_register == "P") {
               string pest_kind;
               string pest_crop;
               string pest_date;
@@ -471,7 +471,7 @@ eartag2:
                 cout << "\nData succesfully recored\n\n";
                 break;
               }
-            } else if (record_kind_to_register == "Irrigation") {
+            } else if (record_kind_to_register == "I") {
               string irrig_crop;
               string irrig_date;
               string irrig_next_date;
@@ -511,10 +511,10 @@ eartag2:
             string record;
             string record_kind_to_edit;
             int line_number_to_edit;
-            cout << "\nWhat kind of data do you want to edit? Pest/Irrigation?: ";
+            cout << "\nWhat kind of data do you want to edit? Pest(P)/Irrigation(I)?: ";
             cin >> record_kind_to_edit;
 
-            if (record_kind_to_edit == "Pest") {
+            if (record_kind_to_edit == "P") {
               string pest_kind;
               string pest_crop;
               string pest_date;
@@ -551,7 +551,7 @@ eartag2:
                 cout << "\nThere is no record to edit\n\n";
                 break;
               }
-            } else if (record_kind_to_edit == "Irrigation") {
+            } else if (record_kind_to_edit == "I") {
               string irrig_crop;
               string irrig_date;
               string irrig_next_date;
@@ -597,10 +597,10 @@ eartag2:
             int line_number_to_delete;
             string record_kind_to_delete;
             string line_or_record;
-            cout << "Which kind of record do you want to delete?(Pest/Irrigation):";
+            cout << "Which kind of record do you want to delete? Pest(P)/Irrigation(I)?:";
             cin >> record_kind_to_delete; //Asks which record type to delete from
 
-            if (record_kind_to_delete == "Pest") {
+            if (record_kind_to_delete == "P") {
               cout << "Do you want to delete all records or just a single one?(All/Single):";
               cin >> line_or_record; // Asks if user goin to delte all data or just one specified line
 
@@ -641,7 +641,7 @@ eartag2:
                 cout << "Please sellect a correct option\n\n";
                 break;
               }
-            } else if (record_kind_to_delete == "Irrigation") {
+            } else if (record_kind_to_delete == "I") {
               cout << "Do you want to delete all records or just a single one?(All/Single):";
               cin >> line_or_record; // Asks if user goin to delte all data or just one specified line
 
