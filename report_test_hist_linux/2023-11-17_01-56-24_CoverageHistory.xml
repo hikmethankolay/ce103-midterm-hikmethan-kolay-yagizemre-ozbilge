@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<coverage version="1.0" date="2023-11-17_01-56-24" tag="">
-  <assembly name="Default">
-    <class name="/mnt/c/Users/hikme/Git/ce103-midterm-hikmethan-kolay-yagizemre-ozbilge/src/farm_management_app/src/farm_management_app.cpp" coveredlines="1051" coverablelines="1063" totallines="1433" coveredbranches="1265" totalbranches="2284" coveredcodeelements="1" totalcodeelements="1" />
-    <class name="/mnt/c/Users/hikme/Git/ce103-midterm-hikmethan-kolay-yagizemre-ozbilge/src/farm_management_lib/src/farm_management_lib.cpp" coveredlines="98" coverablelines="101" totallines="165" coveredbranches="103" totalbranches="176" coveredcodeelements="5" totalcodeelements="5" />
-    <class name="/mnt/c/Users/hikme/Git/ce103-midterm-hikmethan-kolay-yagizemre-ozbilge/src/tests/farm_management/farm_management.cpp" coveredlines="46" coverablelines="46" totallines="77" coveredbranches="63" totalbranches="180" coveredcodeelements="12" totalcodeelements="39" />
-  </assembly>
-</coverage>
