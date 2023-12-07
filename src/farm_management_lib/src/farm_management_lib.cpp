@@ -48,6 +48,7 @@ int file_append(string file_name,string text) {
     return -1;
   }
 }
+
 string file_read(string file_name) {
   string stringForTest; //This is a variable for tests to run properly since function needs to retrun someting
   myFile.open(file_name, ios::in);//Opens file with input tag
